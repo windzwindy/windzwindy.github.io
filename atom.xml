@@ -3,11 +3,11 @@
   <title>WindZwindy Blog</title>
   
   <subtitle>人面不知何处去，桃花依旧笑春风</subtitle>
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="https://windzwindy.github.io/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="https://windzwindy.github.io/"/>
   <updated>2023-08-17T04:16:01.814Z</updated>
-  <id>http://example.com/</id>
+  <id>https://windzwindy.github.io/</id>
   
   <author>
     <name>佚名追风</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>HowToGitCloneOtherBranch</title>
-    <link href="http://example.com/2023/08/17/HowToGitCloneOtherBranch/"/>
-    <id>http://example.com/2023/08/17/HowToGitCloneOtherBranch/</id>
+    <link href="https://windzwindy.github.io/2023/08/17/HowToGitCloneOtherBranch/"/>
+    <id>https://windzwindy.github.io/2023/08/17/HowToGitCloneOtherBranch/</id>
     <published>2023-08-17T03:55:51.000Z</published>
     <updated>2023-08-17T04:16:01.814Z</updated>
     
@@ -31,14 +31,14 @@
     
     
     
-    <category term="Git" scheme="http://example.com/tags/Git/"/>
+    <category term="Git" scheme="https://windzwindy.github.io/tags/Git/"/>
     
   </entry>
   
   <entry>
     <title>SSHLoginGithub</title>
-    <link href="http://example.com/2023/08/12/UseSSHwithTokenLoginGithub/"/>
-    <id>http://example.com/2023/08/12/UseSSHwithTokenLoginGithub/</id>
+    <link href="https://windzwindy.github.io/2023/08/12/UseSSHwithTokenLoginGithub/"/>
+    <id>https://windzwindy.github.io/2023/08/12/UseSSHwithTokenLoginGithub/</id>
     <published>2023-08-12T03:51:00.000Z</published>
     <updated>2023-08-12T04:06:15.155Z</updated>
     
@@ -50,16 +50,16 @@
     
     
     
-    <category term="Git" scheme="http://example.com/tags/Git/"/>
+    <category term="Git" scheme="https://windzwindy.github.io/tags/Git/"/>
     
-    <category term="SSH" scheme="http://example.com/tags/SSH/"/>
+    <category term="SSH" scheme="https://windzwindy.github.io/tags/SSH/"/>
     
   </entry>
   
   <entry>
     <title>vim 配置 coc 插件记录</title>
-    <link href="http://example.com/2023/08/11/vim-coc_config/"/>
-    <id>http://example.com/2023/08/11/vim-coc_config/</id>
+    <link href="https://windzwindy.github.io/2023/08/11/vim-coc_config/"/>
+    <id>https://windzwindy.github.io/2023/08/11/vim-coc_config/</id>
     <published>2023-08-11T04:29:51.000Z</published>
     <updated>2023-08-12T04:06:52.068Z</updated>
     
@@ -71,14 +71,14 @@
     
     
     
-    <category term="Vim" scheme="http://example.com/tags/Vim/"/>
+    <category term="Vim" scheme="https://windzwindy.github.io/tags/Vim/"/>
     
   </entry>
   
   <entry>
     <title>Abundant&amp;Deficient&amp;Perfect_Number</title>
-    <link href="http://example.com/2023/08/10/abundant&amp;Deficient&amp;Perfect_Number/"/>
-    <id>http://example.com/2023/08/10/abundant&amp;Deficient&amp;Perfect_Number/</id>
+    <link href="https://windzwindy.github.io/2023/08/10/abundant&amp;Deficient&amp;Perfect_Number/"/>
+    <id>https://windzwindy.github.io/2023/08/10/abundant&amp;Deficient&amp;Perfect_Number/</id>
     <published>2023-08-10T07:50:51.000Z</published>
     <updated>2023-08-12T04:06:36.693Z</updated>
     
@@ -90,14 +90,14 @@
     
     
     
-    <category term="Math" scheme="http://example.com/tags/Math/"/>
+    <category term="Math" scheme="https://windzwindy.github.io/tags/Math/"/>
     
   </entry>
   
   <entry>
     <title>taylor&#39;s theorem</title>
-    <link href="http://example.com/2023/08/10/theorem/"/>
-    <id>http://example.com/2023/08/10/theorem/</id>
+    <link href="https://windzwindy.github.io/2023/08/10/theorem/"/>
+    <id>https://windzwindy.github.io/2023/08/10/theorem/</id>
     <published>2023-08-10T07:08:51.000Z</published>
     <updated>2023-08-12T04:06:45.355Z</updated>
     
@@ -109,7 +109,7 @@
     
     
     
-    <category term="Math" scheme="http://example.com/tags/Math/"/>
+    <category term="Math" scheme="https://windzwindy.github.io/tags/Math/"/>
     
   </entry>
   
