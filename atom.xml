@@ -6,7 +6,7 @@
   <link href="https://windzwindy.github.io/atom.xml" rel="self"/>
   
   <link href="https://windzwindy.github.io/"/>
-  <updated>2023-08-17T04:16:01.814Z</updated>
+  <updated>2023-08-27T13:52:25.678Z</updated>
   <id>https://windzwindy.github.io/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Arch Install  VMWare-Tools</title>
+    <link href="https://windzwindy.github.io/2023/08/27/Arch_Install_VMWare-Tools/"/>
+    <id>https://windzwindy.github.io/2023/08/27/Arch_Install_VMWare-Tools/</id>
+    <published>2023-08-27T13:51:14.000Z</published>
+    <updated>2023-08-27T13:52:25.678Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="arch-linux-安装-vmware-tools">Arch Linux 安装 VMWare-Tools</h1><h2 id="第一步安装软件">第一步：安装软件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 open-vm-tools</span></span><br><span class="line">sudo pacman -S open-vm-tools</span><br><span class="line"></span><br><span class="line"><span class="comment"># 不安装这个就会复制粘贴失败</span></span><br><span class="line">sudo pacman -S gtkmm3</span><br></pre></td></tr></table></figure><h2 id="第二步打开服务">第二步：打开服务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> vmtoolsd.service</span><br><span class="line">systemctl <span class="built_in">enable</span> vmware-vmblock-fuse.service</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html"> </summary>
+    
+    
+    
+    
+    <category term="Linux" scheme="https://windzwindy.github.io/tags/Linux/"/>
+    
+    <category term="ArchLinux" scheme="https://windzwindy.github.io/tags/ArchLinux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DataStorageUnitConvertRelationship</title>
+    <link href="https://windzwindy.github.io/2023/08/27/DataStorageUnitConvertRelationship/"/>
+    <id>https://windzwindy.github.io/2023/08/27/DataStorageUnitConvertRelationship/</id>
+    <published>2023-08-27T13:46:22.000Z</published>
+    <updated>2023-08-27T13:47:35.479Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="数据存储单位之间的换算关系">数据存储单位之间的换算关系</h1><table width="40%" height="100%" border="1px solid black" align="center"><th align="center"><font size="5px">单位</font></th><th align="center"><font size="5px">换算关系</font></th><tr><td align="center">Byte（字节）</td><td align="center">1 Byte = 8 bit</td></tr><tr><td align="center">KB（Kilobyte，千字节）</td><td align="center">1 KB = 1024 Byte</td></tr><tr><td align="center">MB（Megabyte，兆字节）</td><td align="center">1 MB = 1024 KB</td></tr><tr><td align="center">GB（Gigabyte，吉字节）</td><td align="center">1 GB = 1024 MB</td></tr><tr><td align="center">TB（Trillionbyte，太字节）</td><td align="center">1 TB = 1024 GB</td></tr><tr><td align="center">PB（Petabyte，拍字节）</td><td align="center">1 PB = 1024 TB</td></tr><tr><td align="center">EB（Exabyte，艾字节）</td><td align="center">1 EB = 1024 PB</td></tr><tr><td align="center">ZB（Zettabyte，译字节）</td><td align="center">1 ZB = 1024 EB</td></tr></table>]]></content>
+    
+    
+    <summary type="html"> </summary>
+    
+    
+    
+    
+    <category term="common_sence" scheme="https://windzwindy.github.io/tags/common-sence/"/>
+    
+  </entry>
   
   <entry>
     <title>HowToGitCloneOtherBranch</title>
