@@ -46,7 +46,7 @@
     lang   : 'zh-CN'
   };
 </script>
-<script async src="/lib/fireworks.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css"><style>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css"><style>
 #needsharebutton-postbottom {
   cursor: pointer;
   height: 26px;
@@ -72,7 +72,7 @@
   border-radius: 4px;
   padding: 0 10px 0 14px;
 }
-</style>
+</style><script async src="/lib/fireworks.js"></script>
   <!-- require APlayer -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
   <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
@@ -397,11 +397,9 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="arch-linux-安装-vmware-tools">Arch Linux 安装 VMWare-Tools</h1>
-<h2 id="第一步安装软件">第一步：安装软件</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 open-vm-tools</span></span><br><span class="line">sudo pacman -S open-vm-tools</span><br><span class="line"></span><br><span class="line"><span class="comment"># 不安装这个就会复制粘贴失败</span></span><br><span class="line">sudo pacman -S gtkmm3</span><br></pre></td></tr></table></figure>
-<h2 id="第二步打开服务">第二步：打开服务</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> vmtoolsd.service</span><br><span class="line">systemctl <span class="built_in">enable</span> vmware-vmblock-fuse.service</span><br></pre></td></tr></table></figure>
+        <h1 id="Arch-Linux-安装-VMWare-Tools"><a href="#Arch-Linux-安装-VMWare-Tools" class="headerlink" title="Arch Linux 安装 VMWare-Tools"></a>Arch Linux 安装 VMWare-Tools</h1><h2 id="第一步：安装软件"><a href="#第一步：安装软件" class="headerlink" title="第一步：安装软件"></a>第一步：安装软件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 open-vm-tools</span></span><br><span class="line">sudo pacman -S open-vm-tools</span><br><span class="line"></span><br><span class="line"><span class="comment"># 不安装这个就会复制粘贴失败</span></span><br><span class="line">sudo pacman -S gtkmm3</span><br></pre></td></tr></table></figure>
+
+<h2 id="第二步：打开服务"><a href="#第二步：打开服务" class="headerlink" title="第二步：打开服务"></a>第二步：打开服务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> vmtoolsd.service</span><br><span class="line">systemctl <span class="built_in">enable</span> vmware-vmblock-fuse.service</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -409,6 +407,12 @@ mjx-container[display="true"] + br {
     
     
       
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2023\09\04\CentOS_Install\" rel="bookmark">CentOS Install</a></div>
+    </li>
+  </ul>
 <div class="post-widgets">
       <div id="needsharebutton-postbottom">
         <span class="btn">
@@ -477,7 +481,10 @@ mjx-container[display="true"] + br {
     <a href="/2023/08/27/DataStorageUnitConvertRelationship/" rel="prev" title="DataStorageUnitConvertRelationship">
       <i class="fa fa-chevron-left"></i> DataStorageUnitConvertRelationship
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2023/09/04/CentOS_Install/" rel="next" title="CentOS Install">
+      CentOS Install <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -536,7 +543,7 @@ mjx-container[display="true"] + br {
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#arch-linux-%E5%AE%89%E8%A3%85-vmware-tools"><span class="nav-number">1.</span> <span class="nav-text">Arch Linux 安装 VMWare-Tools</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">第一步：安装软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%E6%89%93%E5%BC%80%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.2.</span> <span class="nav-text">第二步：打开服务</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Arch-Linux-%E5%AE%89%E8%A3%85-VMWare-Tools"><span class="nav-number">1.</span> <span class="nav-text">Arch Linux 安装 VMWare-Tools</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">第一步：安装软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E6%89%93%E5%BC%80%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.2.</span> <span class="nav-text">第二步：打开服务</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -552,14 +559,14 @@ mjx-container[display="true"] + br {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
