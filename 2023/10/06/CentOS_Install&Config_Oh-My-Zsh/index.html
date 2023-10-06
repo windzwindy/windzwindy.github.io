@@ -23,17 +23,18 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="vim 配置 coc 插件记录">
-<meta property="og:url" content="https://windzwindy.github.io/2023/08/11/vim-coc_config/index.html">
+<meta property="og:title" content="CentOS Install&amp;Config Oh-My-Zsh">
+<meta property="og:url" content="https://windzwindy.github.io/2023/10/06/CentOS_Install&Config_Oh-My-Zsh/index.html">
 <meta property="og:site_name" content="WindZwindy Blog">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-08-11T04:29:51.000Z">
-<meta property="article:modified_time" content="2023-08-12T04:06:52.068Z">
+<meta property="article:published_time" content="2023-10-06T12:02:13.200Z">
+<meta property="article:modified_time" content="2023-10-06T12:02:00.731Z">
 <meta property="article:author" content="佚名追风">
-<meta property="article:tag" content="Vim">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="CentOS">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://windzwindy.github.io/2023/08/11/vim-coc_config/">
+<link rel="canonical" href="https://windzwindy.github.io/2023/10/06/CentOS_Install&Config_Oh-My-Zsh/">
 
 
 <script id="page-configurations">
@@ -96,7 +97,7 @@
     storage-name="metingjs" >
   </meting-js>
 <link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
-  <title>vim 配置 coc 插件记录 | WindZwindy Blog</title>
+  <title>CentOS Install&Config Oh-My-Zsh | WindZwindy Blog</title>
   
 
 
@@ -357,7 +358,7 @@ mjx-container[display="true"] + br {
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://windzwindy.github.io/2023/08/11/vim-coc_config/">
+    <link itemprop="mainEntityOfPage" href="https://windzwindy.github.io/2023/10/06/CentOS_Install&Config_Oh-My-Zsh/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -370,7 +371,7 @@ mjx-container[display="true"] + br {
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          vim 配置 coc 插件记录
+          CentOS Install&Config Oh-My-Zsh
         </h1>
 
         <div class="post-meta">
@@ -379,16 +380,10 @@ mjx-container[display="true"] + br {
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2023-08-11 12:29:51" itemprop="dateCreated datePublished" datetime="2023-08-11T12:29:51+08:00">2023-08-11</time>
+              <time title="创建时间：2023-10-06 20:02:13 / 修改时间：20:02:00" itemprop="dateCreated datePublished" datetime="2023-10-06T20:02:13+08:00">2023-10-06</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-08-12 12:06:52" itemprop="dateModified" datetime="2023-08-12T12:06:52+08:00">2023-08-12</time>
-              </span>
 
           
             <div class="post-description"> </div>
@@ -402,93 +397,73 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="vim-配置-coc-插件记录">vim 配置 coc 插件记录</h1>
-<blockquote>
-<p>本文使用环境：Windows + gVim</p>
-<p>建议先看官方文档：https://github.com/neoclide/coc.nvim</p>
-</blockquote>
-<h2 id="第一步环境配置">第一步：环境配置</h2>
-<h3 id="安装-vim-plug">安装 vim-plug</h3>
+        <h1 id="oh-my-zsh安装和配置">7. Oh-My-Zsh安装和配置</h1>
+<h2 id="安装git">7.1 安装git</h2>
+<p>安装Oh-My-Zsh之前需要先安装 <a target="_blank" rel="noopener" href="https://git-scm.com/">git</a> 和
+( <a target="_blank" rel="noopener" href="https://www.gnu.org/software/wget/">wget</a> 或 <a target="_blank" rel="noopener" href="https://curl.se/">curl</a> )</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install git</span><br></pre></td></tr></table></figure>
+<h2 id="安装oh-my-zsh">7.2 安装Oh-My-Zsh</h2>
 <ul>
-<li>到 https://github.com/junegunn/vim-plug 上下载 <code>plug.vim</code>
-放到 <code>.vim/autoload</code> 目录下</li>
-<li>如果是 <a target="_blank" rel="noopener" href="https://github.com/vim/vim-win32-installer/releases">gvim</a>
-则放在 gvim 目录下的 autoload 里</li>
-<li>也可以直接用以下官方给出的命令</li>
+<li>以下命令需要分别在普通用户和root用户下安装</li>
 </ul>
-<h4 id="vim">Vim</h4>
-<ul>
-<li><p>Unix</p>
-<p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -fLo ~/.vim/autoload/plug.vim --create-dirs \</span><br><span class="line">    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim</span><br></pre></td></tr></table></figure></p></li>
-<li><p>You can automate the process by putting the command in your Vim
-configuration file as suggested <a target="_blank" rel="noopener" href="https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation">here</a>.</p></li>
-<li><p>Windows (PowerShell)</p>
-<p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`</span><br><span class="line">    ni $HOME/vimfiles/autoload/plug.vim -Force</span><br></pre></td></tr></table></figure></p></li>
-</ul>
-<h4 id="neovim">Neovim</h4>
-<ul>
-<li><p>Unix, Linux</p>
-<p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \</span><br><span class="line">       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'</span><br></pre></td></tr></table></figure></p></li>
-<li><p>Linux (Flatpak)</p>
-<p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -fLo ~/.var/app/io.neovim.nvim/data/nvim/site/autoload/plug.vim --create-dirs \</span><br><span class="line">    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim</span><br></pre></td></tr></table></figure></p></li>
-<li><p>Windows (PowerShell)</p>
-<p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`</span><br><span class="line">    ni "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/plug.vim"</span><br></pre></td></tr></table></figure></p></li>
-</ul>
-<h3 id="安装-node.js">安装 node.js</h3>
-<ul>
-<li>官网地址：https://nodejs.org/en</li>
-<li>官网教学：https://nodejs.org/en/download/package-manager</li>
-</ul>
-<h4 id="windows">Windows</h4>
-<ul>
-<li>直接到官网下载安装就行</li>
-<li>或者用包管理器： <a target="_blank" rel="noopener" href="https://github.com/microsoft/winget-cli">winget</a>、<a target="_blank" rel="noopener" href="https://scoop.sh/">scoop</a>、<a target="_blank" rel="noopener" href="https://community.chocolatey.org/">choco</a> 等...</li>
-<li>使用 <a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows">NVM</a>
-也可以</li>
-</ul>
-<h4 id="linux">Linux</h4>
-<ul>
-<li><p>用对应的包管理器安装</p>
-<ul>
-<li><p>Arch Linux</p>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S nodejs npm</span><br></pre></td></tr></table></figure></p></li>
-<li><p>Debian，可以参考<a target="_blank" rel="noopener" href="https://linux265.com/news/3798.html">这篇文章</a></p>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install nodejs npm</span><br></pre></td></tr></table></figure></p></li>
-</ul></li>
-<li><p>使用 <a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows">NVM</a>
-也可以</p></li>
-</ul>
-<h2 id="第二步编写个人配置-vimrc">第二步：编写个人配置
-<code>vimrc</code></h2>
-<ul>
-<li><p>在 <code>~/.vim</code> 中新建一个 <code>vimrc</code>
-文件</p></li>
-<li><p>如果是 <a target="_blank" rel="noopener" href="https://github.com/vim/vim-win32-installer/releases">gvim</a> 则在
-gvim 目录下新建一个 <code>_vrimc</code> 文件</p></li>
-<li><p>具体可以用 <code>vim --version</code> 查看</p></li>
-<li><p>在 <code>vimrc</code> 中添加以下代码：</p>
-<p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">call plug#begin()</span><br><span class="line">    Plug 'neoclide/coc.nvim', {'branch': 'release'}</span><br><span class="line">call plug#end()</span><br></pre></td></tr></table></figure></p></li>
-<li><p>然后保存、退出、重新进入 <code>vim</code> ，输入
-<code>:PlugInstall</code> 进行插件的安装</p></li>
-<li><p>安装好后重启 <code>vim</code> 用 <code>:CocInfo</code>
-查看状态，<code>nvim</code> 用 <code>:checkhealth</code>。</p></li>
-<li><p>可能提示什么没启动，用 <code>:CocStart</code> 就行了。</p></li>
-</ul>
-<h2 id="第三步安装提示插件">第三步：安装提示插件</h2>
-<ul>
-<li><p>在 <code>vim</code> 中直接用
-<code>:CocInstall &lt;插件名&gt;</code> 来进行安装，例：</p>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:CocInstall coc-json coc-tsserver</span><br></pre></td></tr></table></figure></p></li>
-<li><p>建议先安装一个提示插件</p>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:CocInstall coc-marketplace coc-vimlsp</span><br></pre></td></tr></table></figure></p></li>
-<li><p>可以先看看官方 <a target="_blank" rel="noopener" href="https://github.com/neoclide/coc.nvim/wiki/Language-servers">Wiki</a></p></li>
-<li><p>我是要学习 <code>C</code> 的，故配置一个</p>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:CocInstall coc-clangd</span><br></pre></td></tr></table></figure></p>
-<p>到 <a target="_blank" rel="noopener" href="https://github.com/clangd/clangd">clangd</a>
-上面下载相应的版本，并解压，添加到环境变量中</p>
-<p>再输入 <code>:CocConfig</code> 进入配置文件，输入：</p>
-<p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"languageserver"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">    <span class="attr">"clangd"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">      <span class="attr">"command"</span><span class="punctuation">:</span> <span class="string">"clangd"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"rootPatterns"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">"compile_flags.txt"</span><span class="punctuation">,</span> <span class="string">"compile_commands.json"</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"filetypes"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">"c"</span><span class="punctuation">,</span> <span class="string">"cc"</span><span class="punctuation">,</span> <span class="string">"cpp"</span><span class="punctuation">,</span> <span class="string">"c++"</span><span class="punctuation">,</span> <span class="string">"objc"</span><span class="punctuation">,</span> <span class="string">"objcpp"</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">}</span></span><br><span class="line">  <span class="punctuation">}</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></table></figure></p></li>
-</ul>
+<table>
+<colgroup>
+<col style="width: 13%">
+<col style="width: 86%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>curl</strong></td>
+<td><code>sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"</code></td>
+</tr>
+<tr class="even">
+<td><strong>wget</strong></td>
+<td><code>sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"</code></td>
+</tr>
+<tr class="odd">
+<td><strong>fetch</strong></td>
+<td><code>sh -c "$(fetch -o - https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="oh-my-zsh插件与主题配置">7.3 Oh-My-Zsh插件与主题配置</h2>
+<h3 id="zsh-autosuggestions">7.3.1 <strong><a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-autosuggestions">zsh-autosuggestions</a></strong></h3>
+<h6 id="clone-this-repository-into-zsh_customplugins-by-default-.oh-my-zshcustomplugins">7.3.1.1
+Clone this repository into <code>$ZSH_CUSTOM/plugins</code> (by default
+<code>~/.oh-my-zsh/custom/plugins</code>)</h6>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-autosuggestions <span class="variable">${ZSH_CUSTOM:-~/.oh-my-zsh/custom}</span>/plugins/zsh-autosuggestions</span><br><span class="line"></span><br><span class="line"><span class="comment"># 比如我的zsh</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions</span><br></pre></td></tr></table></figure>
+<h6 id="add-the-plugin-to-the-list-of-plugins-for-oh-my-zsh-to-load-inside-.zshrc">7.3.1.2
+Add the plugin to the list of plugins for Oh My Zsh to load (inside
+<code>~/.zshrc</code>):</h6>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加插件</span></span><br><span class="line">plugins=( </span><br><span class="line">    <span class="comment"># other plugins...</span></span><br><span class="line">    zsh-autosuggestions</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h6 id="start-a-new-terminal-session.">7.3.1.3 Start a new terminal
+session.</h6>
+<h3 id="zsh-syntax-highlighting">7.3.2 <strong><a target="_blank" rel="noopener" href="https://github.com/zsh-users/zsh-syntax-highlighting">zsh-syntax-highlighting</a></strong></h3>
+<h6 id="clone-this-repository-in-oh-my-zshs-plugins-directory">7.3.2.1
+Clone this repository in oh-my-zsh's plugins directory:</h6>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="variable">${ZSH_CUSTOM:-~/.oh-my-zsh/custom}</span>/plugins/zsh-syntax-highlighting</span><br><span class="line"></span><br><span class="line"><span class="comment"># 比如我的zsh</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions</span><br></pre></td></tr></table></figure>
+<h6 id="activate-the-plugin-in-.zshrc">7.3.2.2 Activate the plugin in
+<code>~/.zshrc</code>:</h6>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plugins=(</span><br><span class="line">	[plugins...]</span><br><span class="line">	zsh-autosuggestions</span><br><span class="line">	zsh-syntax-highlighting</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h6 id="restart-zsh-such-as-by-opening-a-new-instance-of-your-terminal-emulator.">7.3.2.3
+Restart zsh (such as by opening a new instance of your terminal
+emulator).</h6>
+<h3 id="powerlevel10k">7.3.3 <strong><a target="_blank" rel="noopener" href="https://github.com/romkatv/powerlevel10k">powerlevel10k</a></strong></h3>
+<h6 id="clone-the-repository">7.3.3.1 Clone the repository:</h6>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --depth=1 https://github.com/romkatv/powerlevel10k.git <span class="variable">${ZSH_CUSTOM:-<span class="variable">$HOME</span>/.oh-my-zsh/custom}</span>/themes/powerlevel10k</span><br><span class="line"></span><br><span class="line"><span class="comment"># 比如我的zsh</span></span><br><span class="line">git <span class="built_in">clone</span> --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k</span><br></pre></td></tr></table></figure>
+<p>Users in China can use the official mirror on gitee.com for faster
+download. 中国用户可以使用 <a href="gitee.com">gitee</a>
+上的官方镜像加速下载.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --depth=1 https://gitee.com/romkatv/powerlevel10k.git <span class="variable">${ZSH_CUSTOM:-<span class="variable">$HOME</span>/.oh-my-zsh/custom}</span>/themes/powerlevel10k</span><br></pre></td></tr></table></figure>
+<h6 id="set-zsh_themepowerlevel10kpowerlevel10k-in-.zshrc.">7.3.3.2 Set
+<code>ZSH_THEME="powerlevel10k/powerlevel10k"</code> in
+<code>~/.zshrc</code>.</h6>
 
     </div>
 
@@ -496,6 +471,24 @@ gvim 目录下新建一个 <code>_vrimc</code> 文件</p></li>
     
     
       
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2023\09\04\CentOS_Install\" rel="bookmark">CentOS Install</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2023\09\05\CentOS_Install_Input\" rel="bookmark">CentOS Install Input</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2023\10\06\CentOS_Install_Latest_ZShell\" rel="bookmark">CentOS Install Latest ZShell</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2023\09\04\CentOS_Install_VMTools\" rel="bookmark">CentOS Install VMTools</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\2023\09\05\CentOS_Remove_External_Kernal\" rel="bookmark">CentOS Remove External Kernal</a></div>
+    </li>
+  </ul>
 <div class="post-widgets">
       <div id="needsharebutton-postbottom">
         <span class="btn">
@@ -512,7 +505,7 @@ gvim 目录下新建一个 <code>_vrimc</code> 文件</p></li>
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://windzwindy.github.io/2023/08/11/vim-coc_config/" title="vim 配置 coc 插件记录">https://windzwindy.github.io/2023/08/11/vim-coc_config/</a>
+    <a href="https://windzwindy.github.io/2023/10/06/CentOS_Install&Config_Oh-My-Zsh/" title="CentOS Install&amp;Config Oh-My-Zsh">https://windzwindy.github.io/2023/10/06/CentOS_Install&Config_Oh-My-Zsh/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -551,7 +544,8 @@ gvim 目录下新建一个 <code>_vrimc</code> 文件</p></li>
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/Vim/" rel="tag"><i class="fa fa-tag"></i> Vim</a>
+              <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+              <a href="/tags/CentOS/" rel="tag"><i class="fa fa-tag"></i> CentOS</a>
           </div>
 
         
@@ -560,13 +554,10 @@ gvim 目录下新建一个 <code>_vrimc</code> 文件</p></li>
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/08/10/abundant&Deficient&Perfect_Number/" rel="prev" title="Abundant&Deficient&Perfect_Number">
-      <i class="fa fa-chevron-left"></i> Abundant&Deficient&Perfect_Number
+    <a href="/2023/10/06/CentOS_Install_Latest_ZShell/" rel="prev" title="CentOS Install Latest ZShell">
+      <i class="fa fa-chevron-left"></i> CentOS Install Latest ZShell
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2023/08/12/UseSSHwithTokenLoginGithub/" rel="next" title="SSHLoginGithub">
-      SSHLoginGithub <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -625,8 +616,18 @@ gvim 目录下新建一个 <code>_vrimc</code> 文件</p></li>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vim-%E9%85%8D%E7%BD%AE-coc-%E6%8F%92%E4%BB%B6%E8%AE%B0%E5%BD%95"><span class="nav-number">1.</span> <span class="nav-text">vim 配置 coc 插件记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">第一步：环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-vim-plug"><span class="nav-number">1.1.1.</span> <span class="nav-text">安装 vim-plug</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#vim"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Vim</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#neovim"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">Neovim</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-node.js"><span class="nav-number">1.1.2.</span> <span class="nav-text">安装 node.js</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#windows"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Windows</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#linux"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">Linux</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%E7%BC%96%E5%86%99%E4%B8%AA%E4%BA%BA%E9%85%8D%E7%BD%AE-vimrc"><span class="nav-number">1.2.</span> <span class="nav-text">第二步：编写个人配置
-vimrc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%E5%AE%89%E8%A3%85%E6%8F%90%E7%A4%BA%E6%8F%92%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">第三步：安装提示插件</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#oh-my-zsh%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">7. Oh-My-Zsh安装和配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85git"><span class="nav-number">1.1.</span> <span class="nav-text">7.1 安装git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85oh-my-zsh"><span class="nav-number">1.2.</span> <span class="nav-text">7.2 安装Oh-My-Zsh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#oh-my-zsh%E6%8F%92%E4%BB%B6%E4%B8%8E%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE"><span class="nav-number">1.3.</span> <span class="nav-text">7.3 Oh-My-Zsh插件与主题配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#zsh-autosuggestions"><span class="nav-number">1.3.1.</span> <span class="nav-text">7.3.1 zsh-autosuggestions</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#clone-this-repository-into-zsh_customplugins-by-default-.oh-my-zshcustomplugins"><span class="nav-number">1.3.1.0.0.1.</span> <span class="nav-text">7.3.1.1
+Clone this repository into $ZSH_CUSTOM&#x2F;plugins (by default
+~&#x2F;.oh-my-zsh&#x2F;custom&#x2F;plugins)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#add-the-plugin-to-the-list-of-plugins-for-oh-my-zsh-to-load-inside-.zshrc"><span class="nav-number">1.3.1.0.0.2.</span> <span class="nav-text">7.3.1.2
+Add the plugin to the list of plugins for Oh My Zsh to load (inside
+~&#x2F;.zshrc):</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#start-a-new-terminal-session."><span class="nav-number">1.3.1.0.0.3.</span> <span class="nav-text">7.3.1.3 Start a new terminal
+session.</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zsh-syntax-highlighting"><span class="nav-number">1.3.2.</span> <span class="nav-text">7.3.2 zsh-syntax-highlighting</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#clone-this-repository-in-oh-my-zshs-plugins-directory"><span class="nav-number">1.3.2.0.0.1.</span> <span class="nav-text">7.3.2.1
+Clone this repository in oh-my-zsh&#39;s plugins directory:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#activate-the-plugin-in-.zshrc"><span class="nav-number">1.3.2.0.0.2.</span> <span class="nav-text">7.3.2.2 Activate the plugin in
+~&#x2F;.zshrc:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#restart-zsh-such-as-by-opening-a-new-instance-of-your-terminal-emulator."><span class="nav-number">1.3.2.0.0.3.</span> <span class="nav-text">7.3.2.3
+Restart zsh (such as by opening a new instance of your terminal
+emulator).</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#powerlevel10k"><span class="nav-number">1.3.3.</span> <span class="nav-text">7.3.3 powerlevel10k</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#clone-the-repository"><span class="nav-number">1.3.3.0.0.1.</span> <span class="nav-text">7.3.3.1 Clone the repository:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#set-zsh_themepowerlevel10kpowerlevel10k-in-.zshrc."><span class="nav-number">1.3.3.0.0.2.</span> <span class="nav-text">7.3.3.2 Set
+ZSH_THEME&#x3D;&quot;powerlevel10k&#x2F;powerlevel10k&quot; in
+~&#x2F;.zshrc.</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
