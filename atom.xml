@@ -6,7 +6,7 @@
   <link href="https://windzwindy.github.io/atom.xml" rel="self"/>
   
   <link href="https://windzwindy.github.io/"/>
-  <updated>2023-09-05T13:27:37.061Z</updated>
+  <updated>2023-10-06T11:53:46.643Z</updated>
   <id>https://windzwindy.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CentOS Install Latest ZShell</title>
+    <link href="https://windzwindy.github.io/2023/10/06/CentOS_Install_Latest_ZShell/"/>
+    <id>https://windzwindy.github.io/2023/10/06/CentOS_Install_Latest_ZShell/</id>
+    <published>2023-10-06T11:49:49.158Z</published>
+    <updated>2023-10-06T11:53:46.643Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="安装最新版zsh-shell">6. 安装最新版ZSH Shell</h1><ul><li>首先切换到root用户： <code>su -</code></li></ul><h2 id="卸载低版本zsh">6.1 卸载低版本zsh</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 卸载当前版本</span></span><br><span class="line">yum -y remove zsh</span><br></pre></td></tr></table></figure><h2 id="下载源码">6.2 下载源码</h2><ul><li>源码：https://zsh.sourceforge.io/Arc/source.html</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果没有wget就先安装wget</span></span><br><span class="line">yum -y install wget</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载</span></span><br><span class="line">wget https://sourceforge.net/projects/zsh/files/zsh/5.9/zsh-5.9.tar.xz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压</span></span><br><span class="line">tar -xvf zsh-5.9.tar.xz</span><br></pre></td></tr></table></figure><h2 id="编译安装">6.3 编译安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装编译工具</span></span><br><span class="line">yum install gcc perl-ExtUtils-MakeMaker</span><br><span class="line">yum install ncurses-devel</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入源码目录</span></span><br><span class="line"><span class="built_in">cd</span> zsh-5.9</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行配置</span></span><br><span class="line">./configure   <span class="comment"># 默认安装在：/usr/local/bin/zsh</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译和安装</span></span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加信息</span></span><br><span class="line">vim /etc/shells</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在最后一行加上：</span></span><br><span class="line">/usr/local/bin/zsh</span><br></pre></td></tr></table></figure><h2 id="验证安装">6.4 验证安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换shell</span></span><br><span class="line">chsh -s /usr/local/bin/zsh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看版本信息</span></span><br><span class="line">zsh --version</span><br><span class="line"><span class="comment"># zsh 5.9 (x86_64-pc-linux-gnu)</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html"> </summary>
+    
+    
+    
+    
+    <category term="Linux" scheme="https://windzwindy.github.io/tags/Linux/"/>
+    
+    <category term="CentOS" scheme="https://windzwindy.github.io/tags/CentOS/"/>
+    
+  </entry>
   
   <entry>
     <title>CentOS Install Input</title>
