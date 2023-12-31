@@ -1,48 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Arch Install  VMWare-Tools</title>
-    <url>/2023/08/27/Arch_Install_VMWare-Tools/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="arch-linux-安装-vmware-tools">Arch Linux 安装 VMWare-Tools</h1>
-<h2 id="第一步安装软件">第一步：安装软件</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装 open-vm-tools</span></span><br><span class="line">sudo pacman -S open-vm-tools</span><br><span class="line"></span><br><span class="line"><span class="comment"># 不安装这个就会复制粘贴失败</span></span><br><span class="line">sudo pacman -S gtkmm3</span><br></pre></td></tr></table></figure>
-<h2 id="第二步打开服务">第二步：打开服务</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> vmtoolsd.service</span><br><span class="line">systemctl <span class="built_in">enable</span> vmware-vmblock-fuse.service</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>Linux</tag>
-        <tag>ArchLinux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CentOS Install</title>
-    <url>/2023/09/04/CentOS_Install/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="安装centos">1. 安装CentOS</h1>
-<h2 id="更改语言">1.1 更改语言</h2>
-<p><img data-src="/images/CentOS_Install/1.png"></p>
-<h2 id="手动进行分区">1.2 手动进行分区</h2>
-<p><img data-src="/images/CentOS_Install/2.png"></p>
-<h2 id="根目录50gboot目录4gswap交换分区6g">1.3
-根目录50G、boot目录4G、swap交换分区6G</h2>
-<p><img data-src="/images/CentOS_Install/3.png"></p>
-<h2 id="点击接受更改">1.4 点击接受更改</h2>
-<p><img data-src="/images/CentOS_Install/4.png"></p>
-<h2 id="更改网络和主机名主机名为master以太网开关打开">1.5
-更改网络和主机名，主机名为master以太网开关打开</h2>
-<p><img data-src="/images/CentOS_Install/5.png"></p>
-<h2 id="设置root密码和新建一个名为hadoop的用户">1.6
-设置root密码和新建一个名为hadoop的用户</h2>
-<p><img data-src="/images/CentOS_Install/6.png"></p>
-<h2 id="点击重启">1.7 点击重启</h2>
-<p><img data-src="/images/CentOS_Install/7.png"></p>
-<p>至此安装CentOS成功了</p>
-]]></content>
-      <tags>
-        <tag>Linux</tag>
-        <tag>CentOS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CentOS Install&amp;Config Oh-My-Zsh</title>
     <url>/2023/10/06/CentOS_Install&amp;Config_Oh-My-Zsh/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="oh-my-zsh安装和配置">7. Oh-My-Zsh安装和配置</h1>
@@ -119,48 +77,41 @@ download. 中国用户可以使用 <a href="gitee.com">gitee</a>
       </tags>
   </entry>
   <entry>
-    <title>CentOS Install Latest ZShell</title>
-    <url>/2023/10/06/CentOS_Install_Latest_ZShell/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="安装最新版zsh-shell">6. 安装最新版ZSH Shell</h1>
-<ul>
-<li>首先切换到root用户： <code>su -</code></li>
-</ul>
-<h2 id="卸载低版本zsh">6.1 卸载低版本zsh</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 卸载当前版本</span></span><br><span class="line">yum -y remove zsh</span><br></pre></td></tr></table></figure>
-<h2 id="下载源码">6.2 下载源码</h2>
-<ul>
-<li>源码：https://zsh.sourceforge.io/Arc/source.html</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 如果没有wget就先安装wget</span></span><br><span class="line">yum -y install wget</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载</span></span><br><span class="line">wget https://sourceforge.net/projects/zsh/files/zsh/5.9/zsh-5.9.tar.xz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压</span></span><br><span class="line">tar -xvf zsh-5.9.tar.xz</span><br></pre></td></tr></table></figure>
-<h2 id="编译安装">6.3 编译安装</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装编译工具</span></span><br><span class="line">yum install gcc perl-ExtUtils-MakeMaker</span><br><span class="line">yum install ncurses-devel</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入源码目录</span></span><br><span class="line"><span class="built_in">cd</span> zsh-5.9</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行配置</span></span><br><span class="line">./configure   <span class="comment"># 默认安装在：/usr/local/bin/zsh</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译和安装</span></span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加信息</span></span><br><span class="line">vim /etc/shells</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在最后一行加上：</span></span><br><span class="line">/usr/local/bin/zsh</span><br></pre></td></tr></table></figure>
-<h2 id="验证安装">6.4 验证安装</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 切换shell</span></span><br><span class="line">chsh -s /usr/local/bin/zsh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看版本信息</span></span><br><span class="line">zsh --version</span><br><span class="line"><span class="comment"># zsh 5.9 (x86_64-pc-linux-gnu)</span></span><br></pre></td></tr></table></figure>
+    <title>Arch Install  VMWare-Tools</title>
+    <url>/2023/08/27/Arch_Install_VMWare-Tools/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="arch-linux-安装-vmware-tools">Arch Linux 安装 VMWare-Tools</h1>
+<h2 id="第一步安装软件">第一步：安装软件</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装 open-vm-tools</span></span><br><span class="line">sudo pacman -S open-vm-tools</span><br><span class="line"></span><br><span class="line"><span class="comment"># 不安装这个就会复制粘贴失败</span></span><br><span class="line">sudo pacman -S gtkmm3</span><br></pre></td></tr></table></figure>
+<h2 id="第二步打开服务">第二步：打开服务</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> vmtoolsd.service</span><br><span class="line">systemctl <span class="built_in">enable</span> vmware-vmblock-fuse.service</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
         <tag>Linux</tag>
-        <tag>CentOS</tag>
+        <tag>ArchLinux</tag>
       </tags>
   </entry>
   <entry>
-    <title>CentOS Install VMTools</title>
-    <url>/2023/09/04/CentOS_Install_VMTools/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="给centos安装vmtools">2. 给CentOS安装vmtools</h1>
-<h2 id="更改为使用物理驱动器">2.1 更改为使用物理驱动器</h2>
-<p><img data-src="/images/CentOS_Install_VMTools/1.png"></p>
-<h2 id="在vmware上依次选择虚拟机--重新安装vmware-tools">2.2
-在VMware上依次选择虚拟机--&gt;重新安装VMware Tools</h2>
-<p><img data-src="/images/CentOS_Install_VMTools/2.png"></p>
-<h2 id="在root用户下输入以下命令">2.3 在root用户下输入以下命令</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建一个目录/soft在根目录下用于存放软件</span></span><br><span class="line"><span class="built_in">mkdir</span> /soft</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把该目录的权限所属用户改为hadoop</span></span><br><span class="line"><span class="built_in">chown</span> -R　hadoop /soft</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把该目录的权限所属组改为hadoop</span></span><br><span class="line"><span class="built_in">chgrp</span> -R　hadoop /soft</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在/mnt下创建目录cdrom</span></span><br><span class="line"><span class="built_in">mkdir</span> /mnt/cdrom</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把cd挂载到/mnt/cdrom下</span></span><br><span class="line">mount /dev/cdrom /mnt/cdrom</span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制cdrom中的VMwareTools包到/soft目录下</span></span><br><span class="line"><span class="built_in">cp</span> /mnt/cdrom/VMwareTools-xx.xx.xx.tar.gz /soft</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消挂载</span></span><br><span class="line">umount /mnt/cdrom</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到/soft目录下</span></span><br><span class="line"><span class="built_in">cd</span> /soft</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看一下当前文件</span></span><br><span class="line"><span class="built_in">ls</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压VMwareTools压缩包</span></span><br><span class="line">tar -xzvf VMwareTools-xx.xx.xx.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到解压目录下</span></span><br><span class="line"><span class="built_in">cd</span> vmware-tools-distrib</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行vmware tools安装脚本</span></span><br><span class="line">./vmware-install.pl</span><br></pre></td></tr></table></figure>
-<p>以上命令中最后一条命令有可能运行不了，解决办法是更新一下系统软件，其实是gcc没安装的问题，也可以借此顺便安装一下vim编辑器</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 更新软件</span></span><br><span class="line">yum upgrade -y</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">yum update -y</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装gcc</span></span><br><span class="line">yum -y install gcc</span><br><span class="line"><span class="comment"># 安装vim编译器</span></span><br><span class="line">yum -y install vim</span><br></pre></td></tr></table></figure>
-<p>再次安装vmware-tools就不会报错了</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 运行vmware tools安装脚本</span></span><br><span class="line">./vmware-install.pl</span><br></pre></td></tr></table></figure>
-<p>在安装过程中有许多选项，遇到目录按回车，遇到yes/no则输入yes回车</p>
-<h2 id="卸载-vmware-tools">2.4 卸载 VMware Tools</h2>
-<p>如何卸载 VMware Tools 呢？</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 以root身份运行以下命令即可</span></span><br><span class="line">vmware-uninstall-tools.pl</span><br></pre></td></tr></table></figure>
+    <title>CentOS Install</title>
+    <url>/2023/09/04/CentOS_Install/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="安装centos">1. 安装CentOS</h1>
+<h2 id="更改语言">1.1 更改语言</h2>
+<p><img data-src="/images/CentOS_Install/1.png"></p>
+<h2 id="手动进行分区">1.2 手动进行分区</h2>
+<p><img data-src="/images/CentOS_Install/2.png"></p>
+<h2 id="根目录50gboot目录4gswap交换分区6g">1.3
+根目录50G、boot目录4G、swap交换分区6G</h2>
+<p><img data-src="/images/CentOS_Install/3.png"></p>
+<h2 id="点击接受更改">1.4 点击接受更改</h2>
+<p><img data-src="/images/CentOS_Install/4.png"></p>
+<h2 id="更改网络和主机名主机名为master以太网开关打开">1.5
+更改网络和主机名，主机名为master以太网开关打开</h2>
+<p><img data-src="/images/CentOS_Install/5.png"></p>
+<h2 id="设置root密码和新建一个名为hadoop的用户">1.6
+设置root密码和新建一个名为hadoop的用户</h2>
+<p><img data-src="/images/CentOS_Install/6.png"></p>
+<h2 id="点击重启">1.7 点击重启</h2>
+<p><img data-src="/images/CentOS_Install/7.png"></p>
+<p>至此安装CentOS成功了</p>
 ]]></content>
       <tags>
         <tag>Linux</tag>
@@ -200,6 +151,31 @@ download. 中国用户可以使用 <a href="gitee.com">gitee</a>
       </tags>
   </entry>
   <entry>
+    <title>CentOS Install VMTools</title>
+    <url>/2023/09/04/CentOS_Install_VMTools/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="给centos安装vmtools">2. 给CentOS安装vmtools</h1>
+<h2 id="更改为使用物理驱动器">2.1 更改为使用物理驱动器</h2>
+<p><img data-src="/images/CentOS_Install_VMTools/1.png"></p>
+<h2 id="在vmware上依次选择虚拟机--重新安装vmware-tools">2.2
+在VMware上依次选择虚拟机--&gt;重新安装VMware Tools</h2>
+<p><img data-src="/images/CentOS_Install_VMTools/2.png"></p>
+<h2 id="在root用户下输入以下命令">2.3 在root用户下输入以下命令</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建一个目录/soft在根目录下用于存放软件</span></span><br><span class="line"><span class="built_in">mkdir</span> /soft</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把该目录的权限所属用户改为hadoop</span></span><br><span class="line"><span class="built_in">chown</span> -R　hadoop /soft</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把该目录的权限所属组改为hadoop</span></span><br><span class="line"><span class="built_in">chgrp</span> -R　hadoop /soft</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在/mnt下创建目录cdrom</span></span><br><span class="line"><span class="built_in">mkdir</span> /mnt/cdrom</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把cd挂载到/mnt/cdrom下</span></span><br><span class="line">mount /dev/cdrom /mnt/cdrom</span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制cdrom中的VMwareTools包到/soft目录下</span></span><br><span class="line"><span class="built_in">cp</span> /mnt/cdrom/VMwareTools-xx.xx.xx.tar.gz /soft</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消挂载</span></span><br><span class="line">umount /mnt/cdrom</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到/soft目录下</span></span><br><span class="line"><span class="built_in">cd</span> /soft</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看一下当前文件</span></span><br><span class="line"><span class="built_in">ls</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压VMwareTools压缩包</span></span><br><span class="line">tar -xzvf VMwareTools-xx.xx.xx.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到解压目录下</span></span><br><span class="line"><span class="built_in">cd</span> vmware-tools-distrib</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行vmware tools安装脚本</span></span><br><span class="line">./vmware-install.pl</span><br></pre></td></tr></table></figure>
+<p>以上命令中最后一条命令有可能运行不了，解决办法是更新一下系统软件，其实是gcc没安装的问题，也可以借此顺便安装一下vim编辑器</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 更新软件</span></span><br><span class="line">yum upgrade -y</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">yum update -y</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装gcc</span></span><br><span class="line">yum -y install gcc</span><br><span class="line"><span class="comment"># 安装vim编译器</span></span><br><span class="line">yum -y install vim</span><br></pre></td></tr></table></figure>
+<p>再次安装vmware-tools就不会报错了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 运行vmware tools安装脚本</span></span><br><span class="line">./vmware-install.pl</span><br></pre></td></tr></table></figure>
+<p>在安装过程中有许多选项，遇到目录按回车，遇到yes/no则输入yes回车</p>
+<h2 id="卸载-vmware-tools">2.4 卸载 VMware Tools</h2>
+<p>如何卸载 VMware Tools 呢？</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 以root身份运行以下命令即可</span></span><br><span class="line">vmware-uninstall-tools.pl</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+        <tag>CentOS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CentOS Install XFCE Windows Manager</title>
     <url>/2023/09/04/CentOS_Install_XFCE-WM/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="安装-xfce-桌面环境">3. 安装 <a href="https://www.gnome.org/">XFCE</a> 桌面环境</h1>
@@ -230,6 +206,51 @@ Light Display Manager</a> 等等</p>
 <h3 id="选择使用默认配置">3.3.3 选择使用默认配置</h3>
 <p><img data-src="/images/CentOS_Install_XFCE-WM/3.png"></p>
 <p>至此xfce桌面环境安装完成！</p>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+        <tag>CentOS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS Install Latest ZShell</title>
+    <url>/2023/10/06/CentOS_Install_Latest_ZShell/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="安装最新版zsh-shell">6. 安装最新版ZSH Shell</h1>
+<ul>
+<li>首先切换到root用户： <code>su -</code></li>
+</ul>
+<h2 id="卸载低版本zsh">6.1 卸载低版本zsh</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 卸载当前版本</span></span><br><span class="line">yum -y remove zsh</span><br></pre></td></tr></table></figure>
+<h2 id="下载源码">6.2 下载源码</h2>
+<ul>
+<li>源码：https://zsh.sourceforge.io/Arc/source.html</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 如果没有wget就先安装wget</span></span><br><span class="line">yum -y install wget</span><br><span class="line"></span><br><span class="line"><span class="comment"># 下载</span></span><br><span class="line">wget https://sourceforge.net/projects/zsh/files/zsh/5.9/zsh-5.9.tar.xz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 解压</span></span><br><span class="line">tar -xvf zsh-5.9.tar.xz</span><br></pre></td></tr></table></figure>
+<h2 id="编译安装">6.3 编译安装</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装编译工具</span></span><br><span class="line">yum install gcc perl-ExtUtils-MakeMaker</span><br><span class="line">yum install ncurses-devel</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入源码目录</span></span><br><span class="line"><span class="built_in">cd</span> zsh-5.9</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行配置</span></span><br><span class="line">./configure   <span class="comment"># 默认安装在：/usr/local/bin/zsh</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 编译和安装</span></span><br><span class="line">make &amp;&amp; make install</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加信息</span></span><br><span class="line">vim /etc/shells</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在最后一行加上：</span></span><br><span class="line">/usr/local/bin/zsh</span><br></pre></td></tr></table></figure>
+<h2 id="验证安装">6.4 验证安装</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 切换shell</span></span><br><span class="line">chsh -s /usr/local/bin/zsh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看版本信息</span></span><br><span class="line">zsh --version</span><br><span class="line"><span class="comment"># zsh 5.9 (x86_64-pc-linux-gnu)</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+        <tag>CentOS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS Remove External Kernal</title>
+    <url>/2023/09/05/CentOS_Remove_External_Kernal/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="删除多余内核">4.删除多余内核</h1>
+<h2 id="打开终端查看当前使用的内核">4.1
+打开终端，查看当前使用的内核</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">uname</span> -a</span><br></pre></td></tr></table></figure>
+<h2 id="查看所有内核选项">4.2 查看所有内核选项</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep kernel</span><br></pre></td></tr></table></figure>
+<h2 id="进入root模式删除多余内核">4.3 进入root模式，删除多余内核</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum remove 多余内核</span><br></pre></td></tr></table></figure>
+<h2 id="重新编译引导可不做">4.4 重新编译引导（可不做）</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grub2-mkconfig -o /boot/grub2/grub.cfg</span><br></pre></td></tr></table></figure>
+<h2 id="重启系统">4.5 重启系统</h2>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">reboot</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">init 6</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
         <tag>Linux</tag>
@@ -315,87 +336,6 @@ ZB（Zettabyte，译字节）
 ]]></content>
       <tags>
         <tag>common_sence</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CentOS Remove External Kernal</title>
-    <url>/2023/09/05/CentOS_Remove_External_Kernal/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="删除多余内核">4.删除多余内核</h1>
-<h2 id="打开终端查看当前使用的内核">4.1
-打开终端，查看当前使用的内核</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">uname</span> -a</span><br></pre></td></tr></table></figure>
-<h2 id="查看所有内核选项">4.2 查看所有内核选项</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep kernel</span><br></pre></td></tr></table></figure>
-<h2 id="进入root模式删除多余内核">4.3 进入root模式，删除多余内核</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum remove 多余内核</span><br></pre></td></tr></table></figure>
-<h2 id="重新编译引导可不做">4.4 重新编译引导（可不做）</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">grub2-mkconfig -o /boot/grub2/grub.cfg</span><br></pre></td></tr></table></figure>
-<h2 id="重启系统">4.5 重启系统</h2>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">reboot</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">init 6</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>Linux</tag>
-        <tag>CentOS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SSHLoginGithub</title>
-    <url>/2023/08/12/UseSSHwithTokenLoginGithub/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="github-使用-ssh-免密与-token-登录配置">Github 使用 SSH 免密与
-Token 登录配置</h1>
-<blockquote>
-<p>参考文章：</p>
-<ol type="1">
-<li>https://cloud.tencent.com/developer/article/1861466</li>
-<li>https://leezhiy.github.io/2020/03/15/2020-03-15-Hexo-Next%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88Github-Pages-%E6%89%98%E7%AE%A1-Hexo%EF%BC%89/</li>
-<li>https://juejin.cn/post/7129443602379309086</li>
-</ol>
-<p>环境：Windows 10</p>
-<p>写这篇文章原因：配置博客要用到</p>
-</blockquote>
-<h2 id="生成密钥并添加到-github-上">1. 生成密钥并添加到 <a href="https://github.com">Github</a> 上</h2>
-<ul>
-<li><p>回到家目录，在家目录下创建一个 <code>.ssh</code> 文件夹，在
-<code>.ssh</code> 中生成两个密钥</p>
-<p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># change directory</span></span><br><span class="line"><span class="built_in">cd</span> /d C:\Users\yourname\</span><br><span class="line"></span><br><span class="line"><span class="comment"># make a new directory named `.ssh`</span></span><br><span class="line"><span class="built_in">mkdir</span> .ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># go to `.ssh`</span></span><br><span class="line"><span class="built_in">cd</span> .ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># generate a ssh-key</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">"youremail@example.com"</span></span><br></pre></td></tr></table></figure></p></li>
-<li><p>到这里会提示你输入一个存放密钥的路径，建议直接回车就好，那样子就会生成在你当下的目录，即
-<code>.ssh</code> 里。</p></li>
-<li><p>接着会提示你输入一个私钥密码 passphrase
-，如果你设置了，以后每次使用 SSH 登录都要输入。</p></li>
-<li><p>接着把 <code>id_rsa.pub</code> 中的内容复制，待会在 <a href="https://github.com/">github</a> 中用。</p>
-<p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># this command means that copy content to clipboard</span></span><br><span class="line">clip &lt; .\id_rsa.pub</span><br></pre></td></tr></table></figure></p></li>
-<li><p>接着到 <a href="https://github.com">github</a>
-上登录，然后依次点击：你的头像 ---&gt;&gt; Settings ---&gt;&gt; SSH and
-GPG keys ---&gt;&gt; New SSH key</p></li>
-<li><p>然后 Title 随便写，再把刚刚所复制的内容粘贴到 Key 的输入框上，
-Key type 默认就好，再点击 Add SSH key 就完成添加了。</p></li>
-</ul>
-<h2 id="测试是否添加成功">2. 测试是否添加成功</h2>
-<ul>
-<li><p>在测试之前需要下载安装 <a href="https://git-scm.com/">git</a>
-和稍稍配置一下。</p></li>
-<li><p>git 下载地址：https://git-scm.com/</p></li>
-<li><p>下载好之后，默认点下一步安装就行，然后打开 <code>git bash</code>
-在里面输入以下代码：</p>
-<p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># config your github name</span></span><br><span class="line">git config --global user.name  <span class="string">"Your Github Profile Name"</span></span><br><span class="line"><span class="comment"># config your github email</span></span><br><span class="line">git config --global user.email <span class="string">"email@yourgithubmail.com"</span></span><br></pre></td></tr></table></figure></p></li>
-<li><p>然后用以下命令进行测试：注意：git@github.com 不要更改！</p>
-<p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></p></li>
-<li><p>如果刚刚生成密钥时配置了密码，就会提示输入密码</p></li>
-<li><p>如果出现以下内容就说明配置成功了：</p>
-<p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Hi yourgithubname! You<span class="string">'ve successfully authenticated, but GitHub does not provide shell access.</span></span><br></pre></td></tr></table></figure></p></li>
-<li><p>也有可能会出现一些错误，例如我当时就出现了以下报错：</p>
-<p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">kex_exchange_identification: Connection closed by remote host</span><br></pre></td></tr></table></figure></p></li>
-<li><p>出现以下错误解决方案：1、关代理；2、将 <a href="https://github.com">Github</a> 的连接端口从 22 更改为 443
-，具体操作如下：</p>
-<p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># back to `.ssh` directory</span></span><br><span class="line"><span class="built_in">cd</span> C:\Users\yourname\.ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># create a `config` file of git</span></span><br><span class="line"><span class="built_in">touch</span> config</span><br><span class="line"></span><br><span class="line"><span class="comment"># enter code in `config` file</span></span><br><span class="line">vim config</span><br><span class="line">----------------code----------------</span><br><span class="line">Host github.com</span><br><span class="line">    HostName ssh.github.com</span><br><span class="line">    User git</span><br><span class="line">    Port 443</span><br><span class="line">----------------code----------------</span><br></pre></td></tr></table></figure></p></li>
-<li><p>再测试应该没什么问题了，没有 vim 编辑器用记事本也行，创建
-<code>config</code> 文件在 <code>.ssh</code> 目录下，输入以上的
-<code>code</code> 部分代码。</p></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Git</tag>
-        <tag>SSH</tag>
       </tags>
   </entry>
   <entry>
@@ -606,6 +546,66 @@ Ayodeji</a></p>
 ]]></content>
       <tags>
         <tag>Math</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SSHLoginGithub</title>
+    <url>/2023/08/12/UseSSHwithTokenLoginGithub/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="github-使用-ssh-免密与-token-登录配置">Github 使用 SSH 免密与
+Token 登录配置</h1>
+<blockquote>
+<p>参考文章：</p>
+<ol type="1">
+<li>https://cloud.tencent.com/developer/article/1861466</li>
+<li>https://leezhiy.github.io/2020/03/15/2020-03-15-Hexo-Next%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88Github-Pages-%E6%89%98%E7%AE%A1-Hexo%EF%BC%89/</li>
+<li>https://juejin.cn/post/7129443602379309086</li>
+</ol>
+<p>环境：Windows 10</p>
+<p>写这篇文章原因：配置博客要用到</p>
+</blockquote>
+<h2 id="生成密钥并添加到-github-上">1. 生成密钥并添加到 <a href="https://github.com">Github</a> 上</h2>
+<ul>
+<li><p>回到家目录，在家目录下创建一个 <code>.ssh</code> 文件夹，在
+<code>.ssh</code> 中生成两个密钥</p>
+<p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># change directory</span></span><br><span class="line"><span class="built_in">cd</span> /d C:\Users\yourname\</span><br><span class="line"></span><br><span class="line"><span class="comment"># make a new directory named `.ssh`</span></span><br><span class="line"><span class="built_in">mkdir</span> .ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># go to `.ssh`</span></span><br><span class="line"><span class="built_in">cd</span> .ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># generate a ssh-key</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">"youremail@example.com"</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>到这里会提示你输入一个存放密钥的路径，建议直接回车就好，那样子就会生成在你当下的目录，即
+<code>.ssh</code> 里。</p></li>
+<li><p>接着会提示你输入一个私钥密码 passphrase
+，如果你设置了，以后每次使用 SSH 登录都要输入。</p></li>
+<li><p>接着把 <code>id_rsa.pub</code> 中的内容复制，待会在 <a href="https://github.com/">github</a> 中用。</p>
+<p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># this command means that copy content to clipboard</span></span><br><span class="line">clip &lt; .\id_rsa.pub</span><br></pre></td></tr></table></figure></p></li>
+<li><p>接着到 <a href="https://github.com">github</a>
+上登录，然后依次点击：你的头像 ---&gt;&gt; Settings ---&gt;&gt; SSH and
+GPG keys ---&gt;&gt; New SSH key</p></li>
+<li><p>然后 Title 随便写，再把刚刚所复制的内容粘贴到 Key 的输入框上，
+Key type 默认就好，再点击 Add SSH key 就完成添加了。</p></li>
+</ul>
+<h2 id="测试是否添加成功">2. 测试是否添加成功</h2>
+<ul>
+<li><p>在测试之前需要下载安装 <a href="https://git-scm.com/">git</a>
+和稍稍配置一下。</p></li>
+<li><p>git 下载地址：https://git-scm.com/</p></li>
+<li><p>下载好之后，默认点下一步安装就行，然后打开 <code>git bash</code>
+在里面输入以下代码：</p>
+<p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># config your github name</span></span><br><span class="line">git config --global user.name  <span class="string">"Your Github Profile Name"</span></span><br><span class="line"><span class="comment"># config your github email</span></span><br><span class="line">git config --global user.email <span class="string">"email@yourgithubmail.com"</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>然后用以下命令进行测试：注意：git@github.com 不要更改！</p>
+<p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></p></li>
+<li><p>如果刚刚生成密钥时配置了密码，就会提示输入密码</p></li>
+<li><p>如果出现以下内容就说明配置成功了：</p>
+<p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Hi yourgithubname! You<span class="string">'ve successfully authenticated, but GitHub does not provide shell access.</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>也有可能会出现一些错误，例如我当时就出现了以下报错：</p>
+<p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">kex_exchange_identification: Connection closed by remote host</span><br></pre></td></tr></table></figure></p></li>
+<li><p>出现以下错误解决方案：1、关代理；2、将 <a href="https://github.com">Github</a> 的连接端口从 22 更改为 443
+，具体操作如下：</p>
+<p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># back to `.ssh` directory</span></span><br><span class="line"><span class="built_in">cd</span> C:\Users\yourname\.ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># create a `config` file of git</span></span><br><span class="line"><span class="built_in">touch</span> config</span><br><span class="line"></span><br><span class="line"><span class="comment"># enter code in `config` file</span></span><br><span class="line">vim config</span><br><span class="line">----------------code----------------</span><br><span class="line">Host github.com</span><br><span class="line">    HostName ssh.github.com</span><br><span class="line">    User git</span><br><span class="line">    Port 443</span><br><span class="line">----------------code----------------</span><br></pre></td></tr></table></figure></p></li>
+<li><p>再测试应该没什么问题了，没有 vim 编辑器用记事本也行，创建
+<code>config</code> 文件在 <code>.ssh</code> 目录下，输入以上的
+<code>code</code> 部分代码。</p></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Git</tag>
+        <tag>SSH</tag>
       </tags>
   </entry>
   <entry>
