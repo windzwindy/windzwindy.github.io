@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="WindZwindy Blog">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-18T13:09:08.000Z">
-<meta property="article:modified_time" content="2024-01-18T14:23:04.879Z">
+<meta property="article:modified_time" content="2024-08-20T03:09:58.539Z">
 <meta property="article:author" content="windzwindy">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="ArchLinux">
@@ -83,7 +83,7 @@
 
 
   
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -209,7 +209,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          1.5k 字
         
       </span>
     
@@ -262,7 +262,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年1月18日 晚上
+                    本文最后更新于 2024年8月20日 上午
                   
                 
               </p>
@@ -295,7 +295,7 @@
 <p>我这里采用 UEFI + GPT</p>
 <p>如果你的电脑不支持 UEFI 可以选用 BIOS + MBR 或者 BIOS + GPT</p>
 </blockquote>
-<h3 id="1-对硬盘分区以及格式化"><a href="#1-对硬盘分区以及格式化" class="headerlink" title="1. 对硬盘分区以及格式化"></a>1. 对硬盘分区以及格式化</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看要安装 ArchLinux 系统的硬盘代号，一般是 /dev/xxx</span><br>fdisk -l<br><br><span class="hljs-comment"># s 参数是 script 的意思，/dev/xxx 是要安装系统的硬盘代号</span><br>parted -s /dev/xxx mklabel gpt<br><span class="hljs-comment"># 如果是 MBR 则用下面的命令</span><br>parted -s /dev/xxx mklabel msdos<br></code></pre></td></tr></table></figure>
+<h3 id="1-对硬盘分区以及格式化"><a href="#1-对硬盘分区以及格式化" class="headerlink" title="1. 对硬盘分区以及格式化"></a>1. 对硬盘分区以及格式化</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看要安装 ArchLinux 系统的硬盘代号，一般是 /dev/xxx</span><br>fdisk -l<br><br><span class="hljs-comment"># s 参数是 script 的意思，/dev/xxx 是要安装系统的硬盘代号</span><br>parted -s /dev/xxx mklabel gpt<br><span class="hljs-comment"># 如果是 MBR 则用下面的命令</span><br>parted -s /dev/xxx mklabel msdos<br><br><span class="hljs-comment"># 开始分区操作</span><br>fdisk /dev/xxx<br></code></pre></td></tr></table></figure>
 
 <h4 id="分区操作"><a href="#分区操作" class="headerlink" title="分区操作"></a>分区操作</h4><h5 id="布局参考"><a href="#布局参考" class="headerlink" title="布局参考"></a>布局参考</h5><h6 id="UEFI-with-GPT-（其实只要一个主分区和一个-EFI-分区就够了……）"><a href="#UEFI-with-GPT-（其实只要一个主分区和一个-EFI-分区就够了……）" class="headerlink" title="UEFI with GPT &#x3D;&#x3D;（其实只要一个主分区和一个 EFI 分区就够了……）&#x3D;&#x3D;"></a>UEFI with GPT &#x3D;&#x3D;（其实只要一个主分区和一个 EFI 分区就够了……）&#x3D;&#x3D;</h6><table>
 <thead>
@@ -367,7 +367,7 @@
 </ul>
 <h3 id="3-正式安装Arch-Linux"><a href="#3-正式安装Arch-Linux" class="headerlink" title="3. 正式安装Arch Linux"></a>3. 正式安装Arch Linux</h3><h4 id="先挂载要安装的主分区和引导分区"><a href="#先挂载要安装的主分区和引导分区" class="headerlink" title="先挂载要安装的主分区和引导分区"></a>先挂载要安装的主分区和引导分区</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看要安装系统的硬盘代号</span><br>fdisk -l<br><br>mount /dev/主分区 /mnt                 <span class="hljs-comment"># 挂载主分区到/mnt</span><br><span class="hljs-built_in">ls</span> /mnt<br><br><span class="hljs-built_in">mkdir</span> -p /mnt/boot/efi					   <span class="hljs-comment"># 创建 /mnt/boot/efi 文件夹</span><br>mount /dev/引导分区 /mnt/boot/efi			<span class="hljs-comment"># 挂载引导分区到 /mnt/boot/efi</span><br></code></pre></td></tr></table></figure>
 
-<h4 id="正式安装"><a href="#正式安装" class="headerlink" title="正式安装"></a>正式安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装系统软件到 /dev/xxx 挂载点 即 /mnt 下</span><br><span class="hljs-comment"># 也可以安装 linux-lts linux-lts-headers</span><br><span class="hljs-comment"># vi vim nano zsh 等是一些常用软件，可以不安装……</span><br>pacstrap /mnt base base-devel linux linux-headers linux-firmware vi vim nano dhcpcd openssh grub zsh bash-completion dosfstools parted net-tools wget curl git<br></code></pre></td></tr></table></figure>
+<h4 id="正式安装"><a href="#正式安装" class="headerlink" title="正式安装"></a>正式安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装前先初始化 pacman</span><br>pacman-key --init<br>pacman-key --populate archlinux<br><br><span class="hljs-comment"># 更新 keyring (不用？)</span><br>pacman -Syyu<br><br><span class="hljs-comment"># 安装系统软件到 /dev/xxx 挂载点 即 /mnt 下</span><br><span class="hljs-comment"># 也可以安装 linux-lts linux-lts-headers</span><br><span class="hljs-comment"># vi vim nano zsh 等是一些常用软件，可以不安装……</span><br>pacstrap /mnt base base-devel linux linux-headers linux-firmware vi vim nano dhcpcd openssh grub zsh bash-completion dosfstools parted net-tools wget curl git<br></code></pre></td></tr></table></figure>
 
 <h4 id="安装结束后的一些操作"><a href="#安装结束后的一些操作" class="headerlink" title="安装结束后的一些操作"></a>安装结束后的一些操作</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 生成 fs 表</span><br><span class="hljs-comment"># fstab 是 File Systems Table 的缩写，gen 是 generate 的缩写</span><br><span class="hljs-comment"># U是 UUIDs 的缩写，UUID 是 Universally Unique Identifier (通用唯一识别码)</span><br>genfstab -U /mnt &gt; /mnt/etc/fstab<br><br><span class="hljs-comment"># 查看一下有没有东西</span><br><span class="hljs-built_in">cat</span> /mnt/etc/fstab<br></code></pre></td></tr></table></figure>
 
@@ -431,7 +431,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年1月18日</div>
+          <div>2024年8月20日</div>
         </div>
       
       

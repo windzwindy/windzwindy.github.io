@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="WindZwindy Blog">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-27T13:51:14.000Z">
-<meta property="article:modified_time" content="2024-03-13T06:32:36.711Z">
+<meta property="article:modified_time" content="2024-08-20T03:40:47.614Z">
 <meta property="article:author" content="windzwindy">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="ArchLinux">
@@ -83,7 +83,7 @@
 
 
   
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -262,7 +262,7 @@
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年3月13日 下午
+                    本文最后更新于 2024年8月20日 中午
                   
                 
               </p>
@@ -272,7 +272,7 @@
                 
                 <h1 id="Arch-Linux-安装-VMWare-Tools"><a href="#Arch-Linux-安装-VMWare-Tools" class="headerlink" title="Arch Linux 安装 VMWare-Tools"></a>Arch Linux 安装 VMWare-Tools</h1><h2 id="第一步：安装软件"><a href="#第一步：安装软件" class="headerlink" title="第一步：安装软件"></a>第一步：安装软件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装 open-vm-tools</span><br>sudo pacman -S open-vm-tools<br><br><span class="hljs-comment"># 不安装这个就会复制粘贴失败</span><br>sudo pacman -S gtkmm3<br></code></pre></td></tr></table></figure>
 
-<h2 id="第二步：打开服务"><a href="#第二步：打开服务" class="headerlink" title="第二步：打开服务"></a>第二步：打开服务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">systemctl <span class="hljs-built_in">enable</span> vmtoolsd.service<br>systemctl <span class="hljs-built_in">enable</span> vmware-vmblock-fuse.service<br></code></pre></td></tr></table></figure>
+<h2 id="第二步：打开服务"><a href="#第二步：打开服务" class="headerlink" title="第二步：打开服务"></a>第二步：打开服务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo systemctl <span class="hljs-built_in">enable</span> vmtoolsd.service<br>sudo systemctl <span class="hljs-built_in">enable</span> vmware-vmblock-fuse.service<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -318,7 +318,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年3月13日</div>
+          <div>2024年8月20日</div>
         </div>
       
       
