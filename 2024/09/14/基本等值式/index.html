@@ -19,19 +19,19 @@
   <meta name="keywords" content="">
   
     <meta property="og:type" content="article">
-<meta property="og:title" content="vim 配置 coc 插件记录">
-<meta property="og:url" content="https://windzwindy.github.io/2023/08/11/vim-coc_config/index.html">
+<meta property="og:title" content="Basic Formular">
+<meta property="og:url" content="https://windzwindy.github.io/2024/09/14/%E5%9F%BA%E6%9C%AC%E7%AD%89%E5%80%BC%E5%BC%8F/index.html">
 <meta property="og:site_name" content="WindZwindy Blog">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-08-11T04:29:51.000Z">
-<meta property="article:modified_time" content="2024-09-16T09:09:55.860Z">
+<meta property="article:published_time" content="2024-09-14T15:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-14T15:07:26.027Z">
 <meta property="article:author" content="windzwindy">
-<meta property="article:tag" content="Vim">
+<meta property="article:tag" content="Math">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>vim 配置 coc 插件记录 - WindZwindy Blog</title>
+  <title>Basic Formular - WindZwindy Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -185,7 +185,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="vim 配置 coc 插件记录"></span>
+            <span id="subtitle" data-typed-text="Basic Formular"></span>
           
         </div>
 
@@ -196,8 +196,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-11 12:29" pubdate>
-          2023年8月11日 中午
+        <time datetime="2024-09-14 23:00" pubdate>
+          2024年9月14日 晚上
         </time>
       </span>
     
@@ -208,7 +208,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          546 字
+          208 字
         
       </span>
     
@@ -219,7 +219,7 @@
         
         
         
-          5 分钟
+          2 分钟
         
       </span>
     
@@ -256,12 +256,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">vim 配置 coc 插件记录</h1>
+            <h1 id="seo-header">Basic Formular</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年9月16日 下午
+                    本文最后更新于 2024年9月14日 晚上
                   
                 
               </p>
@@ -269,88 +269,28 @@
             
               <div class="markdown-body">
                 
-                <h1 id="vim-配置-coc-插件记录"><a href="#vim-配置-coc-插件记录" class="headerlink" title="vim 配置 coc 插件记录"></a>vim 配置 coc 插件记录</h1><blockquote>
-<p>本文使用环境：Windows + gVim</p>
-<p>建议先看官方文档：<a target="_blank" rel="noopener" href="https://github.com/neoclide/coc.nvim">https://github.com/neoclide/coc.nvim</a></p>
-</blockquote>
-<h2 id="第一步：环境配置"><a href="#第一步：环境配置" class="headerlink" title="第一步：环境配置"></a>第一步：环境配置</h2><h3 id="安装-vim-plug"><a href="#安装-vim-plug" class="headerlink" title="安装 vim-plug"></a>安装 vim-plug</h3><ul>
-<li>到 <a target="_blank" rel="noopener" href="https://github.com/junegunn/vim-plug">https://github.com/junegunn/vim-plug</a> 上下载 <code>plug.vim</code> 放到 <code>.vim/autoload</code> 目录下</li>
-<li>如果是 <a target="_blank" rel="noopener" href="https://github.com/vim/vim-win32-installer/releases">gvim</a> 则放在 gvim 目录下的 autoload 里</li>
-<li>也可以直接用以下官方给出的命令</li>
-</ul>
-<h4 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h4><ul>
-<li><p>Unix</p>
-  <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs vim">curl -fLo ~/.<span class="hljs-keyword">vim</span>/autoload/plug.<span class="hljs-keyword">vim</span> --create-dirs \<br>    https://raw.githubusercontent.<span class="hljs-keyword">com</span>/junegunn/<span class="hljs-keyword">vim</span>-plug/master/plug.<span class="hljs-keyword">vim</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p>You can automate the process by putting the command in your Vim configuration file as suggested <a target="_blank" rel="noopener" href="https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation">here</a>.</p>
-</li>
-<li><p>Windows (PowerShell)</p>
-  <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">iwr -useb https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/junegunn/</span>vim-plug<span class="hljs-regexp">/master/</span>plug.vim |`<br>    ni <span class="hljs-variable">$HOME</span><span class="hljs-regexp">/vimfiles/</span>autoload/plug.vim -Force<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="Neovim"><a href="#Neovim" class="headerlink" title="Neovim"></a>Neovim</h4><ul>
-<li><p>Unix, Linux</p>
-  <figure class="highlight roboconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs roboconf">sh -c &#x27;curl -fLo &quot;$&#123;<span class="hljs-attribute">XDG_DATA_HOME</span>:-$HOME/<span class="hljs-variable">.local</span>/share&#125;&quot;/nvim/site/autoload/plug<span class="hljs-variable">.vim</span> --create-dirs \<br>       https://raw<span class="hljs-variable">.githubusercontent</span><span class="hljs-variable">.com</span>/junegunn/vim-plug/master/plug<span class="hljs-variable">.vim</span>&#x27;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>Linux (Flatpak)</p>
-  <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">curl -fLo ~<span class="hljs-regexp">/.var/</span>app<span class="hljs-regexp">/io.neovim.nvim/</span>data<span class="hljs-regexp">/nvim/</span>site<span class="hljs-regexp">/autoload/</span>plug.vim --create-dirs \<br>    https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/junegunn/</span>vim-plug<span class="hljs-regexp">/master/</span>plug.vim<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>Windows (PowerShell)</p>
-  <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">iwr</span> <span class="hljs-literal">-useb</span> https://raw.githubusercontent.com/junegunn/vim<span class="hljs-literal">-plug</span>/master/plug.vim |`<br>    <span class="hljs-built_in">ni</span> <span class="hljs-string">&quot;<span class="hljs-variable">$</span>(@(<span class="hljs-variable">$env:XDG_DATA_HOME</span>, <span class="hljs-variable">$env:LOCALAPPDATA</span>)[<span class="hljs-variable">$null</span> -eq <span class="hljs-variable">$env:XDG_DATA_HOME</span>])/nvim-data/site/autoload/plug.vim&quot;</span><br></code></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="安装-node-js"><a href="#安装-node-js" class="headerlink" title="安装 node.js"></a>安装 node.js</h3><ul>
-<li>官网地址：<a target="_blank" rel="noopener" href="https://nodejs.org/en">https://nodejs.org/en</a></li>
-<li>官网教学：<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/package-manager">https://nodejs.org/en/download/package-manager</a></li>
-</ul>
-<h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><ul>
-<li>直接到官网下载安装就行</li>
-<li>或者用包管理器： <a target="_blank" rel="noopener" href="https://github.com/microsoft/winget-cli">winget</a>、<a target="_blank" rel="noopener" href="https://scoop.sh/">scoop</a>、<a target="_blank" rel="noopener" href="https://community.chocolatey.org/">choco</a> 等…</li>
-<li>使用 <a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows">NVM</a> 也可以</li>
-</ul>
-<h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><ul>
-<li><p>用对应的包管理器安装</p>
-<ul>
-<li><p>Arch Linux</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pacman -S nodejs npm<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>Debian，可以参考<a target="_blank" rel="noopener" href="https://linux265.com/news/3798.html">这篇文章</a></p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install nodejs npm<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>使用 <a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows">NVM</a> 也可以</p>
-</li>
-</ul>
-<h2 id="第二步：编写个人配置-vimrc"><a href="#第二步：编写个人配置-vimrc" class="headerlink" title="第二步：编写个人配置 vimrc"></a>第二步：编写个人配置 <code>vimrc</code></h2><ul>
-<li><p>在 <code>~/.vim</code> 中新建一个 <code>vimrc</code> 文件</p>
-</li>
-<li><p>如果是 <a target="_blank" rel="noopener" href="https://github.com/vim/vim-win32-installer/releases">gvim</a> 则在 gvim 目录下新建一个 <code>_vrimc</code> 文件</p>
-</li>
-<li><p>具体可以用 <code>vim --version</code> 查看（或者在 vim 中 <code>:version</code>）</p>
-</li>
-<li><p>在 <code>vimrc</code> 中添加以下代码：</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs vimscript">call plug#begin()<br>    Plug &#x27;neoclide/coc.nvim&#x27;, &#123;&#x27;branch&#x27;: &#x27;release&#x27;&#125;<br>call plug#end()<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>然后保存、退出、重新进入 <code>vim</code> ，输入 <code>:PlugInstall</code> 进行插件的安装</p>
-</li>
-<li><p>安装好后重启 <code>vim</code> 用 <code>:CocInfo</code> 查看状态，<code>nvim</code> 用 <code>:checkhealth</code>。</p>
-</li>
-<li><p>可能提示什么没启动，用 <code>:CocStart</code> 就行了。</p>
-</li>
-</ul>
-<h2 id="第三步：安装提示插件"><a href="#第三步：安装提示插件" class="headerlink" title="第三步：安装提示插件"></a>第三步：安装提示插件</h2><ul>
-<li><p>在 <code>vim</code> 中直接用 <code>:CocInstall &lt;插件名&gt;</code> 来进行安装，例：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">:CocInstall coc-json coc-tsserver<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>建议先安装一个提示插件</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">:CocInstall coc-marketplace coc-vimlsp<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>可以先看看官方 <a target="_blank" rel="noopener" href="https://github.com/neoclide/coc.nvim/wiki/Language-servers">Wiki</a></p>
-</li>
-<li><p>我是要学习 <code>C</code> 的，故配置一个</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">:CocInstall coc-clangd<br></code></pre></td></tr></table></figure>
-
-<p>  到  <a target="_blank" rel="noopener" href="https://github.com/clangd/clangd">clangd</a> 上面下载相应的版本，并解压，添加到环境变量中，然后就可以用了。</p>
-<p>  这一步可以不配置，输入 <code>:CocConfig</code> 进入配置文件，输入：</p>
-  <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;languageserver&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;rust-analyzer.enable&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;rust-analyzer.server.path&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;D:\\rust-analyzer.exe&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure></li>
+                <h1 id="基本等值式"><a href="#基本等值式" class="headerlink" title="基本等值式"></a>基本等值式</h1><ol>
+<li>幂等律：$A \Leftrightarrow A \vee A, A \Leftrightarrow A \wedge A$</li>
+<li>交换律：$A \vee B \Leftrightarrow B \vee A , A \wedge B \Leftrightarrow B \wedge A$</li>
+<li>结合律：$(A \vee B) \vee C \Leftrightarrow A \vee (B \vee C) , (A \wedge B) \wedge C \Leftrightarrow A \wedge (B \wedge C)$</li>
+<li>分配律：$A \vee (B \wedge C) \Leftrightarrow (A \vee B) \wedge (A \vee C), A \wedge (B \vee C) \Leftrightarrow (A \wedge B) \vee (A \wedge C) $</li>
+<li>德摩根律：$\neg (A \vee B) \Leftrightarrow \neg A \wedge \neg B , \neg(A \wedge B) \Leftrightarrow \neg A \vee \neg B$</li>
+<li>吸收律：$A \vee (A \wedge B) \Leftrightarrow A , A \wedge (A \vee B) \Leftrightarrow A$</li>
+<li>零律：$A \vee 1 \Leftrightarrow 1 , A \wedge 0 \Leftrightarrow 0$</li>
+<li>同一律：$A \vee 0 \Leftrightarrow A, A \wedge 1 \Leftrightarrow A$</li>
+<li>排中律：$A \vee \neg A \Leftrightarrow 1$</li>
+<li>矛盾律：$A \wedge \neg A \Leftrightarrow 0$</li>
+<li>双重否定律：$\neg \neg A \Leftrightarrow A$</li>
+<li>蕴涵等值式：$A \rightarrow B \Leftrightarrow \neg A \vee B$</li>
+<li>等价等值式：$A \leftrightarrow B \Leftrightarrow (A \rightarrow B) \wedge (B \rightarrow A)$</li>
+<li>等价否定等值式：$A \leftrightarrow B \Leftrightarrow \neg A \leftrightarrow \neg B$</li>
+<li>假言易位：$A \rightarrow B \Leftrightarrow \neg B \rightarrow \neg A$</li>
+<li>归谬论：$(A \rightarrow B) \wedge (A \rightarrow \neg B) \Leftrightarrow \neg A$</li>
+</ol>
+<h1 id="逻辑公式类型"><a href="#逻辑公式类型" class="headerlink" title="逻辑公式类型"></a>逻辑公式类型</h1><ul>
+<li>永真式</li>
+<li>永假式</li>
+<li>可满足式</li>
 </ul>
 
                 
@@ -364,7 +304,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Vim/" class="print-no-link">#Vim</a>
+        <a href="/tags/Math/" class="print-no-link">#Math</a>
       
     </div>
   
@@ -376,8 +316,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>vim 配置 coc 插件记录</div>
-      <div>https://windzwindy.github.io/2023/08/11/vim-coc_config/</div>
+      <div>Basic Formular</div>
+      <div>https://windzwindy.github.io/2024/09/14/基本等值式/</div>
     </div>
     <div class="license-meta">
       
@@ -389,13 +329,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年8月11日</div>
+          <div>2024年9月14日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年9月16日</div>
+          <div>2024年9月14日</div>
         </div>
       
       
@@ -426,9 +366,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/08/12/UseSSHwithTokenLoginGithub/" title="SSHLoginGithub">
+                      <a href="/2024/09/22/Tomcat(Catalina)%20Install/" title="Tomcat(Catalina) Install">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">SSHLoginGithub</span>
+                        <span class="hidden-mobile">Tomcat(Catalina) Install</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -436,8 +376,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/08/10/abundant&amp;Deficient&amp;Perfect_Number/" title="Abundant&amp;Deficient&amp;Perfect_Number">
-                        <span class="hidden-mobile">Abundant&amp;Deficient&amp;Perfect_Number</span>
+                      <a href="/2024/08/25/Neovim%E9%85%8D%E7%BD%AElsp/" title="Neovim Configure Lsp">
+                        <span class="hidden-mobile">Neovim Configure Lsp</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -19,19 +19,19 @@
   <meta name="keywords" content="">
   
     <meta property="og:type" content="article">
-<meta property="og:title" content="vim 配置 coc 插件记录">
-<meta property="og:url" content="https://windzwindy.github.io/2023/08/11/vim-coc_config/index.html">
+<meta property="og:title" content="Tomcat(Catalina) Install">
+<meta property="og:url" content="https://windzwindy.github.io/2024/09/22/Tomcat(Catalina)%20Install/index.html">
 <meta property="og:site_name" content="WindZwindy Blog">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-08-11T04:29:51.000Z">
-<meta property="article:modified_time" content="2024-09-16T09:09:55.860Z">
+<meta property="article:published_time" content="2024-09-22T02:10:00.000Z">
+<meta property="article:modified_time" content="2024-09-22T12:47:04.511Z">
 <meta property="article:author" content="windzwindy">
-<meta property="article:tag" content="Vim">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>vim 配置 coc 插件记录 - WindZwindy Blog</title>
+  <title>Tomcat(Catalina) Install - WindZwindy Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -185,7 +185,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="vim 配置 coc 插件记录"></span>
+            <span id="subtitle" data-typed-text="Tomcat(Catalina) Install"></span>
           
         </div>
 
@@ -196,8 +196,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-11 12:29" pubdate>
-          2023年8月11日 中午
+        <time datetime="2024-09-22 10:10" pubdate>
+          2024年9月22日 上午
         </time>
       </span>
     
@@ -208,7 +208,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          546 字
+          410 字
         
       </span>
     
@@ -219,7 +219,7 @@
         
         
         
-          5 分钟
+          4 分钟
         
       </span>
     
@@ -256,12 +256,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">vim 配置 coc 插件记录</h1>
+            <h1 id="seo-header">Tomcat(Catalina) Install</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年9月16日 下午
+                    本文最后更新于 2024年9月22日 晚上
                   
                 
               </p>
@@ -269,89 +269,35 @@
             
               <div class="markdown-body">
                 
-                <h1 id="vim-配置-coc-插件记录"><a href="#vim-配置-coc-插件记录" class="headerlink" title="vim 配置 coc 插件记录"></a>vim 配置 coc 插件记录</h1><blockquote>
-<p>本文使用环境：Windows + gVim</p>
-<p>建议先看官方文档：<a target="_blank" rel="noopener" href="https://github.com/neoclide/coc.nvim">https://github.com/neoclide/coc.nvim</a></p>
-</blockquote>
-<h2 id="第一步：环境配置"><a href="#第一步：环境配置" class="headerlink" title="第一步：环境配置"></a>第一步：环境配置</h2><h3 id="安装-vim-plug"><a href="#安装-vim-plug" class="headerlink" title="安装 vim-plug"></a>安装 vim-plug</h3><ul>
-<li>到 <a target="_blank" rel="noopener" href="https://github.com/junegunn/vim-plug">https://github.com/junegunn/vim-plug</a> 上下载 <code>plug.vim</code> 放到 <code>.vim/autoload</code> 目录下</li>
-<li>如果是 <a target="_blank" rel="noopener" href="https://github.com/vim/vim-win32-installer/releases">gvim</a> 则放在 gvim 目录下的 autoload 里</li>
-<li>也可以直接用以下官方给出的命令</li>
+                <h1 id="Tomcat-Catalina-安装"><a href="#Tomcat-Catalina-安装" class="headerlink" title="Tomcat(Catalina) 安装"></a>Tomcat(Catalina) 安装</h1><h2 id="下载安装配置环境"><a href="#下载安装配置环境" class="headerlink" title="下载安装配置环境"></a>下载安装配置环境</h2><ul>
+<li>下载 <a target="_blank" rel="noopener" href="https://tomcat.apache.org/">Tomcat</a></li>
+<li>配置环境<a target="_blank" rel="noopener" href="https://tomcat.apache.org/tomcat-10.1-doc/introduction.html">官网</a></li>
 </ul>
-<h4 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h4><ul>
-<li><p>Unix</p>
-  <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs vim">curl -fLo ~/.<span class="hljs-keyword">vim</span>/autoload/plug.<span class="hljs-keyword">vim</span> --create-dirs \<br>    https://raw.githubusercontent.<span class="hljs-keyword">com</span>/junegunn/<span class="hljs-keyword">vim</span>-plug/master/plug.<span class="hljs-keyword">vim</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p>You can automate the process by putting the command in your Vim configuration file as suggested <a target="_blank" rel="noopener" href="https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation">here</a>.</p>
-</li>
-<li><p>Windows (PowerShell)</p>
-  <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">iwr -useb https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/junegunn/</span>vim-plug<span class="hljs-regexp">/master/</span>plug.vim |`<br>    ni <span class="hljs-variable">$HOME</span><span class="hljs-regexp">/vimfiles/</span>autoload/plug.vim -Force<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="Neovim"><a href="#Neovim" class="headerlink" title="Neovim"></a>Neovim</h4><ul>
-<li><p>Unix, Linux</p>
-  <figure class="highlight roboconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs roboconf">sh -c &#x27;curl -fLo &quot;$&#123;<span class="hljs-attribute">XDG_DATA_HOME</span>:-$HOME/<span class="hljs-variable">.local</span>/share&#125;&quot;/nvim/site/autoload/plug<span class="hljs-variable">.vim</span> --create-dirs \<br>       https://raw<span class="hljs-variable">.githubusercontent</span><span class="hljs-variable">.com</span>/junegunn/vim-plug/master/plug<span class="hljs-variable">.vim</span>&#x27;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>Linux (Flatpak)</p>
-  <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">curl -fLo ~<span class="hljs-regexp">/.var/</span>app<span class="hljs-regexp">/io.neovim.nvim/</span>data<span class="hljs-regexp">/nvim/</span>site<span class="hljs-regexp">/autoload/</span>plug.vim --create-dirs \<br>    https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/junegunn/</span>vim-plug<span class="hljs-regexp">/master/</span>plug.vim<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>Windows (PowerShell)</p>
-  <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">iwr</span> <span class="hljs-literal">-useb</span> https://raw.githubusercontent.com/junegunn/vim<span class="hljs-literal">-plug</span>/master/plug.vim |`<br>    <span class="hljs-built_in">ni</span> <span class="hljs-string">&quot;<span class="hljs-variable">$</span>(@(<span class="hljs-variable">$env:XDG_DATA_HOME</span>, <span class="hljs-variable">$env:LOCALAPPDATA</span>)[<span class="hljs-variable">$null</span> -eq <span class="hljs-variable">$env:XDG_DATA_HOME</span>])/nvim-data/site/autoload/plug.vim&quot;</span><br></code></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="安装-node-js"><a href="#安装-node-js" class="headerlink" title="安装 node.js"></a>安装 node.js</h3><ul>
-<li>官网地址：<a target="_blank" rel="noopener" href="https://nodejs.org/en">https://nodejs.org/en</a></li>
-<li>官网教学：<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/package-manager">https://nodejs.org/en/download/package-manager</a></li>
-</ul>
-<h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><ul>
-<li>直接到官网下载安装就行</li>
-<li>或者用包管理器： <a target="_blank" rel="noopener" href="https://github.com/microsoft/winget-cli">winget</a>、<a target="_blank" rel="noopener" href="https://scoop.sh/">scoop</a>、<a target="_blank" rel="noopener" href="https://community.chocolatey.org/">choco</a> 等…</li>
-<li>使用 <a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows">NVM</a> 也可以</li>
-</ul>
-<h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><ul>
-<li><p>用对应的包管理器安装</p>
-<ul>
-<li><p>Arch Linux</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pacman -S nodejs npm<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>Debian，可以参考<a target="_blank" rel="noopener" href="https://linux265.com/news/3798.html">这篇文章</a></p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install nodejs npm<br></code></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>使用 <a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows">NVM</a> 也可以</p>
-</li>
-</ul>
-<h2 id="第二步：编写个人配置-vimrc"><a href="#第二步：编写个人配置-vimrc" class="headerlink" title="第二步：编写个人配置 vimrc"></a>第二步：编写个人配置 <code>vimrc</code></h2><ul>
-<li><p>在 <code>~/.vim</code> 中新建一个 <code>vimrc</code> 文件</p>
-</li>
-<li><p>如果是 <a target="_blank" rel="noopener" href="https://github.com/vim/vim-win32-installer/releases">gvim</a> 则在 gvim 目录下新建一个 <code>_vrimc</code> 文件</p>
-</li>
-<li><p>具体可以用 <code>vim --version</code> 查看（或者在 vim 中 <code>:version</code>）</p>
-</li>
-<li><p>在 <code>vimrc</code> 中添加以下代码：</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs vimscript">call plug#begin()<br>    Plug &#x27;neoclide/coc.nvim&#x27;, &#123;&#x27;branch&#x27;: &#x27;release&#x27;&#125;<br>call plug#end()<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>然后保存、退出、重新进入 <code>vim</code> ，输入 <code>:PlugInstall</code> 进行插件的安装</p>
-</li>
-<li><p>安装好后重启 <code>vim</code> 用 <code>:CocInfo</code> 查看状态，<code>nvim</code> 用 <code>:checkhealth</code>。</p>
-</li>
-<li><p>可能提示什么没启动，用 <code>:CocStart</code> 就行了。</p>
-</li>
-</ul>
-<h2 id="第三步：安装提示插件"><a href="#第三步：安装提示插件" class="headerlink" title="第三步：安装提示插件"></a>第三步：安装提示插件</h2><ul>
-<li><p>在 <code>vim</code> 中直接用 <code>:CocInstall &lt;插件名&gt;</code> 来进行安装，例：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">:CocInstall coc-json coc-tsserver<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>建议先安装一个提示插件</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">:CocInstall coc-marketplace coc-vimlsp<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>可以先看看官方 <a target="_blank" rel="noopener" href="https://github.com/neoclide/coc.nvim/wiki/Language-servers">Wiki</a></p>
-</li>
-<li><p>我是要学习 <code>C</code> 的，故配置一个</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">:CocInstall coc-clangd<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">setx JAVA_HOME=YOUR_JAVAHOME<br>setx PATH=<span class="hljs-string">&quot;<span class="hljs-variable">$PATH</span>;%JAVA_HOME%\bin&quot;</span><br>setx CATALINA_HOME=<span class="hljs-string">&quot;YOUR_TOMCATHOME&quot;</span><br></code></pre></td></tr></table></figure>
 
-<p>  到  <a target="_blank" rel="noopener" href="https://github.com/clangd/clangd">clangd</a> 上面下载相应的版本，并解压，添加到环境变量中，然后就可以用了。</p>
-<p>  这一步可以不配置，输入 <code>:CocConfig</code> 进入配置文件，输入：</p>
-  <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;languageserver&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;rust-analyzer.enable&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;rust-analyzer.server.path&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;D:\\rust-analyzer.exe&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure></li>
+<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><ul>
+<li>bin 命令存放目录，可用于启动服务器，关闭服务器</li>
+<li>conf 配置目录</li>
+<li>lib 程序库目录</li>
+<li>logs 日志目录</li>
+<li>temp 临时文件目录</li>
+<li>webapps 放web应用目录</li>
+<li>work 编译后的class文件</li>
 </ul>
+<blockquote>
+<p>启动前必须配置 JAVA_HOME 和 CATALINA_HOME</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 启动</span><br>startup.bat<br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://tomcat.apache.org/tomcat-10.1-doc/config/server.html">https://tomcat.apache.org/tomcat-10.1-doc/config/server.html</a>    port</p>
+<p><a target="_blank" rel="noopener" href="https://tomcat.apache.org/tomcat-10.1-doc/config/http.html">https://tomcat.apache.org/tomcat-10.1-doc/config/http.html</a>     enforceEncodingInGetWriter</p>
+<h2 id="关闭"><a href="#关闭" class="headerlink" title="关闭"></a>关闭</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 关闭服务器</span><br>shutdown.bat<br><span class="hljs-comment">#可改名，防止与 windows 中的 shutdown 命令冲突</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="解决乱码问题"><a href="#解决乱码问题" class="headerlink" title="解决乱码问题"></a>解决乱码问题</h2><p>改 %CATALINA_HOME%\conf\logging.properties</p>
+<p>java.util.logging.ConsoleHandler.encoding &#x3D; GBK</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">web-app</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;https://jakarta.ee/xml/ns/jakartaee&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;https://jakarta.ee/xml/ns/jakartaee</span></span><br><span class="hljs-string"><span class="hljs-tag">                      https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">version</span>=<span class="hljs-string">&quot;6.0&quot;</span></span><br><span class="hljs-tag">  <span class="hljs-attr">metadata-complete</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span><br><br>	<span class="hljs-comment">&lt;!-- servlet 描述信息 --&gt;</span><br>	<span class="hljs-comment">&lt;!-- 任何一个 servlet 都对应一个 servlet-mapping --&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">servlet</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>wind<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span><br>		<span class="hljs-comment">&lt;!-- 这个位置必须是带有包名的全限定类名 --&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">servlet-class</span>&gt;</span>com.wind.servlet.HelloServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-class</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">servlet</span>&gt;</span><br>	<br>	<span class="hljs-comment">&lt;!-- servlet 映射信息 --&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">servlet-mapping</span>&gt;</span><br>		<span class="hljs-comment">&lt;!-- 这个也是随便的，不过这里写的内容要和上面的一样。 --&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>wind<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span><br>		<span class="hljs-comment">&lt;!-- 这里需要一个路径 --&gt;</span><br>		<span class="hljs-comment">&lt;!-- 这个路径唯一的要求是必须以 / 开始 --&gt;</span><br>		<span class="hljs-comment">&lt;!-- 当前这个路径可以随便写 --&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>wind/wind<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-mapping</span>&gt;</span><br>	<br><span class="hljs-tag">&lt;/<span class="hljs-name">web-app</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">webapproot<br>	|<span class="hljs-params">----WEB-INF</span><br>			|<span class="hljs-params">----classes</span><span class="hljs-params">(存放字节码)</span><br>			|<span class="hljs-params">----lib</span><span class="hljs-params">(第三方jar包)</span><br>			|<span class="hljs-params">----web</span>.xml<span class="hljs-params">(注册Servlet)</span><br>	|<span class="hljs-params">----html</span><br>	|<span class="hljs-params">----css</span><br>	|<span class="hljs-params">----javascript</span><br>	|<span class="hljs-params">----image</span><br>	<span class="hljs-string">...</span><br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -364,7 +310,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Vim/" class="print-no-link">#Vim</a>
+        <a href="/tags/Java/" class="print-no-link">#Java</a>
       
     </div>
   
@@ -376,8 +322,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>vim 配置 coc 插件记录</div>
-      <div>https://windzwindy.github.io/2023/08/11/vim-coc_config/</div>
+      <div>Tomcat(Catalina) Install</div>
+      <div>https://windzwindy.github.io/2024/09/22/Tomcat(Catalina) Install/</div>
     </div>
     <div class="license-meta">
       
@@ -389,13 +335,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年8月11日</div>
+          <div>2024年9月22日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年9月16日</div>
+          <div>2024年9月22日</div>
         </div>
       
       
@@ -426,9 +372,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/08/12/UseSSHwithTokenLoginGithub/" title="SSHLoginGithub">
+                      <a href="/2024/09/22/GraalVM%20Java%20Generate%20Executable/" title="GraalVM Generate Executable Program">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">SSHLoginGithub</span>
+                        <span class="hidden-mobile">GraalVM Generate Executable Program</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -436,8 +382,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/08/10/abundant&amp;Deficient&amp;Perfect_Number/" title="Abundant&amp;Deficient&amp;Perfect_Number">
-                        <span class="hidden-mobile">Abundant&amp;Deficient&amp;Perfect_Number</span>
+                      <a href="/2024/09/14/%E5%9F%BA%E6%9C%AC%E7%AD%89%E5%80%BC%E5%BC%8F/" title="Basic Formular">
+                        <span class="hidden-mobile">Basic Formular</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

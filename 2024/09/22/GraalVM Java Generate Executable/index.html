@@ -19,19 +19,20 @@
   <meta name="keywords" content="">
   
     <meta property="og:type" content="article">
-<meta property="og:title" content="vim 配置 coc 插件记录">
-<meta property="og:url" content="https://windzwindy.github.io/2023/08/11/vim-coc_config/index.html">
+<meta property="og:title" content="GraalVM Generate Executable Program">
+<meta property="og:url" content="https://windzwindy.github.io/2024/09/22/GraalVM%20Java%20Generate%20Executable/index.html">
 <meta property="og:site_name" content="WindZwindy Blog">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-08-11T04:29:51.000Z">
-<meta property="article:modified_time" content="2024-09-16T09:09:55.860Z">
+<meta property="article:published_time" content="2024-09-22T02:10:00.000Z">
+<meta property="article:modified_time" content="2024-09-22T12:26:31.445Z">
 <meta property="article:author" content="windzwindy">
-<meta property="article:tag" content="Vim">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="GraalVM">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>vim 配置 coc 插件记录 - WindZwindy Blog</title>
+  <title>GraalVM Generate Executable Program - WindZwindy Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -185,7 +186,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="vim 配置 coc 插件记录"></span>
+            <span id="subtitle" data-typed-text="GraalVM Generate Executable Program"></span>
           
         </div>
 
@@ -196,8 +197,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-11 12:29" pubdate>
-          2023年8月11日 中午
+        <time datetime="2024-09-22 10:10" pubdate>
+          2024年9月22日 上午
         </time>
       </span>
     
@@ -208,7 +209,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          546 字
+          714 字
         
       </span>
     
@@ -219,7 +220,7 @@
         
         
         
-          5 分钟
+          6 分钟
         
       </span>
     
@@ -256,12 +257,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">vim 配置 coc 插件记录</h1>
+            <h1 id="seo-header">GraalVM Generate Executable Program</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2024年9月16日 下午
+                    本文最后更新于 2024年9月22日 晚上
                   
                 
               </p>
@@ -269,89 +270,48 @@
             
               <div class="markdown-body">
                 
-                <h1 id="vim-配置-coc-插件记录"><a href="#vim-配置-coc-插件记录" class="headerlink" title="vim 配置 coc 插件记录"></a>vim 配置 coc 插件记录</h1><blockquote>
-<p>本文使用环境：Windows + gVim</p>
-<p>建议先看官方文档：<a target="_blank" rel="noopener" href="https://github.com/neoclide/coc.nvim">https://github.com/neoclide/coc.nvim</a></p>
+                <h1 id="GraalVM-生成可执行程序（Windows，乱码解决）"><a href="#GraalVM-生成可执行程序（Windows，乱码解决）" class="headerlink" title="GraalVM 生成可执行程序（Windows，乱码解决）"></a>GraalVM 生成可执行程序（Windows，乱码解决）</h1><blockquote>
+<p>【参考文章】</p>
+<p>【1】：<a target="_blank" rel="noopener" href="https://www.graalvm.org/latest/getting-started/windows/">Installation on Windows Platforms</a></p>
+<p>【2】：<a target="_blank" rel="noopener" href="https://github.com/oracle/graal/issues/6724">https://github.com/oracle/graal/issues/6724</a></p>
+<p>【3】：<a target="_blank" rel="noopener" href="https://github.com/oracle/graal/issues/2492">https://github.com/oracle/graal/issues/2492</a></p>
+<p>【4】：<a target="_blank" rel="noopener" href="https://docs.oracle.com/en/java/javase/22/intl/supported-encodings.html">https://docs.oracle.com/en/java/javase/22/intl/supported-encodings.html</a></p>
 </blockquote>
-<h2 id="第一步：环境配置"><a href="#第一步：环境配置" class="headerlink" title="第一步：环境配置"></a>第一步：环境配置</h2><h3 id="安装-vim-plug"><a href="#安装-vim-plug" class="headerlink" title="安装 vim-plug"></a>安装 vim-plug</h3><ul>
-<li>到 <a target="_blank" rel="noopener" href="https://github.com/junegunn/vim-plug">https://github.com/junegunn/vim-plug</a> 上下载 <code>plug.vim</code> 放到 <code>.vim/autoload</code> 目录下</li>
-<li>如果是 <a target="_blank" rel="noopener" href="https://github.com/vim/vim-win32-installer/releases">gvim</a> 则放在 gvim 目录下的 autoload 里</li>
-<li>也可以直接用以下官方给出的命令</li>
-</ul>
-<h4 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h4><ul>
-<li><p>Unix</p>
-  <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs vim">curl -fLo ~/.<span class="hljs-keyword">vim</span>/autoload/plug.<span class="hljs-keyword">vim</span> --create-dirs \<br>    https://raw.githubusercontent.<span class="hljs-keyword">com</span>/junegunn/<span class="hljs-keyword">vim</span>-plug/master/plug.<span class="hljs-keyword">vim</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p>You can automate the process by putting the command in your Vim configuration file as suggested <a target="_blank" rel="noopener" href="https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation">here</a>.</p>
-</li>
-<li><p>Windows (PowerShell)</p>
-  <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">iwr -useb https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/junegunn/</span>vim-plug<span class="hljs-regexp">/master/</span>plug.vim |`<br>    ni <span class="hljs-variable">$HOME</span><span class="hljs-regexp">/vimfiles/</span>autoload/plug.vim -Force<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h4 id="Neovim"><a href="#Neovim" class="headerlink" title="Neovim"></a>Neovim</h4><ul>
-<li><p>Unix, Linux</p>
-  <figure class="highlight roboconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs roboconf">sh -c &#x27;curl -fLo &quot;$&#123;<span class="hljs-attribute">XDG_DATA_HOME</span>:-$HOME/<span class="hljs-variable">.local</span>/share&#125;&quot;/nvim/site/autoload/plug<span class="hljs-variable">.vim</span> --create-dirs \<br>       https://raw<span class="hljs-variable">.githubusercontent</span><span class="hljs-variable">.com</span>/junegunn/vim-plug/master/plug<span class="hljs-variable">.vim</span>&#x27;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>Linux (Flatpak)</p>
-  <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">curl -fLo ~<span class="hljs-regexp">/.var/</span>app<span class="hljs-regexp">/io.neovim.nvim/</span>data<span class="hljs-regexp">/nvim/</span>site<span class="hljs-regexp">/autoload/</span>plug.vim --create-dirs \<br>    https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/junegunn/</span>vim-plug<span class="hljs-regexp">/master/</span>plug.vim<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>Windows (PowerShell)</p>
-  <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">iwr</span> <span class="hljs-literal">-useb</span> https://raw.githubusercontent.com/junegunn/vim<span class="hljs-literal">-plug</span>/master/plug.vim |`<br>    <span class="hljs-built_in">ni</span> <span class="hljs-string">&quot;<span class="hljs-variable">$</span>(@(<span class="hljs-variable">$env:XDG_DATA_HOME</span>, <span class="hljs-variable">$env:LOCALAPPDATA</span>)[<span class="hljs-variable">$null</span> -eq <span class="hljs-variable">$env:XDG_DATA_HOME</span>])/nvim-data/site/autoload/plug.vim&quot;</span><br></code></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="安装-node-js"><a href="#安装-node-js" class="headerlink" title="安装 node.js"></a>安装 node.js</h3><ul>
-<li>官网地址：<a target="_blank" rel="noopener" href="https://nodejs.org/en">https://nodejs.org/en</a></li>
-<li>官网教学：<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/package-manager">https://nodejs.org/en/download/package-manager</a></li>
-</ul>
-<h4 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h4><ul>
-<li>直接到官网下载安装就行</li>
-<li>或者用包管理器： <a target="_blank" rel="noopener" href="https://github.com/microsoft/winget-cli">winget</a>、<a target="_blank" rel="noopener" href="https://scoop.sh/">scoop</a>、<a target="_blank" rel="noopener" href="https://community.chocolatey.org/">choco</a> 等…</li>
-<li>使用 <a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows">NVM</a> 也可以</li>
-</ul>
-<h4 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h4><ul>
-<li><p>用对应的包管理器安装</p>
+<p>环境准备：Java，Visual Studio Build Tools and Windows SDK，Maven等，可以参考 <a target="_blank" rel="noopener" href="https://www.graalvm.org/latest/getting-started/windows/">Installation on Windows Platforms</a></p>
 <ul>
-<li><p>Arch Linux</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pacman -S nodejs npm<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>Debian，可以参考<a target="_blank" rel="noopener" href="https://linux265.com/news/3798.html">这篇文章</a></p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install nodejs npm<br></code></pre></td></tr></table></figure></li>
+<li>当我学习 Spring 时，接触到了一个东西叫做 GraalVM 用于生成可执行的 Java 程序</li>
+<li>这个东西也可以用在普通的 jar 包，或者 class 文件上</li>
 </ul>
-</li>
-<li><p>使用 <a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows">NVM</a> 也可以</p>
-</li>
+<h2 id="普通-class-文件编成-exe"><a href="#普通-class-文件编成-exe" class="headerlink" title="普通 class 文件编成 exe"></a>普通 class 文件编成 exe</h2><h3 id="创建-java-源文件"><a href="#创建-java-源文件" class="headerlink" title="创建 java 源文件"></a>创建 java 源文件</h3><ul>
+<li>这一步非常重要，<strong>源文件要用 ASCII 码进行保存</strong></li>
 </ul>
-<h2 id="第二步：编写个人配置-vimrc"><a href="#第二步：编写个人配置-vimrc" class="headerlink" title="第二步：编写个人配置 vimrc"></a>第二步：编写个人配置 <code>vimrc</code></h2><ul>
-<li><p>在 <code>~/.vim</code> 中新建一个 <code>vimrc</code> 文件</p>
-</li>
-<li><p>如果是 <a target="_blank" rel="noopener" href="https://github.com/vim/vim-win32-installer/releases">gvim</a> 则在 gvim 目录下新建一个 <code>_vrimc</code> 文件</p>
-</li>
-<li><p>具体可以用 <code>vim --version</code> 查看（或者在 vim 中 <code>:version</code>）</p>
-</li>
-<li><p>在 <code>vimrc</code> 中添加以下代码：</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs vimscript">call plug#begin()<br>    Plug &#x27;neoclide/coc.nvim&#x27;, &#123;&#x27;branch&#x27;: &#x27;release&#x27;&#125;<br>call plug#end()<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>然后保存、退出、重新进入 <code>vim</code> ，输入 <code>:PlugInstall</code> 进行插件的安装</p>
-</li>
-<li><p>安装好后重启 <code>vim</code> 用 <code>:CocInfo</code> 查看状态，<code>nvim</code> 用 <code>:checkhealth</code>。</p>
-</li>
-<li><p>可能提示什么没启动，用 <code>:CocStart</code> 就行了。</p>
-</li>
-</ul>
-<h2 id="第三步：安装提示插件"><a href="#第三步：安装提示插件" class="headerlink" title="第三步：安装提示插件"></a>第三步：安装提示插件</h2><ul>
-<li><p>在 <code>vim</code> 中直接用 <code>:CocInstall &lt;插件名&gt;</code> 来进行安装，例：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">:CocInstall coc-json coc-tsserver<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>建议先安装一个提示插件</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">:CocInstall coc-marketplace coc-vimlsp<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>可以先看看官方 <a target="_blank" rel="noopener" href="https://github.com/neoclide/coc.nvim/wiki/Language-servers">Wiki</a></p>
-</li>
-<li><p>我是要学习 <code>C</code> 的，故配置一个</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">:CocInstall coc-clangd<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;你好，世界！&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>  到  <a target="_blank" rel="noopener" href="https://github.com/clangd/clangd">clangd</a> 上面下载相应的版本，并解压，添加到环境变量中，然后就可以用了。</p>
-<p>  这一步可以不配置，输入 <code>:CocConfig</code> 进入配置文件，输入：</p>
-  <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;languageserver&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;rust-analyzer.enable&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;rust-analyzer.server.path&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;D:\\rust-analyzer.exe&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure></li>
-</ul>
+<p>编译源码，指定格式：<code>javac -encoding GBK Main.java</code></p>
+<p>在开始菜单打开 <code>x64 Native Tools Command Prompt for VS xxxx</code> 进入 native 环境</p>
+<p>切换到 <code>Main.class</code> 所在的目录</p>
+<p>输入命令： <code>native-image -J&quot;-Dfile.encoding=GBK&quot; Main</code> ，Main 是你的 class 文件名，<strong>注意有双引号</strong></p>
+<p><strong>一定要指定编码方式为 <code>GBK</code> 不然运行中文会有乱码问题</strong></p>
+<p>运行，没问题</p>
+<h2 id="jar-包文件编成-exe"><a href="#jar-包文件编成-exe" class="headerlink" title="jar 包文件编成 exe"></a>jar 包文件编成 exe</h2><p>这里使用 Maven，下面是 <code>pom.xml</code> 文件的一部分配置，可以参考</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="hljs-tag">&lt;/<span class="hljs-name">project.build.sourceEncoding</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">file.encoding</span>&gt;</span>UTF-8<span class="hljs-tag">&lt;/<span class="hljs-name">file.encoding</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>            	<span class="hljs-tag">&lt;<span class="hljs-name">fork</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">fork</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>	    <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>        	<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            	<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-jar-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>                	<span class="hljs-tag">&lt;<span class="hljs-name">archive</span>&gt;</span><br>                    	<span class="hljs-tag">&lt;<span class="hljs-name">manifest</span>&gt;</span><br>                            <span class="hljs-tag">&lt;<span class="hljs-name">addClasspath</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">addClasspath</span>&gt;</span><br>                            <span class="hljs-comment">&lt;!-- 指定主类 --&gt;</span><br>                            <span class="hljs-tag">&lt;<span class="hljs-name">mainClass</span>&gt;</span>org.wind.Main<span class="hljs-tag">&lt;/<span class="hljs-name">mainClass</span>&gt;</span><br>                        <span class="hljs-tag">&lt;/<span class="hljs-name">manifest</span>&gt;</span><br>                    <span class="hljs-tag">&lt;/<span class="hljs-name">archive</span>&gt;</span><br>	            <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>主类的内容：Main.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> org.wind;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;你好，世界！&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>到 <code>pom.xml</code> 文件目录下运行命令：<code>mvn clean package</code></p>
+<p>此时会生成一个 <code>jar</code> 包，例如：<code>Main.jar</code></p>
+<p>先用 <code>java -jar Main.jar</code> 运行一下看看有没有问题，再进行下一步，如果显示缺少主类请看下面的方法</p>
+<p>用压缩包程序打开 <code>jar</code> 包，打开目录 <code>META-INF</code> 找到 <code>MANIFEST.MF</code> 文件，编辑，在里面手动指定主类，即指定 main 方法所在的类：比如我的 main 方法写在类 <code>org.wind.Main</code> 那么在 <code>MANIFEST.MF</code> 添加以下这一行：</p>
+<p><code>Main-Class: org.wind.Main</code></p>
+<p>再次运行，应该没有无主类的问题了，如果有其他问题，再上网找，这里不再赘述</p>
+<p>接下来，同样的，在开始菜单打开 <code>x64 Native Tools Command Prompt for VS xxxx</code> 进入 native 环境</p>
+<p>切换到 <code>jar</code> 包所在目录，运行命令：<code>native-image -J&quot;-Dfile.encoding=GBK&quot; -jar .\Main.jar</code> <strong>注意有双引号</strong></p>
+<p><strong>一定要指定编码方式为 <code>GBK</code> 不然运行中文会有乱码问题</strong></p>
+<p>运行，没问题</p>
+<p>如果在 Spring 上时，解决乱码方法很简单，Maven 打包时指定使用 native profile 就可以了</p>
+<p>运行aot提前处理命令：<code>mvn springboot:process-aot</code></p>
+<p>运行native打包：<code>mvn -Pnative native:build</code></p>
 
                 
               </div>
@@ -364,7 +324,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Vim/" class="print-no-link">#Vim</a>
+        <a href="/tags/Java/" class="print-no-link">#Java</a>
+      
+        <a href="/tags/GraalVM/" class="print-no-link">#GraalVM</a>
       
     </div>
   
@@ -376,8 +338,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>vim 配置 coc 插件记录</div>
-      <div>https://windzwindy.github.io/2023/08/11/vim-coc_config/</div>
+      <div>GraalVM Generate Executable Program</div>
+      <div>https://windzwindy.github.io/2024/09/22/GraalVM Java Generate Executable/</div>
     </div>
     <div class="license-meta">
       
@@ -389,13 +351,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年8月11日</div>
+          <div>2024年9月22日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年9月16日</div>
+          <div>2024年9月22日</div>
         </div>
       
       
@@ -426,18 +388,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/08/12/UseSSHwithTokenLoginGithub/" title="SSHLoginGithub">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">SSHLoginGithub</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/08/10/abundant&amp;Deficient&amp;Perfect_Number/" title="Abundant&amp;Deficient&amp;Perfect_Number">
-                        <span class="hidden-mobile">Abundant&amp;Deficient&amp;Perfect_Number</span>
+                      <a href="/2024/09/22/Tomcat(Catalina)%20Install/" title="Tomcat(Catalina) Install">
+                        <span class="hidden-mobile">Tomcat(Catalina) Install</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
