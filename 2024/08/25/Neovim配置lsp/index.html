@@ -270,19 +270,19 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Neovim-配置-lsp"><a href="#Neovim-配置-lsp" class="headerlink" title="Neovim 配置 lsp"></a>Neovim 配置 lsp</h1><h2 id="配置前准备"><a href="#配置前准备" class="headerlink" title="配置前准备"></a>配置前准备</h2><ul>
-<li><p>进入 neovim 检查环境 <code>:checkhealth</code> 发现缺少配置文件</p>
-</li>
-<li><p>按照提示，进入 neovim 查看配置文件应该存放的位置：<code>:help config</code></p>
-</li>
+                <h1 id="neovim-配置-lsp">Neovim 配置 lsp</h1>
+<h2 id="配置前准备">配置前准备</h2>
+<ul>
+<li><p>进入 neovim 检查环境 <code>:checkhealth</code>
+发现缺少配置文件</p></li>
+<li><p>按照提示，进入 neovim
+查看配置文件应该存放的位置：<code>:help config</code></p></li>
 </ul>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-type">Unix</span>                    <span class="hljs-operator">~/</span>.config<span class="hljs-regexp">/nvim/</span><span class="hljs-keyword">init</span>.vim         (or <span class="hljs-keyword">init</span>.lua)<br><span class="hljs-type">Windows</span>                 <span class="hljs-operator">~/</span><span class="hljs-type">AppData</span><span class="hljs-regexp">/Local/</span>nvim<span class="hljs-operator">/</span><span class="hljs-keyword">init</span>.vim   (or <span class="hljs-keyword">init</span>.lua)<br><span class="hljs-variable">$XDG_CONFIG_HOME</span>        <span class="hljs-variable">$XDG_CONFIG_HOME</span><span class="hljs-regexp">/nvim/</span><span class="hljs-keyword">init</span>.vim  (or <span class="hljs-keyword">init</span>.lua)<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>这里使用 Lua 来进行配置，不用 Lua 用什么 Neovim</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 创建配置文件的文件夹</span><br><span class="hljs-built_in">mkdir</span> -p ~/.config/nvim<br><span class="hljs-comment"># 用于存储配置文件模块的文件夹</span><br><span class="hljs-built_in">mkdir</span> -p ~/.config/nvim/lua<br><span class="hljs-comment"># 创建配置文件</span><br><span class="hljs-built_in">touch</span> ~/.config/nvim/init.lua<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>到官网安装 packer，找到 Quickstart</li>
 </ul>
@@ -290,57 +290,59 @@
 <p>Unix, Linux Installation</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> --depth 1 https://github.com/wbthomason/packer.nvim\<br> ~/.local/share/nvim/site/pack/packer/start/packer.nvim<br></code></pre></td></tr></table></figure>
-
 <blockquote>
 <p>Windows Powershell Installation</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/wbthomason/packer.nvim <span class="hljs-string">&quot;<span class="hljs-variable">$env</span>:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim&quot;</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><ul>
+<h2 id="安装插件">安装插件</h2>
+<ul>
 <li>添加插件模块文件：</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">touch</span> ~/.config/nvim/lua/plugins.lua<br></code></pre></td></tr></table></figure>
-
 <ul>
-<li>找到并复制官方的实例代码，将其添加到 <code>plugins.lua</code> 中：</li>
+<li>找到并复制官方的实例代码，将其添加到 <code>plugins.lua</code>
+中：</li>
 </ul>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">-- This file can be loaded by calling `lua require(&#x27;plugins&#x27;)` from your init.vim</span><br><br><span class="hljs-comment">-- Only required if you have packer configured as `opt`</span><br>vim.cmd <span class="hljs-string">[[packadd packer.nvim]]</span><br><br><span class="hljs-keyword">return</span> <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;packer&#x27;</span>).startup(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(use)</span></span><br>  <span class="hljs-comment">-- Packer can manage itself</span><br>  use <span class="hljs-string">&#x27;wbthomason/packer.nvim&#x27;</span><br><br><span class="hljs-keyword">end</span>)<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>编辑 <code>init.lua</code> 引入模块 <code>plugins.lua</code></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 因为 plugins.lua 文件在 lua 文件夹下，所以路径可以简写，而不必用 lua/plugins</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;require(&quot;plugins&quot;)&#x27;</span> &gt;&gt; ~/.config/nvim/init.lua<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>再进入 neovim 发现命令 <code>:PackerSync</code> 等可以用了</li>
 </ul>
-<h2 id="安装配置-Lsp"><a href="#安装配置-Lsp" class="headerlink" title="安装配置 Lsp"></a>安装配置 Lsp</h2><p>编辑 <code>plugins.lua</code> 安装以下插件：</p>
+<h2 id="安装配置-lsp">安装配置 Lsp</h2>
+<p>编辑 <code>plugins.lua</code> 安装以下插件：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/neovim/nvim-lspconfig">nvim-lspconfig</a> 配置 Lsp 必装</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/williamboman/mason.nvim">mason.nvim</a> 方便管理 lspconfig</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/williamboman/mason-lspconfig.nvim">mason-lspconfig.nvim</a> 同上</li>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/neovim/nvim-lspconfig">nvim-lspconfig</a> 配置
+Lsp 必装</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/williamboman/mason.nvim">mason.nvim</a>
+方便管理 lspconfig</li>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/williamboman/mason-lspconfig.nvim">mason-lspconfig.nvim</a>
+同上</li>
 </ul>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs lua">vim.cmd <span class="hljs-string">[[packadd packer.nvim]]</span><br><span class="hljs-keyword">return</span> <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;packer&#x27;</span>).startup(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(use)</span></span><br>  use <span class="hljs-string">&#x27;wbthomason/packer.nvim&#x27;</span><br><br>  <span class="hljs-comment">-- 添加代码到这里</span><br>  use <span class="hljs-string">&#x27;neovim/nvim-lspconfig&#x27;</span><br>  use &#123;<br>      <span class="hljs-string">&#x27;williamboman/mason.nvim&#x27;</span>,<br>      <span class="hljs-string">&#x27;williamboman/mason-lspconfig.nvim&#x27;</span><br>  &#125;<br><br><span class="hljs-keyword">end</span>)<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>创建 lsp 配置模块文件</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 创建模块</span><br><span class="hljs-built_in">touch</span> ~/.config/nvim/lua/lsp_config.lua<br><span class="hljs-comment"># 引入模块</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;require(&quot;lsp_config&quot;)&#x27;</span> &gt;&gt; ~/.config/nvim/init.lua<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>配置</li>
 </ul>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">local</span> DEFAULT_SETTINGS = &#123;<br>    <span class="hljs-comment">-- 确保安装</span><br>    ensure_installed = &#123;<br>        “lua_ls<span class="hljs-string">&quot;</span><br><span class="hljs-string">    &#125;,</span><br><span class="hljs-string">    -- 自动安装</span><br><span class="hljs-string">    automatic_installation = true,</span><br><span class="hljs-string">    handlers = nil,</span><br><span class="hljs-string">&#125;</span><br><span class="hljs-string"></span><br><span class="hljs-string">-- 初始化 mason</span><br><span class="hljs-string">require(&quot;</span>mason<span class="hljs-string">&quot;).setup(&#123;</span><br><span class="hljs-string">    ui = &#123;</span><br><span class="hljs-string">        icons = &#123;</span><br><span class="hljs-string">            package_installed = &quot;</span>✓<span class="hljs-string">&quot;,</span><br><span class="hljs-string">            package_pending = &quot;</span>➜<span class="hljs-string">&quot;,</span><br><span class="hljs-string">            package_uninstalled = &quot;</span>✗<span class="hljs-string">&quot;</span><br><span class="hljs-string">        &#125;</span><br><span class="hljs-string">    &#125;</span><br><span class="hljs-string">&#125;)</span><br><span class="hljs-string"></span><br><span class="hljs-string">-- 初始化 mason-lspconfig</span><br><span class="hljs-string">require(&quot;</span>mason-lspconfig<span class="hljs-string">&quot;).setup()</span><br><span class="hljs-string"></span><br><span class="hljs-string">-- 安装 lua_ls 安装后打开 Lua 文件应该有语法检查</span><br><span class="hljs-string">require&#x27;lspconfig&#x27;.lua_ls.setup&#123;&#125;</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="提示功能"><a href="#提示功能" class="headerlink" title="提示功能"></a>提示功能</h2><ul>
-<li>参照 <a target="_blank" rel="noopener" href="https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion">官网文档</a> 进行操作</li>
+<h2 id="提示功能">提示功能</h2>
+<ul>
+<li>参照 <a
+target="_blank" rel="noopener" href="https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion">官网文档</a>
+进行操作</li>
 </ul>
-<p>配置 <code>plugins.lua</code> 文件，重新打开 neovim 运行命令 <code>:PackerSync</code> 安装插件</p>
+<p>配置 <code>plugins.lua</code> 文件，重新打开 neovim 运行命令
+<code>:PackerSync</code> 安装插件</p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs lua">vim.cmd <span class="hljs-string">[[packadd packer.nvim]]</span><br><span class="hljs-keyword">return</span> <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;packer&#x27;</span>).startup(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(use)</span></span><br>        use <span class="hljs-string">&#x27;wbthomason/packer.nvim&#x27;</span><br>        use &#123;<br>                <span class="hljs-string">&#x27;neovim/nvim-lspconfig&#x27;</span>,<br>                <span class="hljs-string">&#x27;williamboman/mason.nvim&#x27;</span>,<br>                <span class="hljs-string">&#x27;williamboman/mason-lspconfig.nvim&#x27;</span>,<br>        &#125;<br>        <span class="hljs-comment">-- 添加提示插件</span><br>        use &#123;<br>                <span class="hljs-string">&#x27;hrsh7th/nvim-cmp&#x27;</span>, <span class="hljs-comment">-- Autocompletion plugin</span><br>                <span class="hljs-string">&#x27;hrsh7th/cmp-nvim-lsp&#x27;</span>, <span class="hljs-comment">-- LSP source for nvim-cmp</span><br>        &#125;<br><span class="hljs-keyword">end</span>)<br></code></pre></td></tr></table></figure>
-
 <p>安装好插件后，再配置 <code>lsp_config.lua</code> 文件：</p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">-- nvim-cmp setup</span><br><span class="hljs-keyword">local</span> cmp = <span class="hljs-built_in">require</span> <span class="hljs-string">&#x27;cmp&#x27;</span><br>cmp.setup &#123;<br>  snippet = &#123;<br>  &#125;,<br>  mapping = cmp.mapping.preset.<span class="hljs-built_in">insert</span>(&#123;<br>    [<span class="hljs-string">&#x27;&lt;C-u&gt;&#x27;</span>] = cmp.mapping.scroll_docs(<span class="hljs-number">-4</span>), <span class="hljs-comment">-- Up</span><br>    [<span class="hljs-string">&#x27;&lt;C-d&gt;&#x27;</span>] = cmp.mapping.scroll_docs(<span class="hljs-number">4</span>), <span class="hljs-comment">-- Down</span><br>    [<span class="hljs-string">&#x27;&lt;C-Space&gt;&#x27;</span>] = cmp.mapping.complete(),<br>    [<span class="hljs-string">&#x27;&lt;CR&gt;&#x27;</span>] = cmp.mapping.confirm &#123;<br>      behavior = cmp.ConfirmBehavior.Replace,<br>      <span class="hljs-built_in">select</span> = <span class="hljs-literal">true</span>,<br>    &#125;,<br>    [<span class="hljs-string">&#x27;&lt;Tab&gt;&#x27;</span>] = cmp.mapping(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(fallback)</span></span><br>      <span class="hljs-keyword">if</span> cmp.visible() <span class="hljs-keyword">then</span><br>        cmp.select_next_item()<br>      <span class="hljs-keyword">else</span><br>        fallback()<br>      <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">end</span>, &#123; <span class="hljs-string">&#x27;i&#x27;</span>, <span class="hljs-string">&#x27;s&#x27;</span> &#125;),<br>    [<span class="hljs-string">&#x27;&lt;S-Tab&gt;&#x27;</span>] = cmp.mapping(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(fallback)</span></span><br>      <span class="hljs-keyword">if</span> cmp.visible() <span class="hljs-keyword">then</span><br>        cmp.select_prev_item()<br>      <span class="hljs-keyword">else</span><br>        fallback()<br>      <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">end</span>, &#123; <span class="hljs-string">&#x27;i&#x27;</span>, <span class="hljs-string">&#x27;s&#x27;</span> &#125;),<br>  &#125;),<br>  sources = &#123;<br>    &#123; name = <span class="hljs-string">&#x27;nvim_lsp&#x27;</span> &#125;,<br>  &#125;,<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>至此，便拥有了提示功能</li>
 </ul>
@@ -420,7 +422,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/09/14/%E5%9F%BA%E6%9C%AC%E7%AD%89%E5%80%BC%E5%BC%8F/" title="Basic Formular">
+                      <a href="/2024/09/14/Basic%20Formular/" title="Basic Formular">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Basic Formular</span>
                         <span class="visible-mobile">上一篇</span>

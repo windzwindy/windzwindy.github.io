@@ -209,7 +209,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          261 字
+          257 字
         
       </span>
     
@@ -270,24 +270,45 @@
             
               <div class="markdown-body">
                 
-                <h2 id="1、Install-MySQL-Server-（安装-MySQL-服务）"><a href="#1、Install-MySQL-Server-（安装-MySQL-服务）" class="headerlink" title="1、Install MySQL Server （安装 MySQL 服务）"></a>1、Install MySQL Server （安装 MySQL 服务）</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd C:/mysql5.7/<br>mysqld -install<br></code></pre></td></tr></table></figure>
-
-<h2 id="2、Edit-“my-ini”（编辑安装配置文件）"><a href="#2、Edit-“my-ini”（编辑安装配置文件）" class="headerlink" title="2、Edit “my.ini”（编辑安装配置文件）"></a>2、Edit “my.ini”（编辑安装配置文件）</h2><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[mysqld]</span><br><span class="hljs-attr">basedir</span>=C:/mysql5.<span class="hljs-number">7</span>				<span class="hljs-comment"># your MySQL folder</span><br><span class="hljs-attr">datadir</span>=C:/mysql5.<span class="hljs-number">7</span>/data<br><span class="hljs-attr">character-set-server</span>=utf8<br><span class="hljs-attr">port</span>=<span class="hljs-number">3306</span><br><span class="hljs-section">[mysql]</span><br><span class="hljs-attr">default-character-set</span>=utf8<br></code></pre></td></tr></table></figure>
-
-<h2 id="3、Initialize-MySQL-with-no-root-password（没有-root-密码的安装）"><a href="#3、Initialize-MySQL-with-no-root-password（没有-root-密码的安装）" class="headerlink" title="3、Initialize MySQL with no root password（没有 root 密码的安装）"></a>3、Initialize MySQL with no root password（没有 root 密码的安装）</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash"><span class="hljs-string">&quot;-insecure&quot;</span> parameter : no root password</span><br>mysqld --initialize-insecure<br></code></pre></td></tr></table></figure>
-
-<h2 id="4、Start-Stop-MySQL-Service（开启-MySQL-服务）"><a href="#4、Start-Stop-MySQL-Service（开启-MySQL-服务）" class="headerlink" title="4、Start &amp; Stop MySQL Service（开启 MySQL 服务）"></a>4、Start &amp; Stop MySQL Service（开启 MySQL 服务）</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">start MySQL service</span><br>net start MySQL<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">stop MySQL service</span><br>net stop MySQL<br></code></pre></td></tr></table></figure>
-
-<h2 id="5、MySQL-Login-Set-root-user-password（登录和修改-root-用户密码）"><a href="#5、MySQL-Login-Set-root-user-password（登录和修改-root-用户密码）" class="headerlink" title="5、MySQL Login &amp; Set root user password（登录和修改 root 用户密码）"></a>5、MySQL Login &amp; Set root user password（登录和修改 root 用户密码）</h2><h3 id="use-root-user-to-login（登录到-root-用户）"><a href="#use-root-user-to-login（登录到-root-用户）" class="headerlink" title="use root user to login（登录到 root 用户）"></a>use root user to login（登录到 root 用户）</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">use root user to login</span><br>mysql -u root		# &quot;-u&quot; is user<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">use host and port, <span class="hljs-keyword">for</span> exzample</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash"><span class="hljs-string">&quot;-h&quot;</span> host <span class="hljs-string">&quot;-P&quot;</span> port</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">有时候可能要管理的是远程的数据库，所以可以加个 -h 来指定要管理的数据库的服务器 ip 地址</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">前提是允许远程访问</span><br>mysql -h 127.0.0.1 -P 3306<br></code></pre></td></tr></table></figure>
-
-<h3 id="set-root-user-password（设置-root-用户密码）"><a href="#set-root-user-password（设置-root-用户密码）" class="headerlink" title="set root user password（设置 root 用户密码）"></a>set root user password（设置 root 用户密码）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql"># set root user password<br>ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;123456&#x27;;<br></code></pre></td></tr></table></figure>
-
-<h3 id="use-root-user-and-password-to-login-again（用密码登录-root-用户）"><a href="#use-root-user-and-password-to-login-again（用密码登录-root-用户）" class="headerlink" title="use root user and password to login again（用密码登录 root 用户）"></a>use root user and password to login again（用密码登录 root 用户）</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">use root user and password to login again</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-u 后面跟用户 -p 后面跟密码</span><br>mysql -u root -p 123456<br></code></pre></td></tr></table></figure>
-
-<h3 id="if-you-want-to-remove-root-user-password-then-（删除-root-用户密码，此步骤可选）"><a href="#if-you-want-to-remove-root-user-password-then-（删除-root-用户密码，此步骤可选）" class="headerlink" title="if you want to remove root user password, then （删除 root 用户密码，此步骤可选）"></a>if you want to remove root user password, then （删除 root 用户密码，此步骤可选）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;&#x27;;<br></code></pre></td></tr></table></figure>
-
-<h3 id="if-you-want-to-exit-MySQL（退出-MySQL）"><a href="#if-you-want-to-exit-MySQL（退出-MySQL）" class="headerlink" title="if you want to exit MySQL（退出 MySQL）"></a>if you want to exit MySQL（退出 MySQL）</h3><p><strong>&#x3D;&#x3D;you can use<code>quit</code>or<code>exit</code>&#x3D;&#x3D;</strong></p>
-<h2 id="6、Set-the-environment-variables（设置环境变量用于方便登录-MySQL）"><a href="#6、Set-the-environment-variables（设置环境变量用于方便登录-MySQL）" class="headerlink" title="6、Set the environment variables（设置环境变量用于方便登录 MySQL）"></a>6、Set the environment variables（设置环境变量用于方便登录 MySQL）</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">setx PATH &quot;%PATH%;D:\mysql5.7\bin&quot;<br></code></pre></td></tr></table></figure>
+                <h2 id="install-mysql-server-安装-mysql-服务">1、Install MySQL Server
+（安装 MySQL 服务）</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd C:/mysql5.7/<br>mysqld -install<br></code></pre></td></tr></table></figure>
+<h2 id="edit-my.ini编辑安装配置文件">2、Edit
+"my.ini"（编辑安装配置文件）</h2>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[mysqld]</span><br><span class="hljs-attr">basedir</span>=C:/mysql5.<span class="hljs-number">7</span>				<span class="hljs-comment"># your MySQL folder</span><br><span class="hljs-attr">datadir</span>=C:/mysql5.<span class="hljs-number">7</span>/data<br><span class="hljs-attr">character-set-server</span>=utf8<br><span class="hljs-attr">port</span>=<span class="hljs-number">3306</span><br><span class="hljs-section">[mysql]</span><br><span class="hljs-attr">default-character-set</span>=utf8<br></code></pre></td></tr></table></figure>
+<h2
+id="initialize-mysql-with-no-root-password没有-root-密码的安装">3、Initialize
+MySQL with no root password（没有 root 密码的安装）</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash"><span class="hljs-string">&quot;-insecure&quot;</span> parameter : no root password</span><br>mysqld --initialize-insecure<br></code></pre></td></tr></table></figure>
+<h2 id="start-stop-mysql-service开启-mysql-服务">4、Start &amp; Stop
+MySQL Service（开启 MySQL 服务）</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">start MySQL service</span><br>net start MySQL<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">stop MySQL service</span><br>net stop MySQL<br></code></pre></td></tr></table></figure>
+<h2
+id="mysql-login-set-root-user-password登录和修改-root-用户密码">5、MySQL
+Login &amp; Set root user password（登录和修改 root 用户密码）</h2>
+<h3 id="use-root-user-to-login登录到-root-用户">use root user to
+login（登录到 root 用户）</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">use root user to login</span><br>mysql -u root		# &quot;-u&quot; is user<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">use host and port, <span class="hljs-keyword">for</span> exzample</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash"><span class="hljs-string">&quot;-h&quot;</span> host <span class="hljs-string">&quot;-P&quot;</span> port</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">有时候可能要管理的是远程的数据库，所以可以加个 -h 来指定要管理的数据库的服务器 ip 地址</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">前提是允许远程访问</span><br>mysql -h 127.0.0.1 -P 3306<br></code></pre></td></tr></table></figure>
+<h3 id="set-root-user-password设置-root-用户密码">set root user
+password（设置 root 用户密码）</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql"># set root user password<br>ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;123456&#x27;;<br></code></pre></td></tr></table></figure>
+<h3
+id="use-root-user-and-password-to-login-again用密码登录-root-用户">use
+root user and password to login again（用密码登录 root 用户）</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">use root user and password to login again</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">-u 后面跟用户 -p 后面跟密码</span><br>mysql -u root -p 123456<br></code></pre></td></tr></table></figure>
+<h3
+id="if-you-want-to-remove-root-user-password-then-删除-root-用户密码此步骤可选">if
+you want to remove root user password, then （删除 root
+用户密码，此步骤可选）</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;&#x27;;<br></code></pre></td></tr></table></figure>
+<h3 id="if-you-want-to-exit-mysql退出-mysql">if you want to exit
+MySQL（退出 MySQL）</h3>
+<p><strong>==you can
+use<code>quit</code>or<code>exit</code>==</strong></p>
+<h2
+id="set-the-environment-variables设置环境变量用于方便登录-mysql">6、Set
+the environment variables（设置环境变量用于方便登录 MySQL）</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">setx PATH &quot;%PATH%;D:\mysql5.7\bin&quot;<br></code></pre></td></tr></table></figure>
 
                 
               </div>

@@ -273,76 +273,98 @@
                 
                 <blockquote>
 <p>参考文章：</p>
-<p>【1】：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/613738433">WSL2 安装 ArchLinux —— In The Arch Way</a></p>
-<p>【2】：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1888631">windows系统wsl&#x2F;wsl2 更换虚拟硬盘位置(导出,导入)</a></p>
-<p>【3】：<a target="_blank" rel="noopener" href="https://bbs.zsxwz.com/thread-5159.htm">WSL 2安装 archlinux</a></p>
-<p>【4】：<a target="_blank" rel="noopener" href="https://blog.csdn.net/pl23k/article/details/131336220">WSL2中安装Cuda遇到的问题</a></p>
+<p>【1】：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/613738433">WSL2 安装
+ArchLinux —— In The Arch Way</a></p>
+<p>【2】：<a
+target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1888631">windows系统wsl/wsl2
+更换虚拟硬盘位置(导出,导入)</a></p>
+<p>【3】：<a target="_blank" rel="noopener" href="https://bbs.zsxwz.com/thread-5159.htm">WSL 2安装
+archlinux</a></p>
+<p>【4】：<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/pl23k/article/details/131336220">WSL2中安装Cuda遇到的问题</a></p>
 </blockquote>
-<h2 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h2><ol>
+<h2 id="环境要求">环境要求</h2>
+<ol type="1">
 <li>windows 10</li>
 <li>默认 WSL 版本为 2 <code>wsl --set-default-version 2</code></li>
 <li>查看版本： <code>wsl --version</code></li>
-<li>已通过 <code>wsl --install</code> 安装过一个其他的 WSL2 发行版，或者有其他 Linux 机器。用于生成 rootfs 文件</li>
-<li>如果觉得此教程很难，建议你使用 ArchWSL 项目： <a target="_blank" rel="noopener" href="https://github.com/yuk7/ArchWSL">https://github.com/yuk7/ArchWSL</a></li>
+<li>已通过 <code>wsl --install</code> 安装过一个其他的 WSL2
+发行版，或者有其他 Linux 机器。用于生成 rootfs 文件</li>
+<li>如果觉得此教程很难，建议你使用 ArchWSL 项目： <a
+target="_blank" rel="noopener" href="https://github.com/yuk7/ArchWSL">https://github.com/yuk7/ArchWSL</a></li>
 </ol>
-<h3 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h3><p>安装 wsl2 ，<a target="_blank" rel="noopener" href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi">wsl2 内核</a></p>
+<h3 id="安装环境">安装环境</h3>
+<p>安装 wsl2 ，<a
+target="_blank" rel="noopener" href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi">wsl2
+内核</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 启用 WSL 功能</span><br>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart<br><span class="hljs-comment"># 启用虚拟平台</span><br>dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart<br><span class="hljs-comment"># wsl2</span><br>wsl --set-default-version 2<br><br><span class="hljs-comment"># 或者打开 appwiz.cpl 启用 WSL 虚拟机平台 Hyper-V 等功能</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h2><h3 id="方法一：打包-rootfs"><a href="#方法一：打包-rootfs" class="headerlink" title="方法一：打包 rootfs"></a>方法一：打包 rootfs</h3><p>去 ArchLinux 的镜像仓储上下载 <code>archlinux-bootstrap-x86_64.tar.gz</code></p>
+<h2 id="安装系统">安装系统</h2>
+<h3 id="方法一打包-rootfs">方法一：打包 rootfs</h3>
+<p>去 ArchLinux 的镜像仓储上下载
+<code>archlinux-bootstrap-x86_64.tar.gz</code></p>
 <p>在已有的 WSL2 发行版中，执行下述命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 从阿里云镜像站上下载 bootstrap-x86_64.tar.gz</span><br>wget https://mirrors.aliyun.com/archlinux/iso/2024.01.01/archlinux-bootstrap-x86_64.tar.gz<br><span class="hljs-comment"># 使用 bsdtar 解压 bootstrap-x86_64.tar.gz 压缩文件</span><br><span class="hljs-comment"># 使用 bsdtar 而非 tar 是因为 GNU tar 不会保留拓展属性（extended attributes）</span><br><span class="hljs-comment"># https://wiki.archlinux.org/title/Full_system_backup_with_tar</span><br><span class="hljs-comment"># x 是解压 p 是保留原文件权限 f 是解压文件的名字，可以加个 v 详细解压信息</span><br>sudo bsdtar -xpf archlinux-bootstrap-x86_64.tar.gz<br><br><span class="hljs-comment"># 重新打包为 archlinux-bootstrap.tar 文件 </span><br><span class="hljs-comment"># -C &lt;目的目录&gt; 或 --directory =&lt;目的目录&gt; 意为切换到指定的目录。</span><br><span class="hljs-comment"># -C patha pathb 把目录 patha 改到 pathb 下</span><br><span class="hljs-comment"># 打包后压缩包里的 patha/test.txt 变成 pathb/test.txt</span><br><span class="hljs-comment"># 如果 pathb 是 . 那么等于打包在当前目录下，妙！</span><br>sudo bsdtar -cpf archlinux-bootstrap.tar -C root.x86_64 .<br><span class="hljs-comment"># 或者使用以下命令</span><br><span class="hljs-built_in">cd</span> root.x86_64<br>sudo bsdtar -cpf ~/archlinux-bootstrap.tar ./*<br><br><span class="hljs-comment"># 移动 archlinux-bootstrap.tar 到 D 盘</span><br><span class="hljs-built_in">mv</span> ~/archlinux-bootstrap.tar /mnt/d<br></code></pre></td></tr></table></figure>
-
 <p>在 Windows 中导入 archlinux-bootstrap.tar 为 Arch WSL2 发行版</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 用法 wsl --import [任意名字] [存放系统的位置] [系统文件]</span><br>wsl --import Arch C:\Arch D:\archlinux-bootstrap.tar<br></code></pre></td></tr></table></figure>
-
-<h3 id="方法二：LxRunOffline"><a href="#方法二：LxRunOffline" class="headerlink" title="方法二：LxRunOffline"></a>方法二：<a target="_blank" rel="noopener" href="https://github.com/DDoSolitary/LxRunOffline">LxRunOffline</a></h3><ol>
-<li><p>下载安装 <a target="_blank" rel="noopener" href="https://github.com/DDoSolitary/LxRunOffline">LxRunOffline</a>，把 LxRunOffline 添加到环境变量</p>
-</li>
-<li><p>下载 archlinux-bootstrap-x86_64.tar.gz</p>
-</li>
+<h3 id="方法二lxrunoffline">方法二：<a
+target="_blank" rel="noopener" href="https://github.com/DDoSolitary/LxRunOffline">LxRunOffline</a></h3>
+<ol type="1">
+<li><p>下载安装 <a
+target="_blank" rel="noopener" href="https://github.com/DDoSolitary/LxRunOffline">LxRunOffline</a>，把
+LxRunOffline 添加到环境变量</p></li>
+<li><p>下载 archlinux-bootstrap-x86_64.tar.gz</p></li>
 <li><p>安装 ArchLinux</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装，-r 是 指定 root.x86_64 (压缩包目录)</span><br>LxRunOffline i -n &lt;自定义名称&gt; -f &lt;镜像位置&gt; -d &lt;安装系统的位置&gt; -r root.x86_64<br><span class="hljs-comment"># 比如安装到 d 盘 wsl 文件夹，安装完之后，会在安装目录生产.vhdx系统文件</span><br>LxRunOffline i -n Arch -f D:\archlinux-bootstrap-x86_64.tar.gz -d D:\wsl -r root.x86_64<br><span class="hljs-comment"># 转换版本</span><br>wsl --set-version &lt;名称&gt; 2<br></code></pre></td></tr></table></figure></li>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装，-r 是 指定 root.x86_64 (压缩包目录)</span><br>LxRunOffline i -n &lt;自定义名称&gt; -f &lt;镜像位置&gt; -d &lt;安装系统的位置&gt; -r root.x86_64<br><span class="hljs-comment"># 比如安装到 d 盘 wsl 文件夹，安装完之后，会在安装目录生产.vhdx系统文件</span><br>LxRunOffline i -n Arch -f D:\archlinux-bootstrap-x86_64.tar.gz -d D:\wsl -r root.x86_64<br><span class="hljs-comment"># 转换版本</span><br>wsl --set-version &lt;名称&gt; 2<br></code></pre></td></tr></table></figure></p></li>
 </ol>
-<p>至此你已经有了一个可用的 Arch WSL 发行版，但是就和安装 Arch 一样，你还是需要进行一些初始配置。</p>
-<h2 id="配置系统"><a href="#配置系统" class="headerlink" title="配置系统"></a>配置系统</h2><h3 id="进入系统"><a href="#进入系统" class="headerlink" title="进入系统"></a>进入系统</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># wsl -d &lt;系统名称&gt; [-u &lt;用户名&gt;]</span><br>wsl -d Arch -u root<br></code></pre></td></tr></table></figure>
-
-<h3 id="配置-locale"><a href="#配置-locale" class="headerlink" title="配置 locale"></a>配置 locale</h3><p>设置 en_US.UTF-8</p>
+<p>至此你已经有了一个可用的 Arch WSL 发行版，但是就和安装 Arch
+一样，你还是需要进行一些初始配置。</p>
+<h2 id="配置系统">配置系统</h2>
+<h3 id="进入系统">进入系统</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># wsl -d &lt;系统名称&gt; [-u &lt;用户名&gt;]</span><br>wsl -d Arch -u root<br></code></pre></td></tr></table></figure>
+<h3 id="配置-locale">配置 locale</h3>
+<p>设置 en_US.UTF-8</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">sed -i -e <span class="hljs-string">&quot;s/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/&quot;</span> /etc/locale.gen<br>locale-gen<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;LANG=en_US.UTF-8&#x27;</span> &gt; /etc/locale.conf<br><span class="hljs-comment"># 查看是否配置成功</span><br>locale<br></code></pre></td></tr></table></figure>
-
-<h3 id="配置-pacman"><a href="#配置-pacman" class="headerlink" title="配置 pacman"></a>配置 pacman</h3><p>系统没有 vi vim neovim nano emacs 任何编辑器，所以用以下方法</p>
+<h3 id="配置-pacman">配置 pacman</h3>
+<p>系统没有 vi vim neovim nano emacs 任何编辑器，所以用以下方法</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 配置镜像</span><br><span class="hljs-comment"># 先备份一个 镜像源</span><br><span class="hljs-built_in">cp</span> -a /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak<br><span class="hljs-comment"># 用 grep + 正则表达式 过滤中国的源并写到镜像源文件上，33 可以换成 10</span><br><span class="hljs-built_in">cat</span> /etc/pacman.d/mirrorlist.bak | grep -A 33 -E <span class="hljs-string">&#x27;^## China$&#x27;</span> | sed <span class="hljs-string">&#x27;s/#Server/Server/g&#x27;</span> | <span class="hljs-built_in">cat</span> &gt; /etc/pacman.d/mirrorlist<br><span class="hljs-comment"># 否则选择一个你熟悉的，比如说阿里云</span><br><span class="hljs-built_in">cat</span> /etc/pacman.d/mirrorlist.bak | grep -e <span class="hljs-string">&#x27;aliyun&#x27;</span> | sed <span class="hljs-string">&#x27;s/#Server/Server/g&#x27;</span> | <span class="hljs-built_in">cat</span> &gt; /etc/pacman.d/mirrorlist<br><br><span class="hljs-comment"># 初始化 keyring，这是关键安全配置</span><br><span class="hljs-comment"># https://wiki.archlinux.org/title/Pacman/Package_signing</span><br>pacman-key --init<br>pacman-key --populate archlinux<br><span class="hljs-comment"># 安装 keyring</span><br>pacman -Sy archlinux-keyring<br><span class="hljs-comment"># 更新仓库和系统</span><br>pacman -Syyu<br></code></pre></td></tr></table></figure>
-
-<h3 id="安装必备软件"><a href="#安装必备软件" class="headerlink" title="安装必备软件"></a>安装必备软件</h3><p>看自己需求，安装必备软件</p>
+<h3 id="安装必备软件">安装必备软件</h3>
+<p>看自己需求，安装必备软件</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pacman -S base base-devel wget vim vi man neovim git zsh bash-completion net-tools<br></code></pre></td></tr></table></figure>
-
-<h3 id="配置用户"><a href="#配置用户" class="headerlink" title="配置用户"></a>配置用户</h3><p>创建一个用户 “wind” ，并允许其使用 sudo</p>
+<h3 id="配置用户">配置用户</h3>
+<p>创建一个用户 "wind" ，并允许其使用 sudo</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 配置 sudo</span><br><span class="hljs-comment"># 配置编辑器为 vim</span><br>EDITOR=vim<br>visudo<br><span class="hljs-comment"># 意思是让 wheel 组的成员可以 sudo，当然可以去掉 %sudo...</span><br><span class="hljs-comment"># 把 %wheel ALL=(ALL:ALL) ALL 前的注释去掉，如果没有就添加</span><br><br><span class="hljs-comment"># 新增用户并加入 wheel 用户组</span><br><span class="hljs-comment"># useradd [用户名] [-m 创建家目录] [-G 指定组] [-s 指定 shell 默认是 bash]</span><br>useradd wind -m -G wheel -s /bin/bash<br><br><span class="hljs-comment"># 设置 wind 用户的密码</span><br>passwd wind<br><span class="hljs-comment"># 设置 root 用户的密码</span><br>passwd<br></code></pre></td></tr></table></figure>
-
-<p>如果你用 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Doas">doas - dedicated opnebsd application subexecutor</a> 自行<a target="_blank" rel="noopener" href="https://man.openbsd.org/doas.conf.5">配置</a></p>
+<p>如果你用 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Doas">doas -
+dedicated opnebsd application subexecutor</a> 自行<a
+target="_blank" rel="noopener" href="https://man.openbsd.org/doas.conf.5">配置</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装 doas</span><br>pacman -S opendoas<br><span class="hljs-comment"># 编辑 doas 配置文件</span><br>vim /etc/doas.conf<br><span class="hljs-comment"># 添加以下内容</span><br>permit :wheel<br></code></pre></td></tr></table></figure>
-
-<h3 id="配置-wsl-conf"><a href="#配置-wsl-conf" class="headerlink" title="配置 wsl.conf"></a>配置 <code>wsl.conf</code></h3><ul>
-<li>参照官方文档 <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows/wsl/wsl-config">wsl config</a></li>
+<h3 id="配置-wsl.conf">配置 <code>wsl.conf</code></h3>
+<ul>
+<li>参照官方文档 <a
+target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows/wsl/wsl-config">wsl
+config</a></li>
 </ul>
 <p><code>vim /etc/wsl.conf</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs conf">[automount]<br>enabled = false<br>root = /mnt<br>options = &quot;metadata&quot;<br>mountFsTab = false<br>ldconfig = false<br><br>[network]<br>hostname = wind<br>generateHosts = false<br>generateResolvConf = true<br><br>[interop]<br>enabled = false<br>appendWindowsPath = false<br><br>[user]<br>default = wind<br><br>[boot]<br>systemd = true<br></code></pre></td></tr></table></figure>
-
-<h3 id="配置-AUR"><a href="#配置-AUR" class="headerlink" title="配置 AUR"></a>配置 <a target="_blank" rel="noopener" href="https://aur.archlinux.org/">AUR</a></h3><ul>
-<li>参考 <a target="_blank" rel="noopener" href="https://www.archlinuxcn.org/archlinux-cn-repo-and-mirror/">Arch Linux 中文社区仓库</a></li>
+<h3 id="配置-aur">配置 <a target="_blank" rel="noopener" href="https://aur.archlinux.org/">AUR</a></h3>
+<ul>
+<li>参考 <a
+target="_blank" rel="noopener" href="https://www.archlinuxcn.org/archlinux-cn-repo-and-mirror/">Arch
+Linux 中文社区仓库</a></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 编辑 /etc/pacman.conf 文件添加仓库地址</span><br><span class="hljs-comment"># 用 vi vim neovim nano emacs 等都可以，我这里用 echo</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;[archlinuxcn]&#x27;</span> &gt;&gt; /etc/pacman.conf<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;Server = https://repo.archlinuxcn.org/$arch&#x27;</span> &gt;&gt; /etc/pacman.conf<br></code></pre></td></tr></table></figure>
-
-<p>本地信任 key，参见<a target="_blank" rel="noopener" href="https://www.archlinuxcn.org/archlinuxcn-keyring-manually-trust-farseerfc-key/">新系统中安装 archlinuxcn-keyring 包前需要手动信任 farseerfc 的 key</a></p>
+<p>本地信任 key，参见<a
+target="_blank" rel="noopener" href="https://www.archlinuxcn.org/archlinuxcn-keyring-manually-trust-farseerfc-key/">新系统中安装
+archlinuxcn-keyring 包前需要手动信任 farseerfc 的 key</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 注册签名</span><br>sudo pacman-key --lsign-key <span class="hljs-string">&quot;farseerfc@archlinux.org&quot;</span><br><span class="hljs-comment"># 更新仓库和系统</span><br>sudo pacman -Syyu<br><span class="hljs-comment"># 安装 keyring</span><br>sudo pacman -S archlinuxcn-keyring<br></code></pre></td></tr></table></figure>
-
-<p>安装 AUR helper，这里用 <a target="_blank" rel="noopener" href="https://github.com/Morganamilo/paru">paru</a></p>
+<p>安装 AUR helper，这里用 <a
+target="_blank" rel="noopener" href="https://github.com/Morganamilo/paru">paru</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://aur.archlinux.org/paru.git --depth=1<br><span class="hljs-built_in">cd</span> paru<br>makepkg -si<br></code></pre></td></tr></table></figure>
-
-<h3 id="导出镜像"><a href="#导出镜像" class="headerlink" title="导出镜像"></a>导出镜像</h3><p>配置完成后，记得将 WSL 实例导出，免去重复配置的烦恼。在windows下运行：</p>
+<h3 id="导出镜像">导出镜像</h3>
+<p>配置完成后，记得将 WSL
+实例导出，免去重复配置的烦恼。在windows下运行：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 关机</span><br>wsl --shutdown<br><span class="hljs-comment"># 导出</span><br><span class="hljs-comment"># 用法 wsl --export [发行版名称] [导出文件到本地位置]</span><br>wsl --<span class="hljs-built_in">export</span> Arch Arch.tar<br><span class="hljs-comment"># 导入</span><br><span class="hljs-comment"># 用法 wsl --import [任意名字] [存放系统的位置] [系统文件]</span><br>wsl --import Arch C:\Arch Arch.tar<br></code></pre></td></tr></table></figure>
-
-<h2 id="WSL-用法"><a href="#WSL-用法" class="headerlink" title="WSL 用法"></a>WSL 用法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看 wsl 信息</span><br>wsl -l -v<br><span class="hljs-comment"># 查看 wsl 内核等状态</span><br>wsl -v<br><span class="hljs-comment"># 更新 wsl</span><br>wsl --update [--web-download]<br><span class="hljs-comment"># 删除虚拟机</span><br>wsl --unregister Ubuntu<br><span class="hljs-comment"># 导出</span><br><span class="hljs-comment"># 用法 wsl --export [发行版名称] [导出文件到本地位置]</span><br>wsl --<span class="hljs-built_in">export</span> Arch Arch.tar<br><span class="hljs-comment"># 导入</span><br><span class="hljs-comment"># 用法 wsl --import [任意名字] [存放系统的位置] [系统文件]</span><br>wsl --import Arch C:\Arch Arch.tar<br><span class="hljs-comment"># 设置 wsl 版本</span><br>wsl --set-version Arch 2<br><span class="hljs-comment"># 设置 wsl 默认版本</span><br>wsl --set-default-version 2<br><span class="hljs-comment"># 关机</span><br>wsl --shutdown<br><span class="hljs-comment"># 登录到 wsl</span><br><span class="hljs-comment"># 用法 wsl [-d 发行版本] [-u 指定登录用户]</span><br>wsl -d Arch -u root<br></code></pre></td></tr></table></figure>
-
+<h2 id="wsl-用法">WSL 用法</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看 wsl 信息</span><br>wsl -l -v<br><span class="hljs-comment"># 查看 wsl 内核等状态</span><br>wsl -v<br><span class="hljs-comment"># 更新 wsl</span><br>wsl --update [--web-download]<br><span class="hljs-comment"># 删除虚拟机</span><br>wsl --unregister Ubuntu<br><span class="hljs-comment"># 导出</span><br><span class="hljs-comment"># 用法 wsl --export [发行版名称] [导出文件到本地位置]</span><br>wsl --<span class="hljs-built_in">export</span> Arch Arch.tar<br><span class="hljs-comment"># 导入</span><br><span class="hljs-comment"># 用法 wsl --import [任意名字] [存放系统的位置] [系统文件]</span><br>wsl --import Arch C:\Arch Arch.tar<br><span class="hljs-comment"># 设置 wsl 版本</span><br>wsl --set-version Arch 2<br><span class="hljs-comment"># 设置 wsl 默认版本</span><br>wsl --set-default-version 2<br><span class="hljs-comment"># 关机</span><br>wsl --shutdown<br><span class="hljs-comment"># 登录到 wsl</span><br><span class="hljs-comment"># 用法 wsl [-d 发行版本] [-u 指定登录用户]</span><br>wsl -d Arch -u root<br></code></pre></td></tr></table></figure>
 
                 
               </div>

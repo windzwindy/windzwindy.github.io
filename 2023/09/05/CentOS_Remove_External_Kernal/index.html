@@ -270,15 +270,18 @@
             
               <div class="markdown-body">
                 
-                <h1 id="4-删除多余内核"><a href="#4-删除多余内核" class="headerlink" title="4.删除多余内核"></a>4.删除多余内核</h1><h2 id="4-1-打开终端，查看当前使用的内核"><a href="#4-1-打开终端，查看当前使用的内核" class="headerlink" title="4.1 打开终端，查看当前使用的内核"></a>4.1 打开终端，查看当前使用的内核</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">uname</span> -a<br></code></pre></td></tr></table></figure>
-
-<h2 id="4-2-查看所有内核选项"><a href="#4-2-查看所有内核选项" class="headerlink" title="4.2 查看所有内核选项"></a>4.2 查看所有内核选项</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rpm -qa | grep kernel<br></code></pre></td></tr></table></figure>
-
-<h2 id="4-3-进入root模式，删除多余内核"><a href="#4-3-进入root模式，删除多余内核" class="headerlink" title="4.3 进入root模式，删除多余内核"></a>4.3 进入root模式，删除多余内核</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum remove 多余内核<br></code></pre></td></tr></table></figure>
-
-<h2 id="4-4-重新编译引导（可不做）"><a href="#4-4-重新编译引导（可不做）" class="headerlink" title="4.4 重新编译引导（可不做）"></a>4.4 重新编译引导（可不做）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grub2-mkconfig -o /boot/grub2/grub.cfg<br></code></pre></td></tr></table></figure>
-
-<h2 id="4-5-重启系统"><a href="#4-5-重启系统" class="headerlink" title="4.5 重启系统"></a>4.5 重启系统</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">reboot<br><span class="hljs-comment"># 或者</span><br>init 6<br></code></pre></td></tr></table></figure>
+                <h1 id="删除多余内核">4.删除多余内核</h1>
+<h2 id="打开终端查看当前使用的内核">4.1
+打开终端，查看当前使用的内核</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">uname</span> -a<br></code></pre></td></tr></table></figure>
+<h2 id="查看所有内核选项">4.2 查看所有内核选项</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rpm -qa | grep kernel<br></code></pre></td></tr></table></figure>
+<h2 id="进入root模式删除多余内核">4.3 进入root模式，删除多余内核</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum remove 多余内核<br></code></pre></td></tr></table></figure>
+<h2 id="重新编译引导可不做">4.4 重新编译引导（可不做）</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">grub2-mkconfig -o /boot/grub2/grub.cfg<br></code></pre></td></tr></table></figure>
+<h2 id="重启系统">4.5 重启系统</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">reboot<br><span class="hljs-comment"># 或者</span><br>init 6<br></code></pre></td></tr></table></figure>
 
                 
               </div>

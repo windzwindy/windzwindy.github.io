@@ -270,19 +270,22 @@
             
               <div class="markdown-body">
                 
-                <h1 id="6-安装最新版ZSH-Shell"><a href="#6-安装最新版ZSH-Shell" class="headerlink" title="6. 安装最新版ZSH Shell"></a>6. 安装最新版ZSH Shell</h1><ul>
+                <h1 id="安装最新版zsh-shell">6. 安装最新版ZSH Shell</h1>
+<ul>
 <li>首先切换到root用户： <code>su -</code></li>
 </ul>
-<h2 id="6-1-卸载低版本zsh"><a href="#6-1-卸载低版本zsh" class="headerlink" title="6.1 卸载低版本zsh"></a>6.1 卸载低版本zsh</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 卸载当前版本</span><br>yum -y remove zsh<br></code></pre></td></tr></table></figure>
-
-<h2 id="6-2-下载源码"><a href="#6-2-下载源码" class="headerlink" title="6.2 下载源码"></a>6.2 下载源码</h2><ul>
-<li>源码：<a target="_blank" rel="noopener" href="https://zsh.sourceforge.io/Arc/source.html">https://zsh.sourceforge.io/Arc/source.html</a></li>
+<h2 id="卸载低版本zsh">6.1 卸载低版本zsh</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 卸载当前版本</span><br>yum -y remove zsh<br></code></pre></td></tr></table></figure>
+<h2 id="下载源码">6.2 下载源码</h2>
+<ul>
+<li>源码：https://zsh.sourceforge.io/Arc/source.html</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 如果没有wget就先安装wget</span><br>yum -y install wget<br><br><span class="hljs-comment"># 下载</span><br>wget https://sourceforge.net/projects/zsh/files/zsh/5.9/zsh-5.9.tar.xz<br><br><span class="hljs-comment"># 解压</span><br>tar -xvf zsh-5.9.tar.xz<br></code></pre></td></tr></table></figure>
+<h2 id="编译安装">6.3 编译安装</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装编译工具</span><br>yum install gcc perl-ExtUtils-MakeMaker<br>yum install ncurses-devel<br><br><span class="hljs-comment"># 进入源码目录</span><br><span class="hljs-built_in">cd</span> zsh-5.9<br><br><span class="hljs-comment"># 执行配置</span><br>./configure   <span class="hljs-comment"># 默认安装在：/usr/local/bin/zsh</span><br><br><span class="hljs-comment"># 编译和安装</span><br>make &amp;&amp; make install<br><br><span class="hljs-comment"># 添加信息</span><br>vim /etc/shells<br><br><span class="hljs-comment"># 在最后一行加上：</span><br>/usr/local/bin/zsh<br></code></pre></td></tr></table></figure>
+<h2 id="验证安装">6.4 验证安装</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 切换shell</span><br>chsh -s /usr/local/bin/zsh<br><br><span class="hljs-comment"># 查看版本信息</span><br>zsh --version<br><span class="hljs-comment"># zsh 5.9 (x86_64-pc-linux-gnu)</span><br></code></pre></td></tr></table></figure>
 
-<h2 id="6-3-编译安装"><a href="#6-3-编译安装" class="headerlink" title="6.3 编译安装"></a>6.3 编译安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装编译工具</span><br>yum install gcc perl-ExtUtils-MakeMaker<br>yum install ncurses-devel<br><br><span class="hljs-comment"># 进入源码目录</span><br><span class="hljs-built_in">cd</span> zsh-5.9<br><br><span class="hljs-comment"># 执行配置</span><br>./configure   <span class="hljs-comment"># 默认安装在：/usr/local/bin/zsh</span><br><br><span class="hljs-comment"># 编译和安装</span><br>make &amp;&amp; make install<br><br><span class="hljs-comment"># 添加信息</span><br>vim /etc/shells<br><br><span class="hljs-comment"># 在最后一行加上：</span><br>/usr/local/bin/zsh<br></code></pre></td></tr></table></figure>
-
-<h2 id="6-4-验证安装"><a href="#6-4-验证安装" class="headerlink" title="6.4 验证安装"></a>6.4 验证安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 切换shell</span><br>chsh -s /usr/local/bin/zsh<br><br><span class="hljs-comment"># 查看版本信息</span><br>zsh --version<br><span class="hljs-comment"># zsh 5.9 (x86_64-pc-linux-gnu)</span><br></code></pre></td></tr></table></figure>
                 
               </div>
             

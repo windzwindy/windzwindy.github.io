@@ -270,46 +270,47 @@
             
               <div class="markdown-body">
                 
-                <h1 id="ArchLinux-安装-yay"><a href="#ArchLinux-安装-yay" class="headerlink" title="ArchLinux 安装 yay"></a>ArchLinux 安装 yay</h1><blockquote>
+                <h1 id="archlinux-安装-yay">ArchLinux 安装 yay</h1>
+<blockquote>
 <p>参考文章：</p>
-<p>【1】：<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/archlinuxcn/">archlinuxcn | 镜像站使用帮助</a></p>
-<p>【2】：<a target="_blank" rel="noopener" href="https://www.archlinuxcn.org/archlinuxcn-keyring-manually-trust-farseerfc-key/">新系统中安装 archlinuxcn-keyring 包前需要手动信任 farseerfc 的 key</a></p>
+<p>【1】：<a
+target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/archlinuxcn/">archlinuxcn
+| 镜像站使用帮助</a></p>
+<p>【2】：<a
+target="_blank" rel="noopener" href="https://www.archlinuxcn.org/archlinuxcn-keyring-manually-trust-farseerfc-key/">新系统中安装
+archlinuxcn-keyring 包前需要手动信任 farseerfc 的 key</a></p>
 </blockquote>
-<h2 id="安装-yay"><a href="#安装-yay" class="headerlink" title="安装 yay"></a>安装 yay</h2><ul>
-<li><p>打开官网 <a target="_blank" rel="noopener" href="https://github.com/Jguer/yay">yay</a></p>
-</li>
-<li><p>找到 <code>Installation</code> ，在普通用户下进行操作</p>
-</li>
+<h2 id="安装-yay">安装 yay</h2>
+<ul>
+<li><p>打开官网 <a target="_blank" rel="noopener" href="https://github.com/Jguer/yay">yay</a></p></li>
+<li><p>找到 <code>Installation</code> ，在普通用户下进行操作</p></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装依赖</span><br>sudo pacman -S --needed git base-devel<br><span class="hljs-comment"># 下载仓库</span><br>git <span class="hljs-built_in">clone</span> https://aur.archlinux.org/yay.git --depth=1<br><span class="hljs-comment"># 切到目录 yay</span><br><span class="hljs-built_in">cd</span> yay<br><span class="hljs-comment"># 安装</span><br>makepkg -si<br></code></pre></td></tr></table></figure>
-
-<h2 id="添加-archlinuxcn-的镜像源"><a href="#添加-archlinuxcn-的镜像源" class="headerlink" title="添加 archlinuxcn 的镜像源"></a>添加 archlinuxcn 的镜像源</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 下载所有的镜像</span><br>sudo wget https://raw.githubusercontent.com/archlinuxcn/mirrorlist-repo/master/archlinuxcn-mirrorlist -O /etc/pacman.d/mirrorlistcn<br><span class="hljs-comment"># 去掉文件 /etc/pacman.d/mirrorlistcn 中的链接前的 # 号</span><br><span class="hljs-comment"># 例如 tsinghua , aliyun 等源</span><br></code></pre></td></tr></table></figure>
-<p>添加下面内容到  <code>/etc/pacman.conf</code> 文件中</p>
+<h2 id="添加-archlinuxcn-的镜像源">添加 archlinuxcn 的镜像源</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 下载所有的镜像</span><br>sudo wget https://raw.githubusercontent.com/archlinuxcn/mirrorlist-repo/master/archlinuxcn-mirrorlist -O /etc/pacman.d/mirrorlistcn<br><span class="hljs-comment"># 去掉文件 /etc/pacman.d/mirrorlistcn 中的链接前的 # 号</span><br><span class="hljs-comment"># 例如 tsinghua , aliyun 等源</span><br></code></pre></td></tr></table></figure>
+<p>添加下面内容到 <code>/etc/pacman.conf</code> 文件中</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs conf">[archlinuxcn]<br>Include = /etc/pacman.d/mirrorlistcn<br></code></pre></td></tr></table></figure>
-
 <p>手动信任 farseerfc 的 key</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo pacman-key --lsign-key <span class="hljs-string">&quot;farseerfc@archlinux.org&quot;</span><br></code></pre></td></tr></table></figure>
-
 <p>安装 archlinuxcn-keyring</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo pacman -Sy archlinuxcn-keyring<br></code></pre></td></tr></table></figure>
-
-<h2 id="安装-joshuto"><a href="#安装-joshuto" class="headerlink" title="安装 joshuto"></a>安装 <a target="_blank" rel="noopener" href="https://github.com/kamiyaa/joshuto">joshuto</a></h2><ul>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/kamiyaa/joshuto">joshuto</a> 是一个 终端文件管理器</p>
-</li>
-<li><p>类似的有 <a target="_blank" rel="noopener" href="https://github.com/ranger/ranger">ranger</a> , <a target="_blank" rel="noopener" href="https://github.com/sxyazi/yazi">yazi</a> 等等</p>
-</li>
-<li><p>安装</p>
-</li>
+<h2 id="安装-joshuto">安装 <a
+target="_blank" rel="noopener" href="https://github.com/kamiyaa/joshuto">joshuto</a></h2>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/kamiyaa/joshuto">joshuto</a> 是一个
+终端文件管理器</p></li>
+<li><p>类似的有 <a target="_blank" rel="noopener" href="https://github.com/ranger/ranger">ranger</a> ,
+<a target="_blank" rel="noopener" href="https://github.com/sxyazi/yazi">yazi</a> 等等</p></li>
+<li><p>安装</p></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yay -S joshuto<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>配置</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 创建配置文件夹</span><br><span class="hljs-built_in">mkdir</span> ~/.config/joshuto<br><span class="hljs-comment"># 创建配置文件</span><br><span class="hljs-built_in">touch</span> ~/.config/joshuto.toml<br></code></pre></td></tr></table></figure>
-
 <ul>
-<li>为配置文件 <code>~/.config/joshuto.toml</code> 添加下面内容，详细配置可看官方文档</li>
+<li>为配置文件 <code>~/.config/joshuto.toml</code>
+添加下面内容，详细配置可看官方文档</li>
 </ul>
 <figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs toml"><span class="hljs-comment"># ~/.config/joshuto.toml</span><br><span class="hljs-attr">scroll_offset</span> = <span class="hljs-number">6</span><br><span class="hljs-attr">xdg_open</span> = <span class="hljs-literal">false</span><br><span class="hljs-attr">xdg_open_fork</span> = <span class="hljs-literal">false</span><br><span class="hljs-attr">use_trash</span> = <span class="hljs-literal">false</span><br><span class="hljs-attr">watch_files</span> = <span class="hljs-literal">true</span><br><span class="hljs-attr">focus_on_create</span> = <span class="hljs-literal">true</span><br><span class="hljs-attr">max_preview_size</span> = <span class="hljs-number">2097152</span> <span class="hljs-comment"># 2MB</span><br><span class="hljs-section">[display]</span><br><span class="hljs-attr">mode</span> = <span class="hljs-string">&quot;default&quot;</span><br><span class="hljs-attr">collapse_preview</span> = <span class="hljs-literal">true</span><br><span class="hljs-attr">column_ratio</span> = [<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]<br><span class="hljs-attr">show_borders</span> = <span class="hljs-literal">true</span><br><span class="hljs-attr">show_hidden</span> = <span class="hljs-literal">true</span><br><span class="hljs-attr">show_icons</span> = <span class="hljs-literal">true</span><br><span class="hljs-attr">tilde_in_titlebar</span> = <span class="hljs-literal">true</span><br><span class="hljs-attr">line_number_style</span> = <span class="hljs-string">&quot;none&quot;</span><br><span class="hljs-attr">linemode</span> = <span class="hljs-string">&quot;size&quot;</span><br><span class="hljs-section">[display.sort]</span><br><span class="hljs-attr">sort_method</span> = <span class="hljs-string">&quot;natural&quot;</span><br><span class="hljs-attr">case_sensitive</span> = <span class="hljs-literal">true</span><br><span class="hljs-attr">directories_first</span> = <span class="hljs-literal">true</span><br><span class="hljs-attr">reverse</span> = <span class="hljs-literal">false</span><br><span class="hljs-section">[preview]</span><br><span class="hljs-attr">max_preview_size</span> = <span class="hljs-number">2097152</span><br><span class="hljs-attr">preview_script</span> = <span class="hljs-string">&quot;~/.config/joshuto/preview_file.sh&quot;</span><br><span class="hljs-section">[search]</span><br><span class="hljs-attr">string_case_sensitivity</span> = <span class="hljs-string">&quot;insensitive&quot;</span><br><span class="hljs-attr">glob_case_sensitivity</span> = <span class="hljs-string">&quot;sensitive&quot;</span><br><span class="hljs-attr">regex_case_sensitivity</span> = <span class="hljs-string">&quot;sensitive&quot;</span><br><span class="hljs-attr">fzf_case_sensitivity</span> = <span class="hljs-string">&quot;insensitive&quot;</span><br><span class="hljs-section">[cmd_aliases]</span><br><span class="hljs-section">[tab]</span><br><span class="hljs-attr">home_page</span> = <span class="hljs-string">&quot;home&quot;</span><br></code></pre></td></tr></table></figure>
 

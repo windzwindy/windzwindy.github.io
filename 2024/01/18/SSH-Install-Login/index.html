@@ -209,7 +209,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          822 字
+          814 字
         
       </span>
     
@@ -270,67 +270,82 @@
             
               <div class="markdown-body">
                 
-                <h1 id="使用-SSH-免密登录远程主机并禁用密码登录"><a href="#使用-SSH-免密登录远程主机并禁用密码登录" class="headerlink" title="使用 SSH 免密登录远程主机并禁用密码登录"></a>使用 SSH 免密登录远程主机并禁用密码登录</h1><blockquote>
+                <h1 id="使用-ssh-免密登录远程主机并禁用密码登录">使用 SSH
+免密登录远程主机并禁用密码登录</h1>
+<blockquote>
 <p>参考文章：</p>
-<p>【1】：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1335758">【SSH】使用 SSH 登录远程主机，并禁用密码登录</a></p>
-<p>【2】：<a target="_blank" rel="noopener" href="https://blog.csdn.net/li528405176/article/details/82810342">SSH 简介及两种远程登录的方法_ssh</a></p>
+<p>【1】：<a
+target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1335758">【SSH】使用
+SSH 登录远程主机，并禁用密码登录</a></p>
+<p>【2】：<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/li528405176/article/details/82810342">SSH
+简介及两种远程登录的方法_ssh</a></p>
 </blockquote>
 <p>方案如下：</p>
 <ul>
 <li>普通用户：密码 + 密钥</li>
 <li>root 用户：密码</li>
 </ul>
-<p>因为禁用 SSH 密码登录后如果出了问题，还可以用 SVN 普通密码登录，而 root 用户没有密钥是为了防止密钥泄露后攻击者远程直接登录到 root 用户</p>
-<h2 id="总流程"><a href="#总流程" class="headerlink" title="总流程"></a>总流程</h2><ol>
+<p>因为禁用 SSH 密码登录后如果出了问题，还可以用 SVN 普通密码登录，而
+root 用户没有密钥是为了防止密钥泄露后攻击者远程直接登录到 root 用户</p>
+<h2 id="总流程">总流程</h2>
+<ol type="1">
 <li>远程服务器安装 openssh 并启动服务</li>
-<li>本地生成 &#x3D;&#x3D;公钥&#x3D;&#x3D; 和 &#x3D;&#x3D;私钥&#x3D;&#x3D;</li>
+<li>本地生成 ==公钥== 和 ==私钥==</li>
 <li>复制公钥到服务器</li>
-<li>配置服务器的 <code>sshd_config</code> 指明公钥位置和禁用密码登录</li>
+<li>配置服务器的 <code>sshd_config</code>
+指明公钥位置和禁用密码登录</li>
 <li>本地连接服务器</li>
 </ol>
-<h2 id="远程主机配置-ssh"><a href="#远程主机配置-ssh" class="headerlink" title="远程主机配置 ssh"></a>远程主机配置 ssh</h2><h3 id="先使用密码登录到远程主机"><a href="#先使用密码登录到远程主机" class="headerlink" title="先使用密码登录到远程主机"></a>先使用密码登录到远程主机</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 输入密码后进入远程主机系统</span><br>ssh &#123;登录用户&#125;@&#123;ip地址&#125;<br></code></pre></td></tr></table></figure>
-
-<h3 id="在远程主机安装-openssh-服务并启动"><a href="#在远程主机安装-openssh-服务并启动" class="headerlink" title="在远程主机安装 openssh 服务并启动"></a>在远程主机安装 openssh 服务并启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装 openssh</span><br>sudo pacman -Sy openssh<br><span class="hljs-comment"># 开机启动 ssh</span><br>sudo systemctl <span class="hljs-built_in">enable</span> sshd<br><span class="hljs-comment"># 启动 ssh</span><br>sudo systemctl start sshd<br></code></pre></td></tr></table></figure>
-
-<h2 id="本地生成-SSH-秘钥并复制到服务器"><a href="#本地生成-SSH-秘钥并复制到服务器" class="headerlink" title="本地生成 SSH 秘钥并复制到服务器"></a>本地生成 SSH 秘钥并复制到服务器</h2><h3 id="生成本机系统的-ssh-公钥"><a href="#生成本机系统的-ssh-公钥" class="headerlink" title="生成本机系统的 ssh 公钥"></a>生成本机系统的 ssh 公钥</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># -t表示类型选项，这里采用rsa加密算法，会提示，直接回车就行</span><br>ssh-keygen -t rsa<br></code></pre></td></tr></table></figure>
-
-<p>然后根据提示一步步的按 enter 键即可（其中有一个提示是要求设置私钥口令 passphrase ，不设置则为空，这里看心情吧，如果不放心私钥的安全可以设置一下），执行结束以后会在下面的路径有两个文件：</p>
+<h2 id="远程主机配置-ssh">远程主机配置 ssh</h2>
+<h3 id="先使用密码登录到远程主机">先使用密码登录到远程主机</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 输入密码后进入远程主机系统</span><br>ssh &#123;登录用户&#125;@&#123;ip地址&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="在远程主机安装-openssh-服务并启动">在远程主机安装 openssh
+服务并启动</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装 openssh</span><br>sudo pacman -Sy openssh<br><span class="hljs-comment"># 开机启动 ssh</span><br>sudo systemctl <span class="hljs-built_in">enable</span> sshd<br><span class="hljs-comment"># 启动 ssh</span><br>sudo systemctl start sshd<br></code></pre></td></tr></table></figure>
+<h2 id="本地生成-ssh-秘钥并复制到服务器">本地生成 SSH
+秘钥并复制到服务器</h2>
+<h3 id="生成本机系统的-ssh-公钥">生成本机系统的 ssh 公钥</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># -t表示类型选项，这里采用rsa加密算法，会提示，直接回车就行</span><br>ssh-keygen -t rsa<br></code></pre></td></tr></table></figure>
+<p>然后根据提示一步步的按 enter 键即可（其中有一个提示是要求设置私钥口令
+passphrase
+，不设置则为空，这里看心情吧，如果不放心私钥的安全可以设置一下），执行结束以后会在下面的路径有两个文件：</p>
 <ul>
-<li><p>Linux 默认保存路径为 <code>~/.ssh/</code></p>
-</li>
-<li><p>Windows 对应为 <code>C:\Users\Administrator\.ssh\</code> （Administrator 是你的用户名）</p>
-</li>
+<li><p>Linux 默认保存路径为 <code>~/.ssh/</code></p></li>
+<li><p>Windows 对应为 <code>C:\Users\Administrator\.ssh\</code>
+（Administrator 是你的用户名）</p></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">~/.ssh/id_rsa.pub 	<span class="hljs-comment"># 公钥路径（存在服务器）</span><br>~/.ssh/id_rsa 		<span class="hljs-comment"># 私钥路径（存在本地用于连接服务器）</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="复制公钥"><a href="#复制公钥" class="headerlink" title="复制公钥"></a>复制公钥</h3><p>使用 <code>ssh-copy-id</code> 命令将公钥复制到远程主机。</p>
-<p><code>ssh-copy-id</code> 会将公钥写到远程主机的 <code>~/.ssh/authorized_keys</code> 文件中</p>
+<h3 id="复制公钥">复制公钥</h3>
+<p>使用 <code>ssh-copy-id</code> 命令将公钥复制到远程主机。</p>
+<p><code>ssh-copy-id</code> 会将公钥写到远程主机的
+<code>~/.ssh/authorized_keys</code> 文件中</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh-copy-id &#123;登录用户&#125;@&#123;ip地址&#125;<br></code></pre></td></tr></table></figure>
-
 <ul>
-<li>以上步骤执行完后应该在服务器的 <code>~/.ssh</code> 目录下有一个 <code>authorized_keys</code> 文件，没有也没得关系</li>
+<li>以上步骤执行完后应该在服务器的 <code>~/.ssh</code> 目录下有一个
+<code>authorized_keys</code> 文件，没有也没得关系</li>
 <li>主要是 <code>id_rsa_pub</code> 复制到了服务器上就行</li>
 <li>当然也可以用 <code>sftp</code> 工具复制上去</li>
 </ul>
-<h2 id="配置远程服务器-openssh"><a href="#配置远程服务器-openssh" class="headerlink" title="配置远程服务器 openssh"></a>配置远程服务器 openssh</h2><h3 id="查看远程主机的-ssh-配置"><a href="#查看远程主机的-ssh-配置" class="headerlink" title="查看远程主机的 ssh 配置"></a>查看远程主机的 ssh 配置</h3><p>配置文件目录 <code>/etc/ssh/</code> 下的 <code>sshd_config</code></p>
+<h2 id="配置远程服务器-openssh">配置远程服务器 openssh</h2>
+<h3 id="查看远程主机的-ssh-配置">查看远程主机的 ssh 配置</h3>
+<p>配置文件目录 <code>/etc/ssh/</code> 下的 <code>sshd_config</code></p>
 <p>对其进行以下参数进行设置：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 默认的认证公钥文件</span><br><span class="hljs-comment"># 其中 .ssh/authorized_keys 是你刚才复制到服务器上的公钥的位置</span><br><span class="hljs-comment"># 前面没加 / 表示从 ~ 目录开始 ？</span><br><span class="hljs-comment"># 所以最好把复制上去的公钥重命名为 authorized_keys 并放到 ~/.ssh 下</span><br>AuthorizedKeysFile .ssh/authorized_keys<br><br><span class="hljs-comment"># 禁用密码登录</span><br>PasswordAuthentication no<br></code></pre></td></tr></table></figure>
-
-<h3 id="设置文件和目录权限"><a href="#设置文件和目录权限" class="headerlink" title="设置文件和目录权限"></a>设置文件和目录权限</h3><h4 id="（1）设置-ssh目录权限"><a href="#（1）设置-ssh目录权限" class="headerlink" title="（1）设置.ssh目录权限"></a>（1）设置<code>.ssh</code>目录权限</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 文件拥有者拥有读、写、执行权限,其他组无权限</span><br><span class="hljs-built_in">chmod</span> 700 ~/.ssh/<br></code></pre></td></tr></table></figure>
-
-<h4 id="（2）设置authorized-keys文件权限"><a href="#（2）设置authorized-keys文件权限" class="headerlink" title="（2）设置authorized_keys文件权限"></a>（2）设置<code>authorized_keys</code>文件权限</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 文件拥有者拥有读、写权限，同群组和其他群组成员拥有读权限</span><br><span class="hljs-built_in">chmod</span> 644 ~/.ssh/authorized_keys<br></code></pre></td></tr></table></figure>
-
-<h4 id="（3）重启-sshd-服务"><a href="#（3）重启-sshd-服务" class="headerlink" title="（3）重启 sshd 服务"></a>（3）重启 sshd 服务</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 重启 sshd 服务</span><br>sudo systemctl restart sshd<br></code></pre></td></tr></table></figure>
-
-<h2 id="进行-ssh-方式登录远程主机"><a href="#进行-ssh-方式登录远程主机" class="headerlink" title="进行 ssh 方式登录远程主机"></a>进行 ssh 方式登录远程主机</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># ./id_rsa 是你的私钥位置，用于登录</span><br>ssh -i ./id_rsa &#123;登录用户&#125;@&#123;ip地址&#125;<br></code></pre></td></tr></table></figure>
-
+<h3 id="设置文件和目录权限">设置文件和目录权限</h3>
+<h4 id="设置.ssh目录权限">（1）设置<code>.ssh</code>目录权限</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 文件拥有者拥有读、写、执行权限,其他组无权限</span><br><span class="hljs-built_in">chmod</span> 700 ~/.ssh/<br></code></pre></td></tr></table></figure>
+<h4
+id="设置authorized_keys文件权限">（2）设置<code>authorized_keys</code>文件权限</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 文件拥有者拥有读、写权限，同群组和其他群组成员拥有读权限</span><br><span class="hljs-built_in">chmod</span> 644 ~/.ssh/authorized_keys<br></code></pre></td></tr></table></figure>
+<h4 id="重启-sshd-服务">（3）重启 sshd 服务</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 重启 sshd 服务</span><br>sudo systemctl restart sshd<br></code></pre></td></tr></table></figure>
+<h2 id="进行-ssh-方式登录远程主机">进行 ssh 方式登录远程主机</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># ./id_rsa 是你的私钥位置，用于登录</span><br>ssh -i ./id_rsa &#123;登录用户&#125;@&#123;ip地址&#125;<br></code></pre></td></tr></table></figure>
 <ul>
-<li><p>如果出现错误</p>
-</li>
-<li><p>删除本地主机的 .ssh 目录下的 known_hosts 再进行登录</p>
-</li>
-<li><p>再不行就上网找找解决方法</p>
-</li>
+<li><p>如果出现错误</p></li>
+<li><p>删除本地主机的 .ssh 目录下的 known_hosts 再进行登录</p></li>
+<li><p>再不行就上网找找解决方法</p></li>
 </ul>
 
                 

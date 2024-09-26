@@ -270,9 +270,11 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Arch-Linux-安装-VMWare-Tools"><a href="#Arch-Linux-安装-VMWare-Tools" class="headerlink" title="Arch Linux 安装 VMWare-Tools"></a>Arch Linux 安装 VMWare-Tools</h1><h2 id="第一步：安装软件"><a href="#第一步：安装软件" class="headerlink" title="第一步：安装软件"></a>第一步：安装软件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装 open-vm-tools</span><br>sudo pacman -S open-vm-tools<br><br><span class="hljs-comment"># 不安装这个就会复制粘贴失败</span><br>sudo pacman -S gtkmm3<br></code></pre></td></tr></table></figure>
-
-<h2 id="第二步：打开服务"><a href="#第二步：打开服务" class="headerlink" title="第二步：打开服务"></a>第二步：打开服务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo systemctl <span class="hljs-built_in">enable</span> vmtoolsd.service<br>sudo systemctl <span class="hljs-built_in">enable</span> vmware-vmblock-fuse.service<br></code></pre></td></tr></table></figure>
+                <h1 id="arch-linux-安装-vmware-tools">Arch Linux 安装 VMWare-Tools</h1>
+<h2 id="第一步安装软件">第一步：安装软件</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装 open-vm-tools</span><br>sudo pacman -S open-vm-tools<br><br><span class="hljs-comment"># 不安装这个就会复制粘贴失败</span><br>sudo pacman -S gtkmm3<br></code></pre></td></tr></table></figure>
+<h2 id="第二步打开服务">第二步：打开服务</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo systemctl <span class="hljs-built_in">enable</span> vmtoolsd.service<br>sudo systemctl <span class="hljs-built_in">enable</span> vmware-vmblock-fuse.service<br></code></pre></td></tr></table></figure>
 
                 
               </div>

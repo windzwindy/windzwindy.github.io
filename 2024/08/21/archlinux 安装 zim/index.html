@@ -270,29 +270,31 @@
             
               <div class="markdown-body">
                 
-                <h1 id="archlinux-安装-zim"><a href="#archlinux-安装-zim" class="headerlink" title="archlinux 安装 zim"></a>archlinux 安装 zim</h1><ul>
+                <h1 id="archlinux-安装-zim">archlinux 安装 zim</h1>
+<ul>
 <li>安装 <a target="_blank" rel="noopener" href="https://www.zsh.org/">zsh</a></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pacman -S zsh<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>切换 shell</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 切换当前用户的 shell</span><br>chsh -s /bin/zsh<br></code></pre></td></tr></table></figure>
-
 <ul>
-<li>打开 <a target="_blank" rel="noopener" href="https://github.com/zimfw/zimfw">Zim</a> 官网，找到 Automatic installation，复制命令安装</li>
+<li>打开 <a target="_blank" rel="noopener" href="https://github.com/zimfw/zimfw">Zim</a> 官网，找到
+Automatic installation，复制命令安装</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># use curl to install</span><br>curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh<br><br><span class="hljs-comment"># use wget to install</span><br>wget -nv -O - https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>更改 zshell 匹配规则</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 编辑 .zshrc文件</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;set nonomatch&quot;</span> &gt; ~/.zshrc<br></code></pre></td></tr></table></figure>
-
-<h2 id="安装-powerlevel10k"><a href="#安装-powerlevel10k" class="headerlink" title="安装 powerlevel10k"></a>安装 <a target="_blank" rel="noopener" href="https://github.com/romkatv/powerlevel10k">powerlevel10k</a></h2><p>打开官网：<a target="_blank" rel="noopener" href="https://github.com/romkatv/powerlevel10k">https://github.com/romkatv/powerlevel10k</a></p>
+<h2 id="安装-powerlevel10k">安装 <a
+target="_blank" rel="noopener" href="https://github.com/romkatv/powerlevel10k">powerlevel10k</a></h2>
+<p>打开官网：https://github.com/romkatv/powerlevel10k</p>
 <p>找到：<code>Installation</code> ，按照指示进行安装</p>
-<p>比如 <code>zim</code> ：Add <code>zmodule romkatv/powerlevel10k --use degit</code> to <code>~/.zimrc</code> and run <code>zimfw install</code>.</p>
+<p>比如 <code>zim</code> ：Add
+<code>zmodule romkatv/powerlevel10k --use degit</code> to
+<code>~/.zimrc</code> and run <code>zimfw install</code>.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 添加模块到配置文件</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;zmodule romkatv/powerlevel10k --use degit&#x27;</span> &gt;&gt; ~/.zimrc<br><span class="hljs-comment"># 安装模块</span><br>zimfw install<br></code></pre></td></tr></table></figure>
 
                 

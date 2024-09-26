@@ -213,7 +213,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          289 字
+          285 字
         
       </span>
     
@@ -274,22 +274,35 @@
             
               <div class="markdown-body">
                 
-                <h1 id="3-安装-XFCE-桌面环境"><a href="#3-安装-XFCE-桌面环境" class="headerlink" title="3. 安装 XFCE 桌面环境"></a>3. 安装 <a target="_blank" rel="noopener" href="https://www.gnome.org/">XFCE</a> 桌面环境</h1><p>桌面环境有很多，我选择 <a target="_blank" rel="noopener" href="https://www.xfce.org/">XFCE</a> ，因为相对于 <a target="_blank" rel="noopener" href="https://www.gnome.org/">GNOME</a> 来说快，相对于 <a target="_blank" rel="noopener" href="https://i3wm.org/">I3</a> 又方便。</p>
-<p>有个不𠀾孬的地方是 CentOS 用 XFCE 可能会有一些 VMTools 的问题，以前发现的</p>
+                <h1 id="安装-xfce-桌面环境">3. 安装 <a
+target="_blank" rel="noopener" href="https://www.gnome.org/">XFCE</a> 桌面环境</h1>
+<p>桌面环境有很多，我选择 <a target="_blank" rel="noopener" href="https://www.xfce.org/">XFCE</a>
+，因为相对于 <a target="_blank" rel="noopener" href="https://www.gnome.org/">GNOME</a> 来说快，相对于
+<a target="_blank" rel="noopener" href="https://i3wm.org/">I3</a> 又方便。</p>
+<p>有个不𠀾孬的地方是 CentOS 用 XFCE 可能会有一些 VMTools
+的问题，以前发现的</p>
 <p><a target="_blank" rel="noopener" href="https://i3wm.org/">I3</a> 也不错，不过我没用过</p>
-<h2 id="3-1-安装额外源"><a href="#3-1-安装额外源" class="headerlink" title="3.1 安装额外源"></a>3.1 安装额外源</h2><p>在 root 用户身份下输入以下命令</p>
+<h2 id="安装额外源">3.1 安装额外源</h2>
+<p>在 root 用户身份下输入以下命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装额外源</span><br>yum -y install epel-release<br><br><span class="hljs-comment"># 清理yum缓存</span><br>yum clean all<br><br><span class="hljs-comment"># 升级一下，不然下面的重建缓存命令用不了</span><br>yum upgrade -y<br><br><span class="hljs-comment"># 重建yum缓存</span><br>yum makecache<br></code></pre></td></tr></table></figure>
-
-<h2 id="3-2-安装xfce"><a href="#3-2-安装xfce" class="headerlink" title="3.2 安装xfce"></a>3.2 安装xfce</h2><p>在root用户身份下输入以下命令</p>
+<h2 id="安装xfce">3.2 安装xfce</h2>
+<p>在root用户身份下输入以下命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看组信息</span><br>yum grouplist<br><br><span class="hljs-comment"># 安装&quot;X Window system&quot;组</span><br>yum -y groupinstall <span class="hljs-string">&quot;X Window system&quot;</span><br><br><span class="hljs-comment"># 安装xfce组</span><br>yum -y groupinstall xfce<br><br><span class="hljs-comment"># 安装wqy文泉驿字体</span><br>yum -y install wqy*<br><br><span class="hljs-comment"># 设置默认的界面是graphical</span><br>systemctl set-default graphical.target<br><br><span class="hljs-comment"># 切换到图形界面</span><br>systemctl isolate graphical.target<br></code></pre></td></tr></table></figure>
-
 <blockquote>
-<p>安装好后应该会自动安装一个 <a target="_blank" rel="noopener" href="https://wiki.gnome.org/Projects/GDM">GDM - GNOME Display Manager</a> ，因为没有这个东西是没法进入 XFCE 桌面的。</p>
-<p>类似好像有 <a target="_blank" rel="noopener" href="https://github.com/canonical/lightdm">LightDM - Light Display Manager</a> 等等</p>
+<p>安装好后应该会自动安装一个 <a
+target="_blank" rel="noopener" href="https://wiki.gnome.org/Projects/GDM">GDM - GNOME Display
+Manager</a> ，因为没有这个东西是没法进入 XFCE 桌面的。</p>
+<p>类似好像有 <a target="_blank" rel="noopener" href="https://github.com/canonical/lightdm">LightDM -
+Light Display Manager</a> 等等</p>
 </blockquote>
-<h2 id="3-3-用xfce登陆hadoop"><a href="#3-3-用xfce登陆hadoop" class="headerlink" title="3.3 用xfce登陆hadoop"></a>3.3 用xfce登陆hadoop</h2><h3 id="3-3-1-点击hadoop用户"><a href="#3-3-1-点击hadoop用户" class="headerlink" title="3.3.1 点击hadoop用户"></a>3.3.1 点击hadoop用户</h3><p><img src="/images/CentOS_Install_XFCE-WM/1.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-3-2-点击小齿轮–-选择Xfce会话-，不然会进入Openbox没有界面"><a href="#3-3-2-点击小齿轮–-选择Xfce会话-，不然会进入Openbox没有界面" class="headerlink" title="3.3.2 &#x3D;&#x3D;点击小齿轮–&gt;选择Xfce会话&#x3D;&#x3D;，不然会进入Openbox没有界面"></a>3.3.2 &#x3D;&#x3D;点击小齿轮–&gt;选择Xfce会话&#x3D;&#x3D;，不然会进入Openbox没有界面</h3><p><img src="/images/CentOS_Install_XFCE-WM/2.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3-3-3-选择使用默认配置"><a href="#3-3-3-选择使用默认配置" class="headerlink" title="3.3.3 选择使用默认配置"></a>3.3.3 选择使用默认配置</h3><p><img src="/images/CentOS_Install_XFCE-WM/3.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="用xfce登陆hadoop">3.3 用xfce登陆hadoop</h2>
+<h3 id="点击hadoop用户">3.3.1 点击hadoop用户</h3>
+<p><img src="/images/CentOS_Install_XFCE-WM/1.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="点击小齿轮--选择xfce会话不然会进入openbox没有界面">3.3.2
+==点击小齿轮--&gt;选择Xfce会话==，不然会进入Openbox没有界面</h3>
+<p><img src="/images/CentOS_Install_XFCE-WM/2.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="选择使用默认配置">3.3.3 选择使用默认配置</h3>
+<p><img src="/images/CentOS_Install_XFCE-WM/3.png" srcset="/img/loading.gif" lazyload /></p>
 <p>至此xfce桌面环境安装完成！</p>
 
                 

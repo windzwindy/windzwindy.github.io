@@ -270,20 +270,27 @@
             
               <div class="markdown-body">
                 
-                <h1 id="ArchLinux-安装教程"><a href="#ArchLinux-安装教程" class="headerlink" title="ArchLinux 安装教程"></a>ArchLinux 安装教程</h1><blockquote>
+                <h1 id="archlinux-安装教程">ArchLinux 安装教程</h1>
+<blockquote>
 <p>参考文章：</p>
-<p>官方文档 ArchWiki<br>用 <a target="_blank" rel="noopener" href="https://rufus.ie/zh/">Rufus</a> , <a target="_blank" rel="noopener" href="https://www.ultraiso.com/">UltraISO</a> , <a target="_blank" rel="noopener" href="https://www.ventoy.net/cn/index.html">Ventoy</a> 等工具进行 U盘 启动制作</p>
+<p>官方文档 ArchWiki 用 <a target="_blank" rel="noopener" href="https://rufus.ie/zh/">Rufus</a> , <a
+target="_blank" rel="noopener" href="https://www.ultraiso.com">UltraISO</a> , <a
+target="_blank" rel="noopener" href="https://www.ventoy.net/cn/index.html">Ventoy</a> 等工具进行 U盘
+启动制作</p>
 <p>制作后开机进入启动盘选第一项</p>
 </blockquote>
-<h2 id="第一阶段：准备"><a href="#第一阶段：准备" class="headerlink" title="第一阶段：准备"></a>第一阶段：准备</h2><h3 id="1-开机后设置字体大小"><a href="#1-开机后设置字体大小" class="headerlink" title="1. 开机后设置字体大小"></a>1. 开机后设置字体大小</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">setfont /usr/share/kbd/consolefonts/LatGrkCyr-12x22.psfu.gz<br></code></pre></td></tr></table></figure>
-
-<h3 id="2-连接网络"><a href="#2-连接网络" class="headerlink" title="2. 连接网络"></a>2. 连接网络</h3><h4 id="第一种方法"><a href="#第一种方法" class="headerlink" title="第一种方法"></a>第一种方法</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs bash">ip <span class="hljs-built_in">link</span>					<span class="hljs-comment"># 查看网卡</span><br>rfkill unblock wifi		<span class="hljs-comment"># 取消禁用wifi设备（可选）</span><br>ip <span class="hljs-built_in">link</span> <span class="hljs-built_in">set</span> wlan0 up	<span class="hljs-comment"># 启动网卡</span><br>iwlist wlan0 scan		<span class="hljs-comment">#扫描wlan（也可以用wifi-menu）</span><br><span class="hljs-comment"># 很多结果可以用以下的管道命令</span><br>iwlist wlan0 scan | grep ESSID<br><br><span class="hljs-comment">#连接</span><br>wpa_passphrase 网络 密码 &gt; 文件名<br><span class="hljs-comment"># wpa_passphrase Wifi password &gt; internet.conf</span><br><br><span class="hljs-comment"># 连接格式，&#x27;&amp;&#x27;表示后台运行</span><br>wpa_supplicant -i interface -c configuration.conf &amp;<br><span class="hljs-comment"># wpa_supplicant -i Wifi -c internet.conf &amp;</span><br><br><span class="hljs-comment"># 此时还没有网络ping baidu.com没反应，还要动态分配ip地址</span><br><span class="hljs-comment"># Dynamic Host Configuration Protocol</span><br>dhcpcd &amp;<br><br><span class="hljs-comment"># 检查是否连接成功</span><br>ping baidu.com<br></code></pre></td></tr></table></figure>
-
-<h4 id="第二种方法"><a href="#第二种方法" class="headerlink" title="第二种方法"></a>第二种方法</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 输入iwctl进入交互式提示符（interactive prompt），配置并连接到互联网。</span><br>iwctl<br>station wlan0 scan<br>station wlan0 get-networks<br>station wlan0 connect &lt;network name&gt;<br>station wlan0 show<br>quit	<span class="hljs-comment"># 回到命令行</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="3-更新系统时间"><a href="#3-更新系统时间" class="headerlink" title="3. 更新系统时间"></a>3. 更新系统时间</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">timedatectl list-timezones | egrep -o <span class="hljs-string">&quot;Asia/B.*&quot;</span><br>timedatectl set-timezone <span class="hljs-string">&quot;Asia/Shanghai&quot;</span><br>timedatectl set-ntp <span class="hljs-literal">true</span>	<span class="hljs-comment"># ntp缩写（Network Time Protocol）</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="第二阶段：安装"><a href="#第二阶段：安装" class="headerlink" title="第二阶段：安装"></a>第二阶段：安装</h2><blockquote>
+<h2 id="第一阶段准备">第一阶段：准备</h2>
+<h3 id="开机后设置字体大小">1. 开机后设置字体大小</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">setfont /usr/share/kbd/consolefonts/LatGrkCyr-12x22.psfu.gz<br></code></pre></td></tr></table></figure>
+<h3 id="连接网络">2. 连接网络</h3>
+<h4 id="第一种方法">第一种方法</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs bash">ip <span class="hljs-built_in">link</span>					<span class="hljs-comment"># 查看网卡</span><br>rfkill unblock wifi		<span class="hljs-comment"># 取消禁用wifi设备（可选）</span><br>ip <span class="hljs-built_in">link</span> <span class="hljs-built_in">set</span> wlan0 up	<span class="hljs-comment"># 启动网卡</span><br>iwlist wlan0 scan		<span class="hljs-comment">#扫描wlan（也可以用wifi-menu）</span><br><span class="hljs-comment"># 很多结果可以用以下的管道命令</span><br>iwlist wlan0 scan | grep ESSID<br><br><span class="hljs-comment">#连接</span><br>wpa_passphrase 网络 密码 &gt; 文件名<br><span class="hljs-comment"># wpa_passphrase Wifi password &gt; internet.conf</span><br><br><span class="hljs-comment"># 连接格式，&#x27;&amp;&#x27;表示后台运行</span><br>wpa_supplicant -i interface -c configuration.conf &amp;<br><span class="hljs-comment"># wpa_supplicant -i Wifi -c internet.conf &amp;</span><br><br><span class="hljs-comment"># 此时还没有网络ping baidu.com没反应，还要动态分配ip地址</span><br><span class="hljs-comment"># Dynamic Host Configuration Protocol</span><br>dhcpcd &amp;<br><br><span class="hljs-comment"># 检查是否连接成功</span><br>ping baidu.com<br></code></pre></td></tr></table></figure>
+<h4 id="第二种方法">第二种方法</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 输入iwctl进入交互式提示符（interactive prompt），配置并连接到互联网。</span><br>iwctl<br>station wlan0 scan<br>station wlan0 get-networks<br>station wlan0 connect &lt;network name&gt;<br>station wlan0 show<br>quit	<span class="hljs-comment"># 回到命令行</span><br></code></pre></td></tr></table></figure>
+<h3 id="更新系统时间">3. 更新系统时间</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">timedatectl list-timezones | egrep -o <span class="hljs-string">&quot;Asia/B.*&quot;</span><br>timedatectl set-timezone <span class="hljs-string">&quot;Asia/Shanghai&quot;</span><br>timedatectl set-ntp <span class="hljs-literal">true</span>	<span class="hljs-comment"># ntp缩写（Network Time Protocol）</span><br></code></pre></td></tr></table></figure>
+<h2 id="第二阶段安装">第二阶段：安装</h2>
+<blockquote>
 <p>引导和硬盘格式有且不仅限几种流行方式（描述不清请见谅……）</p>
 <p>BIOS + MBR （以前电脑常见）</p>
 <p>BIOS + GPT （少见）</p>
@@ -292,97 +299,113 @@
 <p>我这里采用 UEFI + GPT</p>
 <p>如果你的电脑不支持 UEFI 可以选用 BIOS + MBR 或者 BIOS + GPT</p>
 </blockquote>
-<h3 id="1-对硬盘分区以及格式化"><a href="#1-对硬盘分区以及格式化" class="headerlink" title="1. 对硬盘分区以及格式化"></a>1. 对硬盘分区以及格式化</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看要安装 ArchLinux 系统的硬盘代号，一般是 /dev/xxx</span><br>fdisk -l<br><br><span class="hljs-comment"># s 参数是 script 的意思，/dev/xxx 是要安装系统的硬盘代号</span><br>parted -s /dev/xxx mklabel gpt<br><span class="hljs-comment"># 如果是 MBR 则用下面的命令</span><br>parted -s /dev/xxx mklabel msdos<br><br><span class="hljs-comment"># 开始分区操作</span><br>fdisk /dev/xxx<br></code></pre></td></tr></table></figure>
+<h3 id="对硬盘分区以及格式化">1. 对硬盘分区以及格式化</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看要安装 ArchLinux 系统的硬盘代号，一般是 /dev/xxx</span><br>fdisk -l<br><br><span class="hljs-comment"># s 参数是 script 的意思，/dev/xxx 是要安装系统的硬盘代号</span><br>parted -s /dev/xxx mklabel gpt<br><span class="hljs-comment"># 如果是 MBR 则用下面的命令</span><br>parted -s /dev/xxx mklabel msdos<br><br><span class="hljs-comment"># 开始分区操作</span><br>fdisk /dev/xxx<br></code></pre></td></tr></table></figure>
+<h4 id="分区操作">分区操作</h4>
+<h5 id="布局参考">布局参考</h5>
+<h6 id="uefi-with-gpt-其实只要一个主分区和一个-efi-分区就够了">UEFI with
+GPT ==（其实只要一个主分区和一个 EFI 分区就够了……）==</h6>
+<table>
 
-<h4 id="分区操作"><a href="#分区操作" class="headerlink" title="分区操作"></a>分区操作</h4><h5 id="布局参考"><a href="#布局参考" class="headerlink" title="布局参考"></a>布局参考</h5><h6 id="UEFI-with-GPT-（其实只要一个主分区和一个-EFI-分区就够了……）"><a href="#UEFI-with-GPT-（其实只要一个主分区和一个-EFI-分区就够了……）" class="headerlink" title="UEFI with GPT &#x3D;&#x3D;（其实只要一个主分区和一个 EFI 分区就够了……）&#x3D;&#x3D;"></a>UEFI with GPT &#x3D;&#x3D;（其实只要一个主分区和一个 EFI 分区就够了……）&#x3D;&#x3D;</h6><table>
 <thead>
 <tr>
-<th align="center">Mount point</th>
-<th align="center">Partition</th>
-<th align="center">Partition type</th>
-<th align="center">Suggested size</th>
+<th style="text-align: center;">Mount point</th>
+<th style="text-align: center;">Partition</th>
+<th style="text-align: center;">Partition type</th>
+<th style="text-align: center;">Suggested size</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">&#x2F;mnt&#x2F;boot or &#x2F;mnt&#x2F;efi</td>
-<td align="center">&#x2F;dev&#x2F;efi_system_partition</td>
-<td align="center">EFI system partition</td>
-<td align="center">At least 300 MiB</td>
+<tbody>
+<tr>
+<td style="text-align: center;">/mnt/boot or /mnt/efi</td>
+<td style="text-align: center;">/dev/efi_system_partition</td>
+<td style="text-align: center;">EFI system partition</td>
+<td style="text-align: center;">At least 300 MiB</td>
 </tr>
 <tr>
-<td align="center">[SWAP]</td>
-<td align="center">&#x2F;dev&#x2F;swap_partition</td>
-<td align="center">Linux swap</td>
-<td align="center">More than 512MiB</td>
+<td style="text-align: center;">[SWAP]</td>
+<td style="text-align: center;">/dev/swap_partition</td>
+<td style="text-align: center;">Linux swap</td>
+<td style="text-align: center;">More than 512MiB</td>
 </tr>
 <tr>
-<td align="center">&#x2F;mnt</td>
-<td align="center">&#x2F;dev&#x2F;root_partition</td>
-<td align="center">Linux x86-64 root (&#x2F;)</td>
-<td align="center">Remainder of the device</td>
+<td style="text-align: center;">/mnt</td>
+<td style="text-align: center;">/dev/root_partition</td>
+<td style="text-align: center;">Linux x86-64 root (/)</td>
+<td style="text-align: center;">Remainder of the device</td>
 </tr>
-</tbody></table>
-<h6 id="BIOS-with-MBR-（其实只要一个主分区就够了……）"><a href="#BIOS-with-MBR-（其实只要一个主分区就够了……）" class="headerlink" title="BIOS with MBR &#x3D;&#x3D;（其实只要一个主分区就够了……）&#x3D;&#x3D;"></a>BIOS with MBR &#x3D;&#x3D;（其实只要一个主分区就够了……）&#x3D;&#x3D;</h6><table>
+</tbody>
+</table>
+<h6 id="bios-with-mbr-其实只要一个主分区就够了">BIOS with MBR
+==（其实只要一个主分区就够了……）==</h6>
+<table style="width:100%;">
+
 <thead>
 <tr>
-<th align="center">Mount point</th>
-<th align="center">Partition</th>
-<th align="center">Partition type</th>
-<th align="center">Suggested size</th>
+<th style="text-align: center;">Mount point</th>
+<th style="text-align: center;">Partition</th>
+<th style="text-align: center;">Partition type</th>
+<th style="text-align: center;">Suggested size</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">[SWAP]</td>
-<td align="center">&#x2F;dev&#x2F;swap_partition</td>
-<td align="center">Linux swap</td>
-<td align="center">More than 512MiB</td>
+<tbody>
+<tr>
+<td style="text-align: center;">[SWAP]</td>
+<td style="text-align: center;">/dev/swap_partition</td>
+<td style="text-align: center;">Linux swap</td>
+<td style="text-align: center;">More than 512MiB</td>
 </tr>
 <tr>
-<td align="center">&#x2F;mnt</td>
-<td align="center">&#x2F;dev&#x2F;root_partition</td>
-<td align="center">Linux</td>
-<td align="center">Remainder of the device</td>
+<td style="text-align: center;">/mnt</td>
+<td style="text-align: center;">/dev/root_partition</td>
+<td style="text-align: center;">Linux</td>
+<td style="text-align: center;">Remainder of the device</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <ul>
 <li>我这里创建两个分区（EFI分区 和 主分区）</li>
 </ul>
-<h5 id="创建第一个分区"><a href="#创建第一个分区" class="headerlink" title="创建第一个分区"></a>创建第一个分区</h5><p><code>我想创建一个编号为1，容量为 1GiB 的EFI分区，即 BOOT/EFI 分区，大小看着给</code></p>
+<h5 id="创建第一个分区">创建第一个分区</h5>
+<p><code>我想创建一个编号为1，容量为 1GiB 的EFI分区，即 BOOT/EFI 分区，大小看着给</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash">Command (m <span class="hljs-keyword">for</span> <span class="hljs-built_in">help</span>): m                   <span class="hljs-comment"># 按&#x27;m&#x27;看帮助</span><br>Command (m <span class="hljs-keyword">for</span> <span class="hljs-built_in">help</span>): n                   <span class="hljs-comment"># 按&#x27;n&#x27;新建分区</span><br>Partiton number (1-128, default 1):       <span class="hljs-comment"># 分区编号（默认是1），按回车</span><br>First sector (xx-xxxx, default xx):       <span class="hljs-comment"># 开始扇区（默认是xx），按回车</span><br><br><span class="hljs-comment"># 结束扇区（默认是xxxx），你可心加或减，</span><br><span class="hljs-comment"># 所以输入 ‘+1G’ 然后按回车</span><br><br>Last sector, +/-sectors or +/-size&#123;K,M,G,T,P&#125; (xx-xxxx, default xxxx): +1G<br><br>Created a new partiton 1 of <span class="hljs-built_in">type</span> <span class="hljs-string">&#x27;Linux filesystem&#x27;</span> and of size 1 GiB.<br>Partition <span class="hljs-comment">#1 contains a vfat signature.</span><br><br>Do you want to remove the signature? [Y]es/[N]o: Y<br><br>The signature will be removed by a write <span class="hljs-built_in">command</span>.<br></code></pre></td></tr></table></figure>
-
-<h5 id="创建第二个分区"><a href="#创建第二个分区" class="headerlink" title="创建第二个分区"></a>创建第二个分区</h5><p><code>我想创建一个编号为2，容量为全部的主分区</code></p>
+<h5 id="创建第二个分区">创建第二个分区</h5>
+<p><code>我想创建一个编号为2，容量为全部的主分区</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">Command (m <span class="hljs-keyword">for</span> <span class="hljs-built_in">help</span>): n                                 					<span class="hljs-comment"># 回车即可</span><br>Partition number (2-128, default 2):                  						<span class="hljs-comment"># 回车即可</span><br>First sector (xx-xxxx, default xx):                     					<span class="hljs-comment"># 回车即可</span><br>Last sector, +/-sectors or +/-size&#123;K,M,G,T,P&#125; (xx-xxxx, default xxxx):      <span class="hljs-comment"># 回车即可</span><br><br>Created a new partiton 2 of <span class="hljs-built_in">type</span> <span class="hljs-string">&#x27;Linux filesystem&#x27;</span> and of size x GiB.<br>Partition <span class="hljs-comment">#2 contains a ext4 signature.</span><br><br>Do you want to remove the signature? [Y]es/[N]o: Y<br><br>The signature will be removed by a write <span class="hljs-built_in">command</span>.<br></code></pre></td></tr></table></figure>
-
-<h5 id="分区创建完成"><a href="#分区创建完成" class="headerlink" title="分区创建完成"></a>分区创建完成</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">Command (m <span class="hljs-keyword">for</span> <span class="hljs-built_in">help</span>): p             <span class="hljs-comment"># 输入 ‘p’ 来确认分区信息内容</span><br><br>----------------内容---------------<br>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br><br><br>Command (m <span class="hljs-keyword">for</span> <span class="hljs-built_in">help</span>): w             <span class="hljs-comment"># 输入 ‘w’ 来写入分区</span><br>The partition table has been altered.<br>Calling ioctl() to re-rend partition table.<br>Syncing disks.<br></code></pre></td></tr></table></figure>
-
-<h5 id="分区写入完成"><a href="#分区写入完成" class="headerlink" title="分区写入完成"></a>分区写入完成</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 对分区1 ( BOOT/EFI 分区 ) 进行格式化，引导分区必需要求 fat 格式</span><br>mkfs.fat -F32 引导分区         <span class="hljs-comment"># mkfs 是 Make File System 的缩写</span><br><br><span class="hljs-comment"># 对分区2 ( 主分区 ) 进行格式化，一般为 ext4 格式</span><br>mkfs.ext4 主分区<br></code></pre></td></tr></table></figure>
-
-<h3 id="2-配置pacman"><a href="#2-配置pacman" class="headerlink" title="2. 配置pacman"></a>2. 配置<code>pacman</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /etc/pacman.conf<br><br>住下看会找到 [core]、[extra]、[community] 这是软件源，在 vim 按 gf 进入文件<br><br>把 <span class="hljs-comment">#China源前面的注释去了</span><br></code></pre></td></tr></table></figure>
-
+<h5 id="分区创建完成">分区创建完成</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">Command (m <span class="hljs-keyword">for</span> <span class="hljs-built_in">help</span>): p             <span class="hljs-comment"># 输入 ‘p’ 来确认分区信息内容</span><br><br>----------------内容---------------<br>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br><br><br>Command (m <span class="hljs-keyword">for</span> <span class="hljs-built_in">help</span>): w             <span class="hljs-comment"># 输入 ‘w’ 来写入分区</span><br>The partition table has been altered.<br>Calling ioctl() to re-rend partition table.<br>Syncing disks.<br></code></pre></td></tr></table></figure>
+<h5 id="分区写入完成">分区写入完成</h5>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 对分区1 ( BOOT/EFI 分区 ) 进行格式化，引导分区必需要求 fat 格式</span><br>mkfs.fat -F32 引导分区         <span class="hljs-comment"># mkfs 是 Make File System 的缩写</span><br><br><span class="hljs-comment"># 对分区2 ( 主分区 ) 进行格式化，一般为 ext4 格式</span><br>mkfs.ext4 主分区<br></code></pre></td></tr></table></figure>
+<h3 id="配置pacman">2. 配置<code>pacman</code></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim /etc/pacman.conf<br><br>住下看会找到 [core]、[extra]、[community] 这是软件源，在 vim 按 gf 进入文件<br><br>把 <span class="hljs-comment">#China源前面的注释去了</span><br></code></pre></td></tr></table></figure>
 <ul>
 <li>新版好像连上网就自动配置好源了</li>
 </ul>
-<h3 id="3-正式安装Arch-Linux"><a href="#3-正式安装Arch-Linux" class="headerlink" title="3. 正式安装Arch Linux"></a>3. 正式安装Arch Linux</h3><h4 id="先挂载要安装的主分区和引导分区"><a href="#先挂载要安装的主分区和引导分区" class="headerlink" title="先挂载要安装的主分区和引导分区"></a>先挂载要安装的主分区和引导分区</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看要安装系统的硬盘代号</span><br>fdisk -l<br><br>mount /dev/主分区 /mnt                 <span class="hljs-comment"># 挂载主分区到/mnt</span><br><span class="hljs-built_in">ls</span> /mnt<br><br><span class="hljs-built_in">mkdir</span> -p /mnt/boot/efi					   <span class="hljs-comment"># 创建 /mnt/boot/efi 文件夹</span><br>mount /dev/引导分区 /mnt/boot/efi			<span class="hljs-comment"># 挂载引导分区到 /mnt/boot/efi</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="正式安装"><a href="#正式安装" class="headerlink" title="正式安装"></a>正式安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装前先初始化 pacman</span><br>pacman-key --init<br>pacman-key --populate archlinux<br><br><span class="hljs-comment"># 更新 keyring (不用？)</span><br>pacman -Syyu<br><br><span class="hljs-comment"># 安装系统软件到 /dev/xxx 挂载点 即 /mnt 下</span><br><span class="hljs-comment"># 也可以安装 linux-lts linux-lts-headers</span><br><span class="hljs-comment"># vi vim nano zsh 等是一些常用软件，可以不安装……</span><br>pacstrap /mnt base base-devel linux linux-headers linux-firmware vi vim nano dhcpcd openssh grub zsh bash-completion dosfstools parted net-tools wget curl git<br></code></pre></td></tr></table></figure>
-
-<h4 id="安装结束后的一些操作"><a href="#安装结束后的一些操作" class="headerlink" title="安装结束后的一些操作"></a>安装结束后的一些操作</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 生成 fs 表</span><br><span class="hljs-comment"># fstab 是 File Systems Table 的缩写，gen 是 generate 的缩写</span><br><span class="hljs-comment"># U是 UUIDs 的缩写，UUID 是 Universally Unique Identifier (通用唯一识别码)</span><br>genfstab -U /mnt &gt; /mnt/etc/fstab<br><br><span class="hljs-comment"># 查看一下有没有东西</span><br><span class="hljs-built_in">cat</span> /mnt/etc/fstab<br></code></pre></td></tr></table></figure>
-
-<h3 id="3-安装完成后的一些操作"><a href="#3-安装完成后的一些操作" class="headerlink" title="3.  安装完成后的一些操作"></a>3.  安装完成后的一些操作</h3><h4 id="时间配置"><a href="#时间配置" class="headerlink" title="时间配置"></a>时间配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#进入系统</span><br>arch-chroot /mnt<br><br><span class="hljs-comment">#创建软链接</span><br><span class="hljs-built_in">ln</span> -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime<br><br><span class="hljs-comment">#写入时间</span><br>hwclock --systohc<br></code></pre></td></tr></table></figure>
-
-<h4 id="本地化"><a href="#本地化" class="headerlink" title="本地化"></a>本地化</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 编辑 locale.gen 文件，把 #en_US.UTF-8 UTF-8 前的 # 号去掉</span><br>vim /etc/locale.gen<br><span class="hljs-comment"># 输入以下内容</span><br>en_US.UTF-8 UTF-8<br><br><span class="hljs-comment"># 本地化</span><br>locale-gen<br><br><span class="hljs-comment"># 编辑本地语言</span><br>vim /etc/locale.conf<br><span class="hljs-comment"># 输入以下内容</span><br>LANG=en_US.UTF-8<br><br><span class="hljs-comment"># 编辑主机名</span><br>vim /etc/hostname<br><span class="hljs-comment"># 输入主机名，我的主机名是 wind</span><br>wind<br><br><span class="hljs-comment"># 编辑hosts文件</span><br>vim /etc/hosts<br><span class="hljs-comment"># 输入以下内容</span><br>127.0.0.1       localhost<br>::1             localhost<br>127.0.1.1       wind.localdomain    wind<br></code></pre></td></tr></table></figure>
-
-<h4 id="更改密码"><a href="#更改密码" class="headerlink" title="更改密码"></a>更改密码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 更改密码</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;password&quot;</span> | passwd --stdin root<br><span class="hljs-comment"># 或用 passwd</span><br>passwd<br></code></pre></td></tr></table></figure>
-
-<h4 id="安装启动相关的程序"><a href="#安装启动相关的程序" class="headerlink" title="安装启动相关的程序"></a>安装启动相关的程序</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">pacman-key --init<br>pacman-key --populate archlinux<br><br><span class="hljs-comment"># 此处的 “intel-ucode” 是根据你的处理器来决定的，可能是 “amd-ucode”，我的就是 amd</span><br>pacman -S grub efibootmgr amd-ucode os-prober<br><br><span class="hljs-comment"># 创建 grub 文件夹</span><br><span class="hljs-built_in">mkdir</span> /boot/grub<br><br><span class="hljs-comment"># 生成 grub 配置文件到 grub.cfg 中</span><br>grub-mkconfig &gt; /boot/grub/grub.cfg<br></code></pre></td></tr></table></figure>
-
-<h4 id="安装grub"><a href="#安装grub" class="headerlink" title="安装grub"></a>安装grub</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装前先确认系统架构</span><br><span class="hljs-built_in">uname</span> -m<br><br><span class="hljs-comment"># 我的是 x86_64 结构，和 uefi+gpt 的</span><br>grub-install --target=x86_64-efi --efi-directory=/boot/efi<br><br><span class="hljs-comment"># 如果是 bios+mbr 的话用，/dev/xxx 是你的硬盘</span><br>grub-install --targe=i386-pc /dev/xxx<br></code></pre></td></tr></table></figure>
-
-<h4 id="最后的一些工作"><a href="#最后的一些工作" class="headerlink" title="最后的一些工作"></a>最后的一些工作</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 启动 dhcpcd 服务自动生成 /etc/resolv.conf</span><br>systemctl start dhcpcd<br>systemctl <span class="hljs-built_in">enable</span> dhcpcd<br><span class="hljs-comment"># 如果你用 NetworkManager 的话自行配置</span><br><br><span class="hljs-comment"># 重启</span><br>reboot<br></code></pre></td></tr></table></figure>
-
-<h4 id="安装完成，重启后"><a href="#安装完成，重启后" class="headerlink" title="安装完成，重启后"></a>安装完成，重启后</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 开机设置字体大一点</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;setfont LatGrkCyr-12x22&#x27;</span> &gt;&gt; /etc/bashrc<br></code></pre></td></tr></table></figure>
-
-<h4 id="新建一个用户"><a href="#新建一个用户" class="headerlink" title="新建一个用户"></a>新建一个用户</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># -G 是指定用户所在组，-s 是指定用户所用的 shell</span><br>useradd -m wind -G wheel -s /usr/bin/bash<br><span class="hljs-comment"># 修改用户密码</span><br>passwd wind<br>visudo<br><span class="hljs-comment"># 把 %wheel ALL=(ALL:ALL) ALL 前的注释去掉，如果没有就添加</span><br></code></pre></td></tr></table></figure>
+<h3 id="正式安装arch-linux">3. 正式安装Arch Linux</h3>
+<h4
+id="先挂载要安装的主分区和引导分区">先挂载要安装的主分区和引导分区</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看要安装系统的硬盘代号</span><br>fdisk -l<br><br>mount /dev/主分区 /mnt                 <span class="hljs-comment"># 挂载主分区到/mnt</span><br><span class="hljs-built_in">ls</span> /mnt<br><br><span class="hljs-built_in">mkdir</span> -p /mnt/boot/efi					   <span class="hljs-comment"># 创建 /mnt/boot/efi 文件夹</span><br>mount /dev/引导分区 /mnt/boot/efi			<span class="hljs-comment"># 挂载引导分区到 /mnt/boot/efi</span><br></code></pre></td></tr></table></figure>
+<h4 id="正式安装">正式安装</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装前先初始化 pacman</span><br>pacman-key --init<br>pacman-key --populate archlinux<br><br><span class="hljs-comment"># 更新 keyring (不用？)</span><br>pacman -Syyu<br><br><span class="hljs-comment"># 安装系统软件到 /dev/xxx 挂载点 即 /mnt 下</span><br><span class="hljs-comment"># 也可以安装 linux-lts linux-lts-headers</span><br><span class="hljs-comment"># vi vim nano zsh 等是一些常用软件，可以不安装……</span><br>pacstrap /mnt base base-devel linux linux-headers linux-firmware vi vim nano dhcpcd openssh grub zsh bash-completion dosfstools parted net-tools wget curl git<br></code></pre></td></tr></table></figure>
+<h4 id="安装结束后的一些操作">安装结束后的一些操作</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 生成 fs 表</span><br><span class="hljs-comment"># fstab 是 File Systems Table 的缩写，gen 是 generate 的缩写</span><br><span class="hljs-comment"># U是 UUIDs 的缩写，UUID 是 Universally Unique Identifier (通用唯一识别码)</span><br>genfstab -U /mnt &gt; /mnt/etc/fstab<br><br><span class="hljs-comment"># 查看一下有没有东西</span><br><span class="hljs-built_in">cat</span> /mnt/etc/fstab<br></code></pre></td></tr></table></figure>
+<h3 id="安装完成后的一些操作">3. 安装完成后的一些操作</h3>
+<h4 id="时间配置">时间配置</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#进入系统</span><br>arch-chroot /mnt<br><br><span class="hljs-comment">#创建软链接</span><br><span class="hljs-built_in">ln</span> -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime<br><br><span class="hljs-comment">#写入时间</span><br>hwclock --systohc<br></code></pre></td></tr></table></figure>
+<h4 id="本地化">本地化</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 编辑 locale.gen 文件，把 #en_US.UTF-8 UTF-8 前的 # 号去掉</span><br>vim /etc/locale.gen<br><span class="hljs-comment"># 输入以下内容</span><br>en_US.UTF-8 UTF-8<br><br><span class="hljs-comment"># 本地化</span><br>locale-gen<br><br><span class="hljs-comment"># 编辑本地语言</span><br>vim /etc/locale.conf<br><span class="hljs-comment"># 输入以下内容</span><br>LANG=en_US.UTF-8<br><br><span class="hljs-comment"># 编辑主机名</span><br>vim /etc/hostname<br><span class="hljs-comment"># 输入主机名，我的主机名是 wind</span><br>wind<br><br><span class="hljs-comment"># 编辑hosts文件</span><br>vim /etc/hosts<br><span class="hljs-comment"># 输入以下内容</span><br>127.0.0.1       localhost<br>::1             localhost<br>127.0.1.1       wind.localdomain    wind<br></code></pre></td></tr></table></figure>
+<h4 id="更改密码">更改密码</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 更改密码</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;password&quot;</span> | passwd --stdin root<br><span class="hljs-comment"># 或用 passwd</span><br>passwd<br></code></pre></td></tr></table></figure>
+<h4 id="安装启动相关的程序">安装启动相关的程序</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash">pacman-key --init<br>pacman-key --populate archlinux<br><br><span class="hljs-comment"># 此处的 “intel-ucode” 是根据你的处理器来决定的，可能是 “amd-ucode”，我的就是 amd</span><br>pacman -S grub efibootmgr amd-ucode os-prober<br><br><span class="hljs-comment"># 创建 grub 文件夹</span><br><span class="hljs-built_in">mkdir</span> /boot/grub<br><br><span class="hljs-comment"># 生成 grub 配置文件到 grub.cfg 中</span><br>grub-mkconfig &gt; /boot/grub/grub.cfg<br></code></pre></td></tr></table></figure>
+<h4 id="安装grub">安装grub</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装前先确认系统架构</span><br><span class="hljs-built_in">uname</span> -m<br><br><span class="hljs-comment"># 我的是 x86_64 结构，和 uefi+gpt 的</span><br>grub-install --target=x86_64-efi --efi-directory=/boot/efi<br><br><span class="hljs-comment"># 如果是 bios+mbr 的话用，/dev/xxx 是你的硬盘</span><br>grub-install --targe=i386-pc /dev/xxx<br></code></pre></td></tr></table></figure>
+<h4 id="最后的一些工作">最后的一些工作</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 启动 dhcpcd 服务自动生成 /etc/resolv.conf</span><br>systemctl start dhcpcd<br>systemctl <span class="hljs-built_in">enable</span> dhcpcd<br><span class="hljs-comment"># 如果你用 NetworkManager 的话自行配置</span><br><br><span class="hljs-comment"># 重启</span><br>reboot<br></code></pre></td></tr></table></figure>
+<h4 id="安装完成重启后">安装完成，重启后</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 开机设置字体大一点</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;setfont LatGrkCyr-12x22&#x27;</span> &gt;&gt; /etc/bashrc<br></code></pre></td></tr></table></figure>
+<h4 id="新建一个用户">新建一个用户</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># -G 是指定用户所在组，-s 是指定用户所用的 shell</span><br>useradd -m wind -G wheel -s /usr/bin/bash<br><span class="hljs-comment"># 修改用户密码</span><br>passwd wind<br>visudo<br><span class="hljs-comment"># 把 %wheel ALL=(ALL:ALL) ALL 前的注释去掉，如果没有就添加</span><br></code></pre></td></tr></table></figure>
 
                 
               </div>

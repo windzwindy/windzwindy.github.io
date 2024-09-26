@@ -209,7 +209,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          834 字
+          832 字
         
       </span>
     
@@ -270,82 +270,88 @@
             
               <div class="markdown-body">
                 
-                <h1 id="ArchLinux-安装-i3-Windows-Manager"><a href="#ArchLinux-安装-i3-Windows-Manager" class="headerlink" title="ArchLinux 安装 i3 Windows Manager"></a>ArchLinux 安装 i3 Windows Manager</h1><blockquote>
+                <h1 id="archlinux-安装-i3-windows-manager">ArchLinux 安装 i3 Windows
+Manager</h1>
+<blockquote>
 <p>参考文章：</p>
-<p>【1】：<a target="_blank" rel="noopener" href="https://www.zzxworld.com/posts/install_and_config_desktop_environment_on_arch_linux">Arch Linux 安装并配置桌面环境</a></p>
+<p>【1】：<a
+target="_blank" rel="noopener" href="https://www.zzxworld.com/posts/install_and_config_desktop_environment_on_arch_linux">Arch
+Linux 安装并配置桌面环境</a></p>
 <p>【2】：互联网</p>
 </blockquote>
-<h2 id="安装-xorg"><a href="#安装-xorg" class="headerlink" title="安装 xorg"></a>安装 xorg</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># xorg-server,xorg-xinit : xorg 基本配件</span><br><span class="hljs-comment"># xfce4-terminal : 终端软件，可以用 kitty 代替</span><br><span class="hljs-comment"># i3 : i3 所有套件</span><br><span class="hljs-comment"># archlinux-wallpaper : archlinux 壁纸</span><br>sudo pacman -S xorg-server xorg-xinit xfce4-terminal i3 archlinux-wallpaper<br></code></pre></td></tr></table></figure>
-
-<h2 id="编辑-xinit"><a href="#编辑-xinit" class="headerlink" title="编辑 xinit"></a>编辑 xinit</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">cp</span> -a /etc/X11/xinit/xinitrc .<br>sudo <span class="hljs-built_in">chown</span> wind xinitrc<br>sudo <span class="hljs-built_in">chgrp</span> wind xinitrc<br><span class="hljs-built_in">mv</span> xinitrc .xinitrc<br><br>vim .xinitrc<br><br><span class="hljs-comment"># 删除下面</span><br>twm &amp;<br>xclock -geometry 50x50-1+1 &amp;<br>xterm -geometry 80x50+494+51 &amp;<br>xterm -geometry 80x20+494-0 &amp;<br><span class="hljs-built_in">exec</span> xterm -geometry 80x66+0+0 -name login<br><br><span class="hljs-comment"># 添加下面</span><br><span class="hljs-built_in">exec</span> i3<br></code></pre></td></tr></table></figure>
-
+<h2 id="安装-xorg">安装 xorg</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># xorg-server,xorg-xinit : xorg 基本配件</span><br><span class="hljs-comment"># xfce4-terminal : 终端软件，可以用 kitty 代替</span><br><span class="hljs-comment"># i3 : i3 所有套件</span><br><span class="hljs-comment"># archlinux-wallpaper : archlinux 壁纸</span><br>sudo pacman -S xorg-server xorg-xinit xfce4-terminal i3 archlinux-wallpaper<br></code></pre></td></tr></table></figure>
+<h2 id="编辑-xinit">编辑 xinit</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">cp</span> -a /etc/X11/xinit/xinitrc .<br>sudo <span class="hljs-built_in">chown</span> wind xinitrc<br>sudo <span class="hljs-built_in">chgrp</span> wind xinitrc<br><span class="hljs-built_in">mv</span> xinitrc .xinitrc<br><br>vim .xinitrc<br><br><span class="hljs-comment"># 删除下面</span><br>twm &amp;<br>xclock -geometry 50x50-1+1 &amp;<br>xterm -geometry 80x50+494+51 &amp;<br>xterm -geometry 80x20+494-0 &amp;<br><span class="hljs-built_in">exec</span> xterm -geometry 80x66+0+0 -name login<br><br><span class="hljs-comment"># 添加下面</span><br><span class="hljs-built_in">exec</span> i3<br></code></pre></td></tr></table></figure>
 <ul>
-<li>以上命令可以用一句命令就行 <code>echo &#39;exec i3&#39; &gt; ~/.xinitrc</code></li>
+<li>以上命令可以用一句命令就行
+<code>echo 'exec i3' &gt; ~/.xinitrc</code></li>
 </ul>
-<h2 id="进入-i3-并配置"><a href="#进入-i3-并配置" class="headerlink" title="进入 i3 并配置"></a>进入 i3 并配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 进入i3</span><br>startx<br></code></pre></td></tr></table></figure>
-
+<h2 id="进入-i3-并配置">进入 i3 并配置</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 进入i3</span><br>startx<br></code></pre></td></tr></table></figure>
 <p>两次回车后按 <code>win + enter</code> 键启动终端</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># rofi : 搜索软件，类似于 windows 上的 listary</span><br><span class="hljs-comment"># picom : 特效软件</span><br><span class="hljs-comment"># tint2 : 状态栏软件，可以用 polybar 替代</span><br><span class="hljs-comment"># feh : 设置背景图片软件</span><br>sudo pacman -S rofi picom tint2 feh<br></code></pre></td></tr></table></figure>
-
 <p>配置 i3</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs bash">vim .config/i3/config<br><br><span class="hljs-comment"># 更改以下行</span><br><span class="hljs-comment"># bindsym $mod+d exec --no-startup-id dmenu_run</span><br>bindsym <span class="hljs-variable">$mod</span>+d <span class="hljs-built_in">exec</span> --no-startup-id rofi -show run<br><br><span class="hljs-comment"># 停用 i3bar 并添加新的指令</span><br><span class="hljs-comment"># bar &#123;</span><br><span class="hljs-comment">#         status_command i3status</span><br><span class="hljs-comment"># &#125;</span><br>gaps inner 2                             <span class="hljs-comment"># 设置边距</span><br>gaps outer 2                             <span class="hljs-comment"># 同上</span><br>bindsym <span class="hljs-variable">$mod</span>+n border normal             <span class="hljs-comment"># win/alt + n 正常边距</span><br>bindsym <span class="hljs-variable">$mod</span>+u border none<br><span class="hljs-comment"># 开启特效，需配置</span><br><span class="hljs-built_in">exec</span> --no-startup-id picom --no-vsync<br><span class="hljs-comment"># 开启状态栏</span><br><span class="hljs-built_in">exec</span> --no-startup-id tint2<br><span class="hljs-comment"># 如果不时虚拟机不用添加下面一行</span><br><span class="hljs-built_in">exec</span> --no-startup-id vmware-user-suid-wrapper<br><span class="hljs-comment"># 指定 i3 壁纸</span><br><span class="hljs-built_in">exec</span> --no-startup-id feh --randomize --bg-fill /usr/share/backgrounds/archlinux<br><span class="hljs-comment"># 开启音量</span><br><span class="hljs-built_in">exec</span> --no-startup-id pulseaudio --start -D<br></code></pre></td></tr></table></figure>
-
 <p>最后退出 i3</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">i3 <span class="hljs-built_in">exit</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="安装-LightDM"><a href="#安装-LightDM" class="headerlink" title="安装 LightDM"></a>安装 LightDM</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/canonical/lightdm">LightDM</a> 是一个 X display manager，是一个登录图形界面，i3 是一个桌面管理器，不是同一个东西</li>
+<h2 id="安装-lightdm">安装 LightDM</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/canonical/lightdm">LightDM</a> 是一个 X
+display manager，是一个登录图形界面，i3
+是一个桌面管理器，不是同一个东西</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装 lightdm</span><br>sudo pacman -S lightdm lightdm-gtk-greeter<br><span class="hljs-comment"># 设置开机自启动 lightdm 服务</span><br>sudo systemctl <span class="hljs-built_in">enable</span> lightdm.service<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>重启系统，开机就会直接看到图形化的登录界面了：右上角可以切换桌面进行登录</li>
 </ul>
-<h2 id="更改-lightdm-背景"><a href="#更改-lightdm-背景" class="headerlink" title="更改 lightdm 背景"></a>更改 <code>lightdm</code> 背景</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 编辑配置文件</span><br>sudo vim /etc/lightdm/lightdm-gtk-greeter.conf<br></code></pre></td></tr></table></figure>
-
-<p>添加以下内容，其中 <code>/usr/share/backgrounds/archlinux/snow.jpg</code> 是壁纸文件：</p>
+<h2 id="更改-lightdm-背景">更改 <code>lightdm</code> 背景</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 编辑配置文件</span><br>sudo vim /etc/lightdm/lightdm-gtk-greeter.conf<br></code></pre></td></tr></table></figure>
+<p>添加以下内容，其中
+<code>/usr/share/backgrounds/archlinux/snow.jpg</code> 是壁纸文件：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs conf">[greeter]<br>background=/usr/share/backgrounds/archlinux/snow.jpg<br></code></pre></td></tr></table></figure>
-
-<h2 id="更改屏幕分辨率"><a href="#更改屏幕分辨率" class="headerlink" title="更改屏幕分辨率"></a>更改屏幕分辨率</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装 xrandr</span><br>sudo pacman -S xorg-xrandr<br><span class="hljs-comment"># 查看信息</span><br>xrandr<br><span class="hljs-comment"># 为 Virtual-1 设备改变分辨率：1920x1080</span><br>xrandr --output Virtual-1 --mode 1920x1080<br></code></pre></td></tr></table></figure>
-
-<h2 id="配置终端字体"><a href="#配置终端字体" class="headerlink" title="配置终端字体"></a>配置终端字体</h2><h3 id="下载安装字体"><a href="#下载安装字体" class="headerlink" title="下载安装字体"></a>下载安装字体</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装 unzip 解压工具，wget 下载工具</span><br>sudo pacman -S unzip wget<br><span class="hljs-comment"># 创建字体目录存放字体，其中 NerdFonts 名字随意，但 fonts 名字不随意</span><br><span class="hljs-built_in">mkdir</span> ~/.local/share/fonts/NerdFonts<br><span class="hljs-comment"># 下载 nerdfonts 字体</span><br>wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/CascadiaCode.zip -O ~/.local/share/fonts/NerdFonts/CascadiaCode.zip<br><br><span class="hljs-comment"># 到目录</span><br><span class="hljs-built_in">cd</span> ~/.local/share/fonts/NerdFonts<br><span class="hljs-comment"># 解压字体</span><br>unzip CascadiaCode.zip<br><span class="hljs-comment"># 删除用不上的文件</span><br><span class="hljs-built_in">rm</span> -rf CascadiaCode.zip README.md LICENSE<br></code></pre></td></tr></table></figure>
-
-<h3 id="配置终端"><a href="#配置终端" class="headerlink" title="配置终端"></a>配置终端</h3><ul>
-<li>我用的是 <a target="_blank" rel="noopener" href="https://github.com/kovidgoyal/kitty">kitty</a> 终端，可以参照 <a target="_blank" rel="noopener" href="https://sw.kovidgoyal.net/kitty/conf/">官方文档</a></li>
+<h2 id="更改屏幕分辨率">更改屏幕分辨率</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装 xrandr</span><br>sudo pacman -S xorg-xrandr<br><span class="hljs-comment"># 查看信息</span><br>xrandr<br><span class="hljs-comment"># 为 Virtual-1 设备改变分辨率：1920x1080</span><br>xrandr --output Virtual-1 --mode 1920x1080<br></code></pre></td></tr></table></figure>
+<h2 id="配置终端字体">配置终端字体</h2>
+<h3 id="下载安装字体">下载安装字体</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装 unzip 解压工具，wget 下载工具</span><br>sudo pacman -S unzip wget<br><span class="hljs-comment"># 创建字体目录存放字体，其中 NerdFonts 名字随意，但 fonts 名字不随意</span><br><span class="hljs-built_in">mkdir</span> ~/.local/share/fonts/NerdFonts<br><span class="hljs-comment"># 下载 nerdfonts 字体</span><br>wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/CascadiaCode.zip -O ~/.local/share/fonts/NerdFonts/CascadiaCode.zip<br><br><span class="hljs-comment"># 到目录</span><br><span class="hljs-built_in">cd</span> ~/.local/share/fonts/NerdFonts<br><span class="hljs-comment"># 解压字体</span><br>unzip CascadiaCode.zip<br><span class="hljs-comment"># 删除用不上的文件</span><br><span class="hljs-built_in">rm</span> -rf CascadiaCode.zip README.md LICENSE<br></code></pre></td></tr></table></figure>
+<h3 id="配置终端">配置终端</h3>
+<ul>
+<li>我用的是 <a target="_blank" rel="noopener" href="https://github.com/kovidgoyal/kitty">kitty</a>
+终端，可以参照 <a
+target="_blank" rel="noopener" href="https://sw.kovidgoyal.net/kitty/conf/">官方文档</a></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 创建 kitty 配置文件</span><br><span class="hljs-built_in">mkdir</span> -p ~/.config/kitty<br>vim ~/.config/kitty/kitty.conf<br></code></pre></td></tr></table></figure>
-
 <p>输入以下内容：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs conf">font_family      CascadiaCode<br>bold_font        auto<br>italic_font      auto<br>bold_italic_font auto<br>font_size 15.0<br></code></pre></td></tr></table></figure>
-
-<h2 id="更改状态栏从-tint2-到-polybar"><a href="#更改状态栏从-tint2-到-polybar" class="headerlink" title="更改状态栏从 tint2 到 polybar"></a>更改状态栏从 tint2 到 <a target="_blank" rel="noopener" href="https://github.com/polybar/polybar">polybar</a></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 删除 tint2</span><br>sudo pacman -Rsn tint2<br><span class="hljs-comment"># 删除 tint2 的配置文件</span><br><span class="hljs-built_in">rm</span> -rf ~/.config/tint2<br><br><span class="hljs-comment"># 安装 polybar</span><br>sudo pacman -S polybar<br><br><span class="hljs-comment"># 退出 i3 重新登录</span><br>i3 <span class="hljs-built_in">exit</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="配置-polybar"><a href="#配置-polybar" class="headerlink" title="配置 polybar"></a>配置 <a target="_blank" rel="noopener" href="https://github.com/polybar/polybar">polybar</a></h3><ul>
+<h2 id="更改状态栏从-tint2-到-polybar">更改状态栏从 tint2 到 <a
+target="_blank" rel="noopener" href="https://github.com/polybar/polybar">polybar</a></h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 删除 tint2</span><br>sudo pacman -Rsn tint2<br><span class="hljs-comment"># 删除 tint2 的配置文件</span><br><span class="hljs-built_in">rm</span> -rf ~/.config/tint2<br><br><span class="hljs-comment"># 安装 polybar</span><br>sudo pacman -S polybar<br><br><span class="hljs-comment"># 退出 i3 重新登录</span><br>i3 <span class="hljs-built_in">exit</span><br></code></pre></td></tr></table></figure>
+<h3 id="配置-polybar">配置 <a
+target="_blank" rel="noopener" href="https://github.com/polybar/polybar">polybar</a></h3>
+<ul>
 <li>可以参照官方文档</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 创建配置目录</span><br><span class="hljs-built_in">mkdir</span> -p ~/.config/polybar<br><span class="hljs-comment"># 复制官方配置文件到配置目录</span><br><span class="hljs-built_in">cp</span> /etc/polybar/config.ini ~/.config/polybar<br><span class="hljs-comment"># 如果有权限问题，更改权限为 user 其中 user 是你的用户名和你所在的用户组</span><br><span class="hljs-built_in">chown</span> user config.ini<br><span class="hljs-built_in">chgrp</span> user config.ini<br></code></pre></td></tr></table></figure>
-
 <ul>
-<li>编写 <a target="_blank" rel="noopener" href="https://github.com/polybar/polybar">polybar</a> 启动脚本，例如：launch.sh</li>
-<li>其中 <code>mybar</code> 是 <code>config.ini</code> 文件中的 bar 名字</li>
+<li>编写 <a target="_blank" rel="noopener" href="https://github.com/polybar/polybar">polybar</a>
+启动脚本，例如：launch.sh</li>
+<li>其中 <code>mybar</code> 是 <code>config.ini</code> 文件中的 bar
+名字</li>
 </ul>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-meta">#!/usr/bin/env bash</span><br><br><span class="hljs-comment">#launch.sh</span><br><br><span class="hljs-comment"># Terminate already running bar instances</span><br><span class="hljs-comment"># If all your bars have ipc enabled, you can use </span><br>polybar-msg cmd quit<br><span class="hljs-comment"># Otherwise you can use the nuclear option:</span><br><span class="hljs-comment"># killall -q polybar</span><br><br><span class="hljs-comment"># Launch mybar</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;---&quot;</span> | <span class="hljs-built_in">tee</span> -a /tmp/polybar.log<br>polybar mybar 2&gt;&amp;1 | <span class="hljs-built_in">tee</span> -a /tmp/polybar.log &amp; <span class="hljs-built_in">disown</span><br><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Bars launched...&quot;</span><br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>给其他用户执行 launch.sh 脚本的权限，不然启动不了</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span> +x <span class="hljs-variable">$HOME</span>/.config/polybar/launch.sh<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>更改 i3 配置文件启动 launch.sh 脚本</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 删除 tint2</span><br><span class="hljs-built_in">exec</span> --no-startup-id tint2<br><span class="hljs-comment"># 添加下面内容</span><br>exec_always --no-startup-id <span class="hljs-variable">$HOME</span>/.config/polybar/launch.sh<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>退出 i3 重新登录</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">i3 <span class="hljs-built_in">exit</span><br></code></pre></td></tr></table></figure>
-
 
                 
               </div>

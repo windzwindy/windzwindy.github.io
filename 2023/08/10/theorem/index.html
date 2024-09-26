@@ -208,7 +208,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          169 字
+          159 字
         
       </span>
     
@@ -269,20 +269,45 @@
             
               <div class="markdown-body">
                 
-                <h1 id="泰勒公式的推导过程"><a href="#泰勒公式的推导过程" class="headerlink" title="泰勒公式的推导过程"></a>泰勒公式的推导过程</h1><p><font size="5px">设函数 $x_0 &#x3D; 0$ 即 $x$ 在 $0$ 处有不限的导数，则</font></p>
-<p>\begin{align}</p>
-<p>\large<br>{f(x)} &amp;\large{&#x3D; a_0 (x-x_0)^0 + a_1 (x-x_0)^1 + a_2 (x-x_0)^2 + \cdots + a_n (x-x_0)^n + \cdots}<br>\ \<br>&amp;\large{&#x3D; a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \cdots + a_n x^n + \cdots}</p>
-<p>\end{align}</p>
+                <h1 id="泰勒公式的推导过程">泰勒公式的推导过程</h1>
+<p><font size="5px">设函数 <span class="math inline">\(x_0 = 0\)</span>
+即 <span class="math inline">\(x\)</span> 在 <span
+class="math inline">\(0\)</span> 处有不限的导数，则</font></p>
+<p><span class="math display">\[\begin{align}
+
+\large
+{f(x)} &amp;\large{= a_0 (x-x_0)^0 + a_1 (x-x_0)^1 + a_2 (x-x_0)^2 +
+\cdots + a_n (x-x_0)^n + \cdots}
+\\ \\
+&amp;\large{= a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \cdots + a_n x^n +
+\cdots}
+
+\end{align}\]</span></p>
 <p><font size="5px">我们可以轻易知道：</font></p>
-<p>\begin{align}</p>
-<p>\large{<br>f(0)} &amp; \large{&#x3D; a_0 &#x3D; 0! a_0}				\<br>\large{f’(0)} &amp; \large{&#x3D; a_1 &#x3D; 1! a_1}		\<br>\large{f’’(0)} &amp; \large{&#x3D; 2 a_2 &#x3D; 2! a_2}	\<br>\large{f’’’(0)} &amp; \large{&#x3D; 6 a_3 &#x3D; 3! a_3}	\</p>
-<p>\vdots								\<br>\vdots								\</p>
-<p>f^{(n)}(0) &amp; \large{&#x3D; n! a_n} </p>
-<p>\end{align}</p>
+<p><span class="math display">\[\begin{align}
+
+\large{
+f(0)} &amp; \large{= a_0 = 0! a_0}              \\
+\large{f&#39;(0)} &amp; \large{= a_1 = 1! a_1}      \\
+\large{f&#39;&#39;(0)} &amp; \large{= 2 a_2 = 2! a_2}   \\
+\large{f&#39;&#39;&#39;(0)} &amp; \large{= 6 a_3 = 3! a_3}  \\
+
+\vdots                              \\
+\vdots                              \\
+
+f^{(n)}(0) &amp; \large{= n! a_n}
+
+\end{align}\]</span></p>
 <p><font size="5px">故：</font></p>
-<p>$\large {a_n &#x3D; \dfrac {f^{(n)}(0)} {n !} }$</p>
+<p><span class="math inline">\(\large {a_n = \dfrac {f^{(n)}(0)} {n !}
+}\)</span></p>
 <p><font size="5px">从而：</font></p>
-<p>$\large{f(x) &#x3D; \sum_{i&#x3D;0}^n a_i , x_i + R(x)} ,,,, (R(x) 为余项)$<br>$\$<br>$\large{其中：}$<br>$\$<br>$\large{a_i &#x3D; \dfrac {f^{(i)} (0)} {i !}}$</p>
+<p><span class="math inline">\(\large{f(x) = \sum_{i=0}^n a_i \, x_i +
+R(x)} \,\,\,\, (R(x) 为余项)\)</span> <span
+class="math inline">\(\\\)</span> <span
+class="math inline">\(\large{其中：}\)</span> <span
+class="math inline">\(\\\)</span> <span class="math inline">\(\large{a_i
+= \dfrac {f^{(i)} (0)} {i !}}\)</span></p>
 
                 
               </div>

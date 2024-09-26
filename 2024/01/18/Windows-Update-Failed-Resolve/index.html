@@ -273,8 +273,10 @@
 <p>参考文章：</p>
 <p>互联网</p>
 </blockquote>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>在命令提示符(管理员)下键入以下命令：</p>
-<p><code>sfc /SCANNOW </code> 及 <code>Dism /Online /Cleanup-Image /ScanHealth</code></p>
+<h2 id="解决方法">解决方法</h2>
+<p>在命令提示符(管理员)下键入以下命令：</p>
+<p><code>sfc /SCANNOW</code> 及
+<code>Dism /Online /Cleanup-Image /ScanHealth</code></p>
 <p>这条命令将扫描全部系统文件并和官方系统文件对比，扫描计算机中的不一致情况。</p>
 <p><code>Dism /Online /Cleanup-Image /CheckHealth</code></p>
 <p>这条命令必须在前一条命令执行完以后，发现系统文件有损坏时使用。</p>

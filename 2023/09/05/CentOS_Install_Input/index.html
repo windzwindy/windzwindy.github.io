@@ -215,7 +215,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          126 字
+          123 字
         
       </span>
     
@@ -276,21 +276,28 @@
             
               <div class="markdown-body">
                 
-                <h1 id="5-安装fctix输入法"><a href="#5-安装fctix输入法" class="headerlink" title="5. 安装fctix输入法"></a>5. 安装fctix输入法</h1><h2 id="5-1-安装额外源（如果安装了可忽略此步骤）"><a href="#5-1-安装额外源（如果安装了可忽略此步骤）" class="headerlink" title="5.1 安装额外源（如果安装了可忽略此步骤）"></a>5.1 安装额外源（如果安装了可忽略此步骤）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum -y install epel-release<br></code></pre></td></tr></table></figure>
-
-<h2 id="5-2-卸载ibus（此步是为了避免冲突）"><a href="#5-2-卸载ibus（此步是为了避免冲突）" class="headerlink" title="5.2 卸载ibus（此步是为了避免冲突）"></a>5.2 卸载ibus（此步是为了避免冲突）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rpm -e --nodeps ibus<br></code></pre></td></tr></table></figure>
-
-<h2 id="5-3-安装fcitx组件和im-chooser"><a href="#5-3-安装fcitx组件和im-chooser" class="headerlink" title="5.3 安装fcitx组件和im-chooser"></a>5.3 安装fcitx组件和im-chooser</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum -y install fcitx*<br>yum -y install im-chooser<br></code></pre></td></tr></table></figure>
-
-<h2 id="5-4-选择fcitx输入法"><a href="#5-4-选择fcitx输入法" class="headerlink" title="5.4 选择fcitx输入法"></a>5.4 选择fcitx输入法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">im-chooser<br></code></pre></td></tr></table></figure>
-
-<p><img src="/images/CentOS_Install_Input/1.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="5-5-自定义需要的输入法"><a href="#5-5-自定义需要的输入法" class="headerlink" title="5.5 自定义需要的输入法"></a>5.5 自定义需要的输入法</h2><p><img src="/images/CentOS_Install_Input/2.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="5-6-最后的工作"><a href="#5-6-最后的工作" class="headerlink" title="5.6 最后的工作"></a>5.6 最后的工作</h2><h3 id="5-6-1-在-etc-bashrc和-zshrc中加入以下代码"><a href="#5-6-1-在-etc-bashrc和-zshrc中加入以下代码" class="headerlink" title="5.6.1 在&#x2F;etc&#x2F;bashrc和~&#x2F;.zshrc中加入以下代码"></a>5.6.1 在&#x2F;etc&#x2F;bashrc和~&#x2F;.zshrc中加入以下代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 在/etc/bashrc和~/.zshrc中加入以下代码</span><br><span class="hljs-built_in">export</span> GTK_IM_MODULE=fcitx<br><span class="hljs-built_in">export</span> QT_IM_MODULE=fcitx<br><span class="hljs-built_in">export</span> XMODIFIERS=@im=fcitx<br></code></pre></td></tr></table></figure>
-
-<h3 id="5-6-2添加fcitx开机启动"><a href="#5-6-2添加fcitx开机启动" class="headerlink" title="5.6.2添加fcitx开机启动"></a>5.6.2添加fcitx开机启动</h3><p><img src="/images/CentOS_Install_Input/3.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/images/CentOS_Install_Input/4.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/images/CentOS_Install_Input/5.png" srcset="/img/loading.gif" lazyload></p>
+                <h1 id="安装fctix输入法">5. 安装fctix输入法</h1>
+<h2 id="安装额外源如果安装了可忽略此步骤">5.1
+安装额外源（如果安装了可忽略此步骤）</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum -y install epel-release<br></code></pre></td></tr></table></figure>
+<h2 id="卸载ibus此步是为了避免冲突">5.2
+卸载ibus（此步是为了避免冲突）</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">rpm -e --nodeps ibus<br></code></pre></td></tr></table></figure>
+<h2 id="安装fcitx组件和im-chooser">5.3 安装fcitx组件和im-chooser</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum -y install fcitx*<br>yum -y install im-chooser<br></code></pre></td></tr></table></figure>
+<h2 id="选择fcitx输入法">5.4 选择fcitx输入法</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">im-chooser<br></code></pre></td></tr></table></figure>
+<p><img src="/images/CentOS_Install_Input/1.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="自定义需要的输入法">5.5 自定义需要的输入法</h2>
+<p><img src="/images/CentOS_Install_Input/2.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="最后的工作">5.6 最后的工作</h2>
+<h3 id="在etcbashrc和.zshrc中加入以下代码">5.6.1
+在/etc/bashrc和~/.zshrc中加入以下代码</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 在/etc/bashrc和~/.zshrc中加入以下代码</span><br><span class="hljs-built_in">export</span> GTK_IM_MODULE=fcitx<br><span class="hljs-built_in">export</span> QT_IM_MODULE=fcitx<br><span class="hljs-built_in">export</span> XMODIFIERS=@im=fcitx<br></code></pre></td></tr></table></figure>
+<h3 id="添加fcitx开机启动">5.6.2添加fcitx开机启动</h3>
+<p><img src="/images/CentOS_Install_Input/3.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="/images/CentOS_Install_Input/4.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="/images/CentOS_Install_Input/5.png" srcset="/img/loading.gif" lazyload /></p>
 <p>至此fcitx输入法安装完成！</p>
 
                 

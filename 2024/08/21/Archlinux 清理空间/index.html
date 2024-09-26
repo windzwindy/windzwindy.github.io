@@ -270,15 +270,18 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Archlinux-清理空间"><a href="#Archlinux-清理空间" class="headerlink" title="Archlinux 清理空间"></a>Archlinux 清理空间</h1><blockquote>
+                <h1 id="archlinux-清理空间">Archlinux 清理空间</h1>
+<blockquote>
 <p>参考文章：</p>
-<p>【1】：<a target="_blank" rel="noopener" href="https://blog.csdn.net/chizhan8323/article/details/100731941">archlinux清理一下空间_chizhan8323的博客-CSDN博客</a></p>
-<p>【2】：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41601836/article/details/106519865">pacman的包管理命令_pacman清理无用的包-CSDN博客</a></p>
+<p>【1】：<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/chizhan8323/article/details/100731941">archlinux清理一下空间_chizhan8323的博客-CSDN博客</a></p>
+<p>【2】：<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41601836/article/details/106519865">pacman的包管理命令_pacman清理无用的包-CSDN博客</a></p>
 </blockquote>
-<h2 id="日志清理"><a href="#日志清理" class="headerlink" title="日志清理"></a>日志清理</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 显示日志占用空间</span><br>journalctl --disk-usage<br><span class="hljs-comment"># 设置日志占用空间</span><br>journalctl --vacuum-size=50M<br></code></pre></td></tr></table></figure>
-
-<h2 id="Pacman-清理"><a href="#Pacman-清理" class="headerlink" title="Pacman 清理"></a>Pacman 清理</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 清理缓存</span><br>sudo pacman -Sc<br><br><span class="hljs-comment"># 查询孤儿软件并删除掉他们</span><br>sudo pacman -R $(sudo pacman -Qdtq)<br><br><span class="hljs-comment"># 删除软件时删除相关依赖和配置文件</span><br>sudo pacman -Rns &lt;package&gt;<br></code></pre></td></tr></table></figure>
-
+<h2 id="日志清理">日志清理</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 显示日志占用空间</span><br>journalctl --disk-usage<br><span class="hljs-comment"># 设置日志占用空间</span><br>journalctl --vacuum-size=50M<br></code></pre></td></tr></table></figure>
+<h2 id="pacman-清理">Pacman 清理</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 清理缓存</span><br>sudo pacman -Sc<br><br><span class="hljs-comment"># 查询孤儿软件并删除掉他们</span><br>sudo pacman -R $(sudo pacman -Qdtq)<br><br><span class="hljs-comment"># 删除软件时删除相关依赖和配置文件</span><br>sudo pacman -Rns &lt;package&gt;<br></code></pre></td></tr></table></figure>
 
                 
               </div>

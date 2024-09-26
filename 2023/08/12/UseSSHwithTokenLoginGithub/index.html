@@ -209,7 +209,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          588 字
+          577 字
         
       </span>
     
@@ -270,56 +270,59 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Github-使用-SSH-免密与-Token-登录配置"><a href="#Github-使用-SSH-免密与-Token-登录配置" class="headerlink" title="Github 使用 SSH 免密与 Token 登录配置"></a>Github 使用 SSH 免密与 Token 登录配置</h1><blockquote>
+                <h1 id="github-使用-ssh-免密与-token-登录配置">Github 使用 SSH 免密与
+Token 登录配置</h1>
+<blockquote>
 <p>参考文章：</p>
-<ol>
-<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1861466">https://cloud.tencent.com/developer/article/1861466</a></li>
-<li><a target="_blank" rel="noopener" href="https://leezhiy.github.io/2020/03/15/2020-03-15-Hexo-Next%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88Github-Pages-%E6%89%98%E7%AE%A1-Hexo%EF%BC%89/">https://leezhiy.github.io/2020/03/15/2020-03-15-Hexo-Next%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88Github-Pages-%E6%89%98%E7%AE%A1-Hexo%EF%BC%89/</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7129443602379309086">https://juejin.cn/post/7129443602379309086</a></li>
+<ol type="1">
+<li>https://cloud.tencent.com/developer/article/1861466</li>
+<li>https://leezhiy.github.io/2020/03/15/2020-03-15-Hexo-Next%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88Github-Pages-%E6%89%98%E7%AE%A1-Hexo%EF%BC%89/</li>
+<li>https://juejin.cn/post/7129443602379309086</li>
 </ol>
 <p>环境：Windows 10</p>
 <p>写这篇文章原因：配置博客要用到</p>
 </blockquote>
-<h2 id="1-生成密钥并添加到-Github-上"><a href="#1-生成密钥并添加到-Github-上" class="headerlink" title="1. 生成密钥并添加到 Github 上"></a>1. 生成密钥并添加到 <a target="_blank" rel="noopener" href="https://github.com/">Github</a> 上</h2><ul>
-<li><p>回到家目录，在家目录下创建一个 <code>.ssh</code> 文件夹，在 <code>.ssh</code> 中生成两个密钥</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># change directory</span><br><span class="hljs-built_in">cd</span> /d C:\Users\yourname\<br><br><span class="hljs-comment"># make a new directory named `.ssh`</span><br><span class="hljs-built_in">mkdir</span> .ssh<br><br><span class="hljs-comment"># go to `.ssh`</span><br><span class="hljs-built_in">cd</span> .ssh<br><br><span class="hljs-comment"># generate a ssh-key</span><br>ssh-keygen -t rsa -C <span class="hljs-string">&quot;youremail@example.com&quot;</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p>到这里会提示你输入一个存放密钥的路径，建议直接回车就好，那样子就会生成在你当下的目录，即 <code>.ssh</code> 里。</p>
-</li>
-<li><p>接着会提示你输入一个私钥密码 passphrase ，如果你设置了，以后每次使用 SSH 登录都要输入。</p>
-</li>
-<li><p>接着把 <code>id_rsa.pub</code> 中的内容复制，待会在 <a target="_blank" rel="noopener" href="https://github.com/">github</a> 中用。</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># this command means that copy content to clipboard</span><br>clip &lt; .\id_rsa.pub<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>接着到 <a target="_blank" rel="noopener" href="https://github.com/">github</a> 上登录，然后依次点击：你的头像 —&gt;&gt; Settings —&gt;&gt; SSH and GPG keys —&gt;&gt; New SSH key</p>
-</li>
-<li><p>然后 Title 随便写，再把刚刚所复制的内容粘贴到 Key 的输入框上， Key type 默认就好，再点击 Add SSH key 就完成添加了。</p>
-</li>
+<h2 id="生成密钥并添加到-github-上">1. 生成密钥并添加到 <a
+target="_blank" rel="noopener" href="https://github.com">Github</a> 上</h2>
+<ul>
+<li><p>回到家目录，在家目录下创建一个 <code>.ssh</code> 文件夹，在
+<code>.ssh</code> 中生成两个密钥</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># change directory</span><br><span class="hljs-built_in">cd</span> /d C:\Users\yourname\<br><br><span class="hljs-comment"># make a new directory named `.ssh`</span><br><span class="hljs-built_in">mkdir</span> .ssh<br><br><span class="hljs-comment"># go to `.ssh`</span><br><span class="hljs-built_in">cd</span> .ssh<br><br><span class="hljs-comment"># generate a ssh-key</span><br>ssh-keygen -t rsa -C <span class="hljs-string">&quot;youremail@example.com&quot;</span><br></code></pre></td></tr></table></figure></p></li>
+<li><p>到这里会提示你输入一个存放密钥的路径，建议直接回车就好，那样子就会生成在你当下的目录，即
+<code>.ssh</code> 里。</p></li>
+<li><p>接着会提示你输入一个私钥密码 passphrase
+，如果你设置了，以后每次使用 SSH 登录都要输入。</p></li>
+<li><p>接着把 <code>id_rsa.pub</code> 中的内容复制，待会在 <a
+target="_blank" rel="noopener" href="https://github.com/">github</a> 中用。</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># this command means that copy content to clipboard</span><br>clip &lt; .\id_rsa.pub<br></code></pre></td></tr></table></figure></p></li>
+<li><p>接着到 <a target="_blank" rel="noopener" href="https://github.com">github</a>
+上登录，然后依次点击：你的头像 ---&gt;&gt; Settings ---&gt;&gt; SSH and
+GPG keys ---&gt;&gt; New SSH key</p></li>
+<li><p>然后 Title 随便写，再把刚刚所复制的内容粘贴到 Key 的输入框上，
+Key type 默认就好，再点击 Add SSH key 就完成添加了。</p></li>
 </ul>
-<h2 id="2-测试是否添加成功"><a href="#2-测试是否添加成功" class="headerlink" title="2. 测试是否添加成功"></a>2. 测试是否添加成功</h2><ul>
-<li><p>在测试之前需要下载安装 <a target="_blank" rel="noopener" href="https://git-scm.com/">git</a> 和稍稍配置一下。</p>
-</li>
-<li><p>git 下载地址：<a target="_blank" rel="noopener" href="https://git-scm.com/">https://git-scm.com/</a></p>
-</li>
-<li><p>下载好之后，默认点下一步安装就行，然后打开 <code>git bash</code> 在里面输入以下代码：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># config your github name</span><br>git config --global user.name  <span class="hljs-string">&quot;Your Github Profile Name&quot;</span><br><span class="hljs-comment"># config your github email</span><br>git config --global user.email <span class="hljs-string">&quot;email@yourgithubmail.com&quot;</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p>然后用以下命令进行测试：注意：<a href="mailto:&#103;&#x69;&#x74;&#64;&#x67;&#105;&#x74;&#x68;&#x75;&#98;&#46;&#x63;&#111;&#x6d;">&#103;&#x69;&#x74;&#64;&#x67;&#105;&#x74;&#x68;&#x75;&#98;&#46;&#x63;&#111;&#x6d;</a> 不要更改！</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh -T git@github.com<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>如果刚刚生成密钥时配置了密码，就会提示输入密码</p>
-</li>
+<h2 id="测试是否添加成功">2. 测试是否添加成功</h2>
+<ul>
+<li><p>在测试之前需要下载安装 <a target="_blank" rel="noopener" href="https://git-scm.com/">git</a>
+和稍稍配置一下。</p></li>
+<li><p>git 下载地址：https://git-scm.com/</p></li>
+<li><p>下载好之后，默认点下一步安装就行，然后打开 <code>git bash</code>
+在里面输入以下代码：</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># config your github name</span><br>git config --global user.name  <span class="hljs-string">&quot;Your Github Profile Name&quot;</span><br><span class="hljs-comment"># config your github email</span><br>git config --global user.email <span class="hljs-string">&quot;email@yourgithubmail.com&quot;</span><br></code></pre></td></tr></table></figure></p></li>
+<li><p>然后用以下命令进行测试：注意：git@github.com 不要更改！</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ssh -T git@github.com<br></code></pre></td></tr></table></figure></p></li>
+<li><p>如果刚刚生成密钥时配置了密码，就会提示输入密码</p></li>
 <li><p>如果出现以下内容就说明配置成功了：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">Hi yourgithubname! You<span class="hljs-string">&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span><br></code></pre></td></tr></table></figure>
-</li>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">Hi yourgithubname! You<span class="hljs-string">&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span><br></code></pre></td></tr></table></figure></p></li>
 <li><p>也有可能会出现一些错误，例如我当时就出现了以下报错：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">kex_exchange_identification: Connection closed by remote host<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>出现以下错误解决方案：1、关代理；2、将 <a target="_blank" rel="noopener" href="https://github.com/">Github</a> 的连接端口从 22 更改为 443 ，具体操作如下：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># back to `.ssh` directory</span><br><span class="hljs-built_in">cd</span> C:\Users\yourname\.ssh<br><br><span class="hljs-comment"># create a `config` file of git</span><br><span class="hljs-built_in">touch</span> config<br><br><span class="hljs-comment"># enter code in `config` file</span><br>vim config<br>----------------code----------------<br>Host github.com<br>    HostName ssh.github.com<br>    User git<br>    Port 443<br>----------------code----------------<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>再测试应该没什么问题了，没有 vim 编辑器用记事本也行，创建 <code>config</code> 文件在 <code>.ssh</code> 目录下，输入以上的 <code>code</code> 部分代码。</p>
-</li>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">kex_exchange_identification: Connection closed by remote host<br></code></pre></td></tr></table></figure></p></li>
+<li><p>出现以下错误解决方案：1、关代理；2、将 <a
+target="_blank" rel="noopener" href="https://github.com">Github</a> 的连接端口从 22 更改为 443
+，具体操作如下：</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># back to `.ssh` directory</span><br><span class="hljs-built_in">cd</span> C:\Users\yourname\.ssh<br><br><span class="hljs-comment"># create a `config` file of git</span><br><span class="hljs-built_in">touch</span> config<br><br><span class="hljs-comment"># enter code in `config` file</span><br>vim config<br>----------------code----------------<br>Host github.com<br>    HostName ssh.github.com<br>    User git<br>    Port 443<br>----------------code----------------<br></code></pre></td></tr></table></figure></p></li>
+<li><p>再测试应该没什么问题了，没有 vim 编辑器用记事本也行，创建
+<code>config</code> 文件在 <code>.ssh</code> 目录下，输入以上的
+<code>code</code> 部分代码。</p></li>
 </ul>
 
                 

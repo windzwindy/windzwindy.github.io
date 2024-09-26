@@ -209,7 +209,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          714 字
+          710 字
         
       </span>
     
@@ -270,46 +270,70 @@
             
               <div class="markdown-body">
                 
-                <h1 id="GraalVM-生成可执行程序（Windows，乱码解决）"><a href="#GraalVM-生成可执行程序（Windows，乱码解决）" class="headerlink" title="GraalVM 生成可执行程序（Windows，乱码解决）"></a>GraalVM 生成可执行程序（Windows，乱码解决）</h1><blockquote>
+                <h1 id="graalvm-生成可执行程序windows乱码解决">GraalVM
+生成可执行程序（Windows，乱码解决）</h1>
+<blockquote>
 <p>【参考文章】</p>
-<p>【1】：<a target="_blank" rel="noopener" href="https://www.graalvm.org/latest/getting-started/windows/">Installation on Windows Platforms</a></p>
-<p>【2】：<a target="_blank" rel="noopener" href="https://github.com/oracle/graal/issues/6724">https://github.com/oracle/graal/issues/6724</a></p>
-<p>【3】：<a target="_blank" rel="noopener" href="https://github.com/oracle/graal/issues/2492">https://github.com/oracle/graal/issues/2492</a></p>
-<p>【4】：<a target="_blank" rel="noopener" href="https://docs.oracle.com/en/java/javase/22/intl/supported-encodings.html">https://docs.oracle.com/en/java/javase/22/intl/supported-encodings.html</a></p>
+<p>【1】：<a
+target="_blank" rel="noopener" href="https://www.graalvm.org/latest/getting-started/windows/">Installation
+on Windows Platforms</a></p>
+<p>【2】：https://github.com/oracle/graal/issues/6724</p>
+<p>【3】：https://github.com/oracle/graal/issues/2492</p>
+<p>【4】：https://docs.oracle.com/en/java/javase/22/intl/supported-encodings.html</p>
 </blockquote>
-<p>环境准备：Java，Visual Studio Build Tools and Windows SDK，Maven等，可以参考 <a target="_blank" rel="noopener" href="https://www.graalvm.org/latest/getting-started/windows/">Installation on Windows Platforms</a></p>
+<p>环境准备：Java，Visual Studio Build Tools and Windows
+SDK，Maven等，可以参考 <a
+target="_blank" rel="noopener" href="https://www.graalvm.org/latest/getting-started/windows/">Installation
+on Windows Platforms</a></p>
 <ul>
-<li>当我学习 Spring 时，接触到了一个东西叫做 GraalVM 用于生成可执行的 Java 程序</li>
+<li>当我学习 Spring 时，接触到了一个东西叫做 GraalVM 用于生成可执行的
+Java 程序</li>
 <li>这个东西也可以用在普通的 jar 包，或者 class 文件上</li>
 </ul>
-<h2 id="普通-class-文件编成-exe"><a href="#普通-class-文件编成-exe" class="headerlink" title="普通 class 文件编成 exe"></a>普通 class 文件编成 exe</h2><h3 id="创建-java-源文件"><a href="#创建-java-源文件" class="headerlink" title="创建 java 源文件"></a>创建 java 源文件</h3><ul>
+<h2 id="普通-class-文件编成-exe">普通 class 文件编成 exe</h2>
+<h3 id="创建-java-源文件">创建 java 源文件</h3>
+<ul>
 <li>这一步非常重要，<strong>源文件要用 ASCII 码进行保存</strong></li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;你好，世界！&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <p>编译源码，指定格式：<code>javac -encoding GBK Main.java</code></p>
-<p>在开始菜单打开 <code>x64 Native Tools Command Prompt for VS xxxx</code> 进入 native 环境</p>
+<p>在开始菜单打开
+<code>x64 Native Tools Command Prompt for VS xxxx</code> 进入 native
+环境</p>
 <p>切换到 <code>Main.class</code> 所在的目录</p>
-<p>输入命令： <code>native-image -J&quot;-Dfile.encoding=GBK&quot; Main</code> ，Main 是你的 class 文件名，<strong>注意有双引号</strong></p>
-<p><strong>一定要指定编码方式为 <code>GBK</code> 不然运行中文会有乱码问题</strong></p>
+<p>输入命令： <code>native-image -J"-Dfile.encoding=GBK" Main</code>
+，Main 是你的 class 文件名，<strong>注意有双引号</strong></p>
+<p><strong>一定要指定编码方式为 <code>GBK</code>
+不然运行中文会有乱码问题</strong></p>
 <p>运行，没问题</p>
-<h2 id="jar-包文件编成-exe"><a href="#jar-包文件编成-exe" class="headerlink" title="jar 包文件编成 exe"></a>jar 包文件编成 exe</h2><p>这里使用 Maven，下面是 <code>pom.xml</code> 文件的一部分配置，可以参考</p>
+<h2 id="jar-包文件编成-exe">jar 包文件编成 exe</h2>
+<p>这里使用 Maven，下面是 <code>pom.xml</code>
+文件的一部分配置，可以参考</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="hljs-tag">&lt;/<span class="hljs-name">project.build.sourceEncoding</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">file.encoding</span>&gt;</span>UTF-8<span class="hljs-tag">&lt;/<span class="hljs-name">file.encoding</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>            	<span class="hljs-tag">&lt;<span class="hljs-name">fork</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">fork</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>	    <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span><br>        	<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            	<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-jar-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>                	<span class="hljs-tag">&lt;<span class="hljs-name">archive</span>&gt;</span><br>                    	<span class="hljs-tag">&lt;<span class="hljs-name">manifest</span>&gt;</span><br>                            <span class="hljs-tag">&lt;<span class="hljs-name">addClasspath</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">addClasspath</span>&gt;</span><br>                            <span class="hljs-comment">&lt;!-- 指定主类 --&gt;</span><br>                            <span class="hljs-tag">&lt;<span class="hljs-name">mainClass</span>&gt;</span>org.wind.Main<span class="hljs-tag">&lt;/<span class="hljs-name">mainClass</span>&gt;</span><br>                        <span class="hljs-tag">&lt;/<span class="hljs-name">manifest</span>&gt;</span><br>                    <span class="hljs-tag">&lt;/<span class="hljs-name">archive</span>&gt;</span><br>	            <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
 <p>主类的内容：Main.java</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> org.wind;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;你好，世界！&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>到 <code>pom.xml</code> 文件目录下运行命令：<code>mvn clean package</code></p>
+<p>到 <code>pom.xml</code>
+文件目录下运行命令：<code>mvn clean package</code></p>
 <p>此时会生成一个 <code>jar</code> 包，例如：<code>Main.jar</code></p>
-<p>先用 <code>java -jar Main.jar</code> 运行一下看看有没有问题，再进行下一步，如果显示缺少主类请看下面的方法</p>
-<p>用压缩包程序打开 <code>jar</code> 包，打开目录 <code>META-INF</code> 找到 <code>MANIFEST.MF</code> 文件，编辑，在里面手动指定主类，即指定 main 方法所在的类：比如我的 main 方法写在类 <code>org.wind.Main</code> 那么在 <code>MANIFEST.MF</code> 添加以下这一行：</p>
+<p>先用 <code>java -jar Main.jar</code>
+运行一下看看有没有问题，再进行下一步，如果显示缺少主类请看下面的方法</p>
+<p>用压缩包程序打开 <code>jar</code> 包，打开目录 <code>META-INF</code>
+找到 <code>MANIFEST.MF</code> 文件，编辑，在里面手动指定主类，即指定
+main 方法所在的类：比如我的 main 方法写在类 <code>org.wind.Main</code>
+那么在 <code>MANIFEST.MF</code> 添加以下这一行：</p>
 <p><code>Main-Class: org.wind.Main</code></p>
 <p>再次运行，应该没有无主类的问题了，如果有其他问题，再上网找，这里不再赘述</p>
-<p>接下来，同样的，在开始菜单打开 <code>x64 Native Tools Command Prompt for VS xxxx</code> 进入 native 环境</p>
-<p>切换到 <code>jar</code> 包所在目录，运行命令：<code>native-image -J&quot;-Dfile.encoding=GBK&quot; -jar .\Main.jar</code> <strong>注意有双引号</strong></p>
-<p><strong>一定要指定编码方式为 <code>GBK</code> 不然运行中文会有乱码问题</strong></p>
+<p>接下来，同样的，在开始菜单打开
+<code>x64 Native Tools Command Prompt for VS xxxx</code> 进入 native
+环境</p>
+<p>切换到 <code>jar</code>
+包所在目录，运行命令：<code>native-image -J"-Dfile.encoding=GBK" -jar .\Main.jar</code>
+<strong>注意有双引号</strong></p>
+<p><strong>一定要指定编码方式为 <code>GBK</code>
+不然运行中文会有乱码问题</strong></p>
 <p>运行，没问题</p>
-<p>如果在 Spring 上时，解决乱码方法很简单，Maven 打包时指定使用 native profile 就可以了</p>
+<p>如果在 Spring 上时，解决乱码方法很简单，Maven 打包时指定使用 native
+profile 就可以了</p>
 <p>运行aot提前处理命令：<code>mvn springboot:process-aot</code></p>
 <p>运行native打包：<code>mvn -Pnative native:build</code></p>
 
