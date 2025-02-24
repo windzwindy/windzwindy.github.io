@@ -1,0 +1,684 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="windzwindy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="SCOOP 安装  参考官方文档安装  使用以下命令进行安装 12$env:SCOOP&#x3D;&#x27;D:\Scoop&#x27;[Environment]::SetEnvironmentVariable(&#x27;SCOOP&#x27;, $env:SCOOP, &#x27;User&#x27;) scoop 添加仓库 123456789# 添加 extras java versi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SCOOP 安装">
+<meta property="og:url" content="https://windzwindy.github.io/2023/06/11/SCOOP%20%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:site_name" content="WindZwindy Blog">
+<meta property="og:description" content="SCOOP 安装  参考官方文档安装  使用以下命令进行安装 12$env:SCOOP&#x3D;&#x27;D:\Scoop&#x27;[Environment]::SetEnvironmentVariable(&#x27;SCOOP&#x27;, $env:SCOOP, &#x27;User&#x27;) scoop 添加仓库 123456789# 添加 extras java versi">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-06-11T01:57:45.000Z">
+<meta property="article:modified_time" content="2025-02-24T13:47:23.938Z">
+<meta property="article:author" content="windzwindy">
+<meta property="article:tag" content="Windows">
+<meta property="article:tag" content="SCOOP">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>SCOOP 安装 - WindZwindy Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"windzwindy.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>WindZwindy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="SCOOP 安装"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-06-11 09:57" pubdate>
+          2023年6月11日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          528 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          5 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">SCOOP 安装</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年2月24日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="scoop-安装">SCOOP 安装</h1>
+<ul>
+<li>参考<a
+target="_blank" rel="noopener" href="https://github.com/ScoopInstaller/Scoop/wiki">官方文档</a>安装</li>
+</ul>
+<h2 id="使用以下命令进行安装">使用以下命令进行安装</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$</span><span class="language-bash"><span class="hljs-built_in">env</span>:SCOOP=<span class="hljs-string">&#x27;D:\Scoop&#x27;</span></span><br>[Environment]::SetEnvironmentVariable(&#x27;SCOOP&#x27;, $env:SCOOP, &#x27;User&#x27;)<br></code></pre></td></tr></table></figure>
+<h2 id="scoop-添加仓库">scoop 添加仓库</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 添加 extras java versions 仓库</span><br>scoop bucket add extras<br>scoop bucket add java<br>scoop bucket add versions<br><span class="hljs-comment"># 查看仓库</span><br>scoop bucket list<br><span class="hljs-comment"># scoop 添加 Tests 仓库</span><br>scoop bucket add &lt;仓库名&gt; [仓库链接]<br>scoop bucket add Tests https://github.com/ScoopInstaller/Tests<br></code></pre></td></tr></table></figure>
+<h2 id="scoop-仓库">scoop 仓库</h2>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs ini">Name        Source                                              Manifests<br>----        ------                                              ---------<br>main        https://github.com/ScoopInstaller/Main                   1382<br>extras      https://github.com/ScoopInstaller/Extras                 2128<br>versions    https://github.com/ScoopInstaller/Versions                477<br>nirsoft     https://github.com/ScoopInstaller/Nirsoft                 284<br>php         https://github.com/ScoopInstaller/PHP                     389<br>nerd-fonts  https://github.com/matthewjberger/scoop-nerd-fonts        360<br>nonportable https://github.com/ScoopInstaller/Nonportable             127<br>java        https://github.com/ScoopInstaller/Java                    296<br>Tests       https://github.com/ScoopInstaller/Tests                    82<br></code></pre></td></tr></table></figure>
+<h2 id="scoop-安装好后建议安装的包">scoop 安装好后建议安装的包</h2>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br></pre></td><td class="code"><pre><code class="hljs ini">Name                     Version                Source      <br>----                     -------                ------      <br>7zip                     24.09                  main        <br>7zip-zstd                v22.01-v1.5.5-R3       versions    <br>7ztm                     2.1.1                  extras      <br>ab-av1                   0.9.1                  extras      <br>adb                      35.0.2                 main        <br>akelpad                  4.9.9                  extras      <br>anaconda3                2024.10-1              extras      <br>android-clt              11076708               main        <br>apktool                  2.11.0                 main        <br>aria2                    1.37.0-1               main        <br>audacity                 3.7.1                  extras      <br>autoclicker              1.0.0.2                extras      <br>b3sum                    1.5.5                  main        <br>balabolka                2.15.0.888             extras      <br>bat                      0.25.0                 main        <br>binutils                 2.44                   main        <br>bottom                   0.10.2                 main        <br>brotli                   1.1.0                  main        <br>busybox                  5467-g9376eebd8        main        <br>bzip3                    1.5.1                  extras      <br>cacert                   2024-12-31             main        <br>caesium-image-compressor 2.8.2                  extras      <br>chromecookiesview        1.80                   nirsoft     <br>clangd                   19.1.2                 main        <br>clink                    1.7.10                 main        <br>cmake                    3.31.5                 main        <br>coreutils                5.97.3                 main        <br>cpu-z                    2.14                   extras      <br>crystaldiskinfo          9.5.0                  extras      <br>crystaldiskmark          8.0.6                  extras      <br>dark                     3.14                   main        <br>dbeaver                  24.3.4                 extras      <br>detect-it-easy           3.10                   extras      <br>discord                  1.0.9156-20            extras      <br>dnspy                    6.1.8                  extras      <br>dosbox                   0.74-3                 main        <br>dotnet-sdk-lts           8.0.406                versions    <br>draw.io                  26.0.9                 extras      <br>eclipse-jee              2024-12                extras      <br>element                  1.11.92                extras      <br>emacs                    29.4                   extras      <br>everything               1.4.1.1026             extras      <br>exeinfo-pe               0.0.8.8                extras      <br>exiftool                 13.19                  main        <br>fastcopy                 5.8.1                  extras      <br>fastflix                 5.8.2                  extras      <br>fd                       10.2.0                 main        <br>ffdec                    22.0.2                 extras      <br>ffmpeg                   7.1                    main        <br>fiddler                  5.0.20251.1171         extras      <br>figlet                   1.0-go                 main        <br>file                     5.45                   main        <br>firefox                  135.0                  extras      <br>fontforge                20230101               extras      <br>foobar2000               2.24.1                 extras      <br>foobar2000-encoders      2025-02-11             extras      <br>fzf                      0.60.0                 main        <br>gawk                     5.3.1                  main        <br>ghostscript              10.04.0                main        <br>git                      2.48.1                 main        <br>go                       1.24.0                 main        <br>gpg                      2.4.7                  main        <br>gpu-z                    2.62.0                 extras      <br>graalvm-oracle-jdk       23.0.2                 java        <br>grep                     3.11                   main        <br>heidisql                 12.10                  extras      <br>helix                    25.01.1                main        <br>hwinfo                   8.20-5640              extras      <br>ilspy                    9.0.0.7889             extras      <br>imagemagick              7.1.1-43               main        <br>imagine                  1.8.0                  extras      <br>inkscape                 1.4_2024-10-11_86a8ad7 extras      <br>innounp                  2.64.1                 main        <br>jadx                     1.5.1                  extras      <br>jd-gui                   1.6.6                  extras      <br>jexiftoolgui             2.0.2.0                extras      <br>jq                       1.7.1                  main        <br>keyviz                   1.0.6                  extras      <br>krita                    5.2.9                  extras      <br>latexindent              3.24.4                 main        <br>less                     668                    main        <br>libavif                  1.0.4                  main        <br>libwebp                  1.5.0                  main        <br>licecap                  1.32                   extras      <br>listary                  6.3.1.84               extras      <br>lsd                      1.1.5                  main        <br>lua                      5.4.7-2                main        <br>luajit                   2.1.1736781742-1       main        <br>lxrunoffline             3.5.0                  extras      <br>lz4                      1.10.0                 main        <br>mediainfo-gui            24.12                  extras      <br>miktex                   24.1                   main        <br>mingw                    14.2.0-rt_v12-rev1     main        <br>mkvtoolnix               90.0                   extras      <br>mongodb-database-tools   100.11.0               main        <br>monolith                 2.8.3                  main        <br>mp3tag                   3.28                   extras      <br>msys2                    2024-12-08             main        <br>musescore                4.4.4.243461245        extras      <br>nano                     7.2-22.1               main        <br>neofetch                 7.1.0                  main        <br>neovim                   0.10.4                 main        <br>nexusfont                2.7.1                  extras      <br>nircmd                   2.87                   nirsoft     <br>nmap                     7.95                   main        <br>nodejs-lts               22.14.0                main        <br>notepadplusplus          8.7.7                  extras      <br>nsudo                    8.2                    extras      <br>nu                       0.102.0                main        <br>obs-studio               31.0.1                 extras      <br>obsidian                 1.8.4                  extras      <br>office-tool-plus         10.20.15.0             extras      <br>ollydbg                  1.10                   extras      <br>openark                  1.3.8                  extras      <br>openhashtab-np           3.0.4                  nonportable <br>openjdk                  23.0.2-7               java        <br>openssh                  9.8.1.0p1              main        <br>openssl                  3.4.1                  main        <br>oraclejdk                23.0.2                 java        <br>paint.net                5.1.4                  extras      <br>pandoc                   3.6.3                  main        <br>pci-z                    2.0-2017.07.01         extras      <br>peazip                   10.2.0                 extras      <br>php                      8.4.4                  main        <br>plantuml                 1.2025.1               extras      <br>poppler                  24.08.0-0              main        <br>postman                  11.32.3                extras      <br>pwsh                     7.5.0                  main        <br>qaac                     2.83                   main        <br>qbittorrent-enhanced     5.0.3.10               extras      <br>rapidee                  9.2.937                extras      <br>rhash                    1.4.5                  main        <br>ripgrep                  14.1.1                 main        <br>rufus                    4.6                    extras      <br>rust                     1.84.1                 main        <br>rust-analyzer            2024-10-28             main        <br>rustup                   1.27.1                 main        <br>sandboxie-plus-np        1.15.6                 nonportable <br>scrcpy                   3.1                    main        <br>sed                      4.9                    main        <br>shotcut                  25.01.25               extras      <br>siyuan-note              3.1.22                 extras      <br>snipaste-beta            2.9.2-Beta             versions    <br>sqlite                   3.49.0                 main        <br>ssd-z                    16.09.09               extras      <br>starship                 1.22.1                 main        <br>sudo                     0.2020.01.26           main        <br>sumatrapdf               3.5.2                  extras      <br>sysinternals             20250213               extras      <br>systeminformer-nightly   3.2.25045.1011         versions    <br>telegram                 5.11.1                 extras      <br>temurin-jdk              23.0.2-7               java        <br>texstudio                4.8.6                  extras      <br>tikzit                   2.1.6                  extras      <br>trid                     2.24-25.02.14          main        <br>typora                   1.9.5                  extras      <br>umi-ocr-paddle           2.1.4                  extras      <br>unrar                    7.01                   main        <br>unzip                    6.00                   main        <br>upx                      4.2.4                  main        <br>vcxsrv                   21.1.13.0              extras      <br>vim                      9.1.0                  main        <br>vscode                   1.97.2                 extras      <br>wechat                   3.9.12.17              extras      <br>wecom                    4.1.32.6005            extras      <br>wget                     1.21.4                 main        <br>wincdemu                 4.0                    extras      <br>winscp                   6.3.6                  extras      <br>wireshark                4.4.3                  extras      <br>wsl2-distro-manager      1.8.15                 extras      <br>x264                     3204                   main        <br>x265                     4.1+96-5de5f56         main        <br>x64dbg                   2025-01-17_12-45       extras      <br>xmind                    25.01.01061            extras      <br>xz                       5.6.4                  main        <br>yazi                     25.2.11                main        <br>youtube-music            3.7.2                  extras      <br>yt-dlp                   2025.01.26             main        <br>zig                      0.13.0                 main        <br>zip                      3.0                    main        <br>zoxide                   0.9.7                  main        <br>zstd                     1.5.6                  main        <br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Windows/" class="print-no-link">#Windows</a>
+      
+        <a href="/tags/SCOOP/" class="print-no-link">#SCOOP</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>SCOOP 安装</div>
+      <div>https://windzwindy.github.io/2023/06/11/SCOOP 安装/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>windzwindy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年6月11日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年2月24日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/07/16/ZShell%20%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BC%98%E5%8C%96/" title="ZShell 安装及优化">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ZShell 安装及优化</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

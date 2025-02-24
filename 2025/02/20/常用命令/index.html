@@ -1,0 +1,945 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="windzwindy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="常用命令 合并命令  把 xxx.jpg 和 xxx.zip 进行合并为 xxx.jpg 1copy &#x2F;b xxx.jpg+xxx.zip xxx.jpg 把 file1.txt 和 file2.txt 合并为 combined.txt 1type file1.txt file2.txt &gt; combined.txt ## 高级重启  方法一：设置重启法  打开【Sett">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用命令">
+<meta property="og:url" content="https://windzwindy.github.io/2025/02/20/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="WindZwindy Blog">
+<meta property="og:description" content="常用命令 合并命令  把 xxx.jpg 和 xxx.zip 进行合并为 xxx.jpg 1copy &#x2F;b xxx.jpg+xxx.zip xxx.jpg 把 file1.txt 和 file2.txt 合并为 combined.txt 1type file1.txt file2.txt &gt; combined.txt ## 高级重启  方法一：设置重启法  打开【Sett">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-02-20T02:49:00.000Z">
+<meta property="article:modified_time" content="2025-02-24T13:23:07.979Z">
+<meta property="article:author" content="windzwindy">
+<meta property="article:tag" content="Command">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>常用命令 - WindZwindy Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"windzwindy.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>WindZwindy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="常用命令"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-02-20 10:49" pubdate>
+          2025年2月20日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          15 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">常用命令</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年2月24日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="常用命令">常用命令</h1>
+<h2 id="合并命令">合并命令</h2>
+<ul>
+<li>把 <code>xxx.jpg</code> 和 <code>xxx.zip</code> 进行合并为
+<code>xxx.jpg</code> <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile"><span class="hljs-keyword">copy</span><span class="language-bash"> /b xxx.jpg+xxx.zip xxx.jpg</span><br></code></pre></td></tr></table></figure></li>
+<li>把 <code>file1.txt</code> 和 <code>file2.txt</code> 合并为
+<code>combined.txt</code> <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada"><span class="hljs-keyword">type</span> <span class="hljs-type">file1.txt </span>file2.txt &gt; combined.txt<br></code></pre></td></tr></table></figure> ## 高级重启</li>
+</ul>
+<h3 id="方法一设置重启法">方法一：设置重启法</h3>
+<ul>
+<li>打开【Setting】下的【Update &amp;
+Security】下的【Recovery】下的【Troubleshoot】下的【Advanced
+options】下的【UEFI Firmware Settings】</li>
+</ul>
+<h3 id="方法二按键重启法">方法二：按键重启法</h3>
+<ul>
+<li>按住 <code>Shift</code> 键不放再用鼠标点击开始菜单的重启按钮</li>
+</ul>
+<h3 id="方法三命令重启法">方法三：命令重启法</h3>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-keyword">shutdown</span> <span class="hljs-string">/r</span> <span class="hljs-string">/o</span><br></code></pre></td></tr></table></figure>
+<h2 id="windows-sandbox">Windows Sandbox</h2>
+<ul>
+<li>Windows 10内置沙盘功能(家庭版没有这个功能)</li>
+</ul>
+<h2 id="虚拟键盘">虚拟键盘</h2>
+<ul>
+<li>On Screen Keyboard || Operationally Soft Keyboard</li>
+<li>Windows搜索“屏幕键盘”</li>
+<li>或者在运行中输入：<code>osk</code></li>
+</ul>
+<h2 id="步骤记录器">步骤记录器</h2>
+<ul>
+<li>Problem Steps Recorder</li>
+<li>Windows搜索“步骤记录器”</li>
+<li>或者在运行中输入：<code>psr</code></li>
+</ul>
+<h2 id="任务计划程序">任务计划程序</h2>
+<ul>
+<li>Windows搜索“任务计划程序”</li>
+<li>或者在运行中输入：<code>taskschd.msc</code></li>
+</ul>
+<h2 id="数学公式">数学公式</h2>
+<ul>
+<li>Windows搜索“Math Input Panel”</li>
+<li>或者在运行中输入：<code>mip</code></li>
+</ul>
+<h2 id="字符映射表">字符映射表</h2>
+<ul>
+<li>Windows搜索“字符映射表“</li>
+<li>或者在运行中输入：<code>charmap</code></li>
+</ul>
+<h2 id="专用字符编辑程序">专用字符编辑程序</h2>
+<ul>
+<li>Windows搜索“专用字符编辑程序”</li>
+<li>或者在运行中输入：<code>eudcedit</code></li>
+</ul>
+<h2 id="iexpress-wizard">IExpress Wizard</h2>
+<ul>
+<li>创建自解压执行文件（Self-Extracting Executable Package）的工具</li>
+<li>在运行中输入：<code>iexpress</code></li>
+</ul>
+<h2 id="directx诊断工具">DirectX诊断工具</h2>
+<ul>
+<li>在运行中输入：<code>dxdiag</code></li>
+</ul>
+<h2 id="恶意软件删除工具">恶意软件删除工具</h2>
+<ul>
+<li>在运行中输入：<code>mrt</code></li>
+</ul>
+<h2 id="windows查看激活状态">Windows查看激活状态</h2>
+<ul>
+<li>在运行中输入：<code>slmgr.vbs -xpr</code></li>
+</ul>
+<h2 id="windows-10进行数字激活方法">Windows 10进行数字激活方法</h2>
+<p>在运行中输入：<code>slui 4</code></p>
+<h2 id="windows-10关闭键盘">Windows 10关闭键盘</h2>
+<ul>
+<li>sc config i8042prt start=auto是恢复不了的，</li>
+<li>要用sc config i8042prt start=demand才行。</li>
+<li>修改对应的注册表位置： <figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\i8042prt]<br></code></pre></td></tr></table></figure>
+<code>"Start"=dword:00000003</code> 对应 <code>start= demand</code>
+服务类型：手动 <code>"Start"=dword:00000004</code> 对应
+<code>start= disabled</code> 服务类型：禁用</li>
+</ul>
+<h2 id="打开启动列表资料夹">打开启动列表资料夹</h2>
+<ul>
+<li>配置启动项时用到的</li>
+<li>在运行中输入：<code>shell:startup</code></li>
+</ul>
+<h2 id="start-和-explorer-命令的用法"><code>start</code> 和
+<code>explorer</code> 命令的用法</h2>
+<h3 id="在当前目录打开资源管理器">在当前目录打开资源管理器</h3>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs erlang">explorer .<br>start .<br></code></pre></td></tr></table></figure>
+<h3 id="打开上一级目录">打开上一级目录</h3>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gams"><span class="hljs-function"><span class="hljs-title">explorer</span></span> ..<br><span class="hljs-function"><span class="hljs-title">start</span></span> ..<br></code></pre></td></tr></table></figure>
+<h3 id="打开指定目录">打开指定目录</h3>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs livescript">explorer C:<span class="hljs-string">\Users\Administrator</span><br>start C:<span class="hljs-string">\Users\Administrator</span><br></code></pre></td></tr></table></figure>
+<h3 id="打开新的终端窗口">打开新的终端窗口</h3>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crmsh"><span class="hljs-literal">start</span><br></code></pre></td></tr></table></figure>
+<h3 id="打开命令行窗口并执行命令">打开命令行窗口并执行命令</h3>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile"><span class="hljs-comment"># 执行完命令后，不会关闭窗口</span><br>start <span class="hljs-keyword">cmd</span><span class="language-bash"> /k adb shell</span><br><span class="hljs-comment"># 执行完命令后，会直接关闭窗口</span><br>start <span class="hljs-keyword">cmd</span><span class="language-bash"> /c adb shell</span><br></code></pre></td></tr></table></figure>
+<h3 id="打开系统应用">打开系统应用</h3>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs crmsh"><span class="hljs-literal">start</span> explorer <span class="hljs-comment"># 打开资源管理器 或使用命令 explorer</span><br><span class="hljs-literal">start</span> control <span class="hljs-comment"># 打开控制面板 或使用命令 control</span><br><span class="hljs-literal">start</span> %windir%\system32\Taskmgr.exe <span class="hljs-comment"># 打开任务管理器 </span><br><span class="hljs-comment"># 或使用命令 %windir%\system32\Taskmgr.exe</span><br></code></pre></td></tr></table></figure>
+<h3 id="打开应用程序">打开应用程序</h3>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs crmsh"><span class="hljs-literal">start</span> <span class="hljs-string">&quot;&quot;</span> <span class="hljs-string">&quot;应用完整路径&quot;</span><br><span class="hljs-comment"># 注意，此处start后为空格，然后是空的双引号，</span><br><span class="hljs-comment"># 之后再接一个空格，最后是应用的完整路径</span><br></code></pre></td></tr></table></figure>
+<h2 id="hyper-v-虚拟机">Hyper-V 虚拟机</h2>
+<ul>
+<li>Windows 10内置虚拟机(家庭版没有这个功能)</li>
+</ul>
+<h2 id="windows-10-提示网络无法连接解决方法">Windows 10
+提示网络无法连接解决方法</h2>
+<ul>
+<li>修改注册表： <figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs moonscript">Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\InternetEnableActiveProbing=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="组策略编辑器local-group-policy-editor">组策略编辑器（Local Group
+Policy Editor）</h2>
+<ul>
+<li>可以用于配置本地计算机的组策略设置（注意：在家庭版 Windows
+中可能不存在此程序）。</li>
+<li>运行输入：<code>gepdit.msc</code></li>
+</ul>
+<h2 id="服务管理器">服务管理器</h2>
+<ul>
+<li>用于查看、启动、停止、配置系统中的各项服务。</li>
+<li>运行输入：<code>services.msc</code></li>
+</ul>
+<h2 id="本地用户和组管理工具">本地用户和组管理工具</h2>
+<ul>
+<li>可以管理本机的用户账户和用户组（注意：部分家庭版 Windows
+没有此组件）。</li>
+<li>运行输入：<code>lusrmgr.msc</code></li>
+</ul>
+<h2 id="注册表编辑器">注册表编辑器</h2>
+<ul>
+<li>用于查看和编辑 Windows
+系统注册表，对系统高级配置进行修改，操作前需小心。</li>
+<li>运行输入：<code>regedit</code></li>
+</ul>
+<h2 id="程序和功能">程序和功能</h2>
+<ul>
+<li>“程序和功能”（旧版称为“添加或删除程序”），用于卸载或修改已安装的程序。</li>
+<li>运行输入：<code>appwiz.cpl</code></li>
+</ul>
+<h2 id="用户账户设置">用户账户设置</h2>
+<ul>
+<li>可配置用户登录选项，如取消或设置自动登录、修改账户信息等。</li>
+<li>运行输入：<code>netplwiz</code></li>
+</ul>
+<h2 id="系统信息工具">系统信息工具</h2>
+<ul>
+<li>可以查看计算机硬件资源、组件以及软件环境的详细信息。</li>
+<li>运行输入：<code>msinfo32</code></li>
+</ul>
+<h2 id="系统配置实用程序">系统配置实用程序</h2>
+<ul>
+<li>用于管理启动项、系统服务及其他系统启动设置，便于故障排除。</li>
+<li>运行输入：<code>msconfig</code></li>
+</ul>
+<h2 id="internet-选项设置">Internet 选项设置</h2>
+<ul>
+<li>在此可以设置浏览器（Internet
+Explorer）的网络连接、隐私、安全等选项。</li>
+<li>运行输入：<code>inetcpl.cpl</code></li>
+</ul>
+<h2 id="计算机管理">计算机管理</h2>
+<ul>
+<li>整合了磁盘管理、事件查看器、服务和应用程序等多个系统管理工具。</li>
+<li>运行输入：<code>compmgmt.msc</code></li>
+</ul>
+<h2 id="磁盘管理工具">磁盘管理工具</h2>
+<ul>
+<li>用于管理分区、格式化磁盘、调整卷大小等操作。</li>
+<li>运行输入：<code>diskmgmt.msc</code></li>
+</ul>
+<h2 id="事件查看器">事件查看器</h2>
+<ul>
+<li>用于查看系统事件日志、应用程序日志及安全日志，帮助排查和分析问题。</li>
+<li>运行输入：<code>eventvwr.msc</code></li>
+</ul>
+<h2 id="设备管理器">设备管理器</h2>
+<ul>
+<li>用于查看和管理系统中所有硬件设备的驱动程序，进行禁用、卸载或更新操作。</li>
+<li>运行输入：<code>devmgmt.msc</code></li>
+</ul>
+<h2 id="系统属性">系统属性</h2>
+<ul>
+<li>可以进行系统保护、远程设置、环境变量等的配置。</li>
+<li>运行输入：<code>sysdm.cpl</code></li>
+</ul>
+<h2 id="控制面板">控制面板</h2>
+<ul>
+<li>从中可以进入各类系统设置和管理工具。</li>
+<li>运行输入：<code>control</code></li>
+</ul>
+<h2 id="windows-防火墙">Windows 防火墙</h2>
+<ul>
+<li>进行防火墙规则配置及网络连接安全设置。</li>
+<li>运行输入：<code>firewall.cpl</code></li>
+</ul>
+<h2 id="电源选项">电源选项</h2>
+<ul>
+<li>用于选择电源计划、调整显示及硬盘休眠等设置。</li>
+<li>运行输入：<code>powercfg.cpl</code></li>
+</ul>
+<h2 id="网络连接">网络连接</h2>
+<ul>
+<li>可直接管理和配置网络适配器的属性和状态。</li>
+<li>运行输入：<code>ncpa.cpl</code></li>
+</ul>
+<h2 id="鼠标属性">鼠标属性</h2>
+<ul>
+<li>可以调整鼠标指针速度、双击速度、滚轮设置等。</li>
+<li>运行输入：<code>main.cpl</code></li>
+</ul>
+<h2 id="远程桌面连接">远程桌面连接</h2>
+<ul>
+<li>用于连接远程计算机，进行远程管理或技术支持。</li>
+<li>运行输入：<code>mstsc</code></li>
+</ul>
+<h2 id="磁盘碎片整理程序">磁盘碎片整理程序</h2>
+<ul>
+<li>用于优化磁盘性能，对硬盘进行碎片整理。</li>
+<li>运行输入：<code>dfrgui</code></li>
+</ul>
+<h2 id="windows-功能">Windows 功能</h2>
+<ul>
+<li>可以启用或关闭 Windows 系统的内置功能和组件。</li>
+<li>运行输入：<code>optionalfeatures</code></li>
+</ul>
+<h2 id="性能监视器">性能监视器</h2>
+<ul>
+<li>用于实时监控系统性能指标，包括处理器、内存、磁盘等资源使用情况。</li>
+<li>运行输入：<code>perfmon</code></li>
+</ul>
+<h2 id="任务计划程序-1">任务计划程序</h2>
+<ul>
+<li>用于创建和管理计划任务，实现自动化操作。</li>
+<li>运行输入：<code>taskschd.msc</code></li>
+</ul>
+<h2 id="本地安全策略">本地安全策略</h2>
+<ul>
+<li>用于设置和调整本机的安全策略（多数版本仅适用于专业版或企业版）。</li>
+<li>运行输入：<code>secpol.msc</code></li>
+</ul>
+<h2 id="写字板">写字板</h2>
+<ul>
+<li>用于简单的文本编辑。</li>
+<li>运行输入：<code>write</code></li>
+</ul>
+<h2 id="屏幕键盘">屏幕键盘</h2>
+<ul>
+<li>帮助在不使用物理键盘时输入字符或进行交互操作。</li>
+<li>运行输入：<code>osk</code></li>
+</ul>
+<h2 id="放大镜">放大镜</h2>
+<ul>
+<li>用于放大屏幕特定区域，方便视力障碍用户使用。</li>
+<li>运行输入：<code>magnify</code></li>
+<li>或者用 <code>win</code> 键加 <code>+</code> 和 <code>-</code> 和
+<code>ESC</code> 键进行放大缩小和退出</li>
+</ul>
+<h2 id="讲述人">讲述人</h2>
+<ul>
+<li>提供屏幕阅读服务，帮助低视力或盲人用户使用计算机。</li>
+<li>运行输入：<code>narrator</code></li>
+</ul>
+<h2 id="windows-定时关机">Windows 定时关机</h2>
+<ul>
+<li>可以用 <code>shutdown -s -f -t 时间秒数</code></li>
+<li>也可以创建任务的方式： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">schtasks /create /tn shut /tr <span class="hljs-string">&quot;shutdown -s -f&quot;</span> /sc once /st 23:00<br><span class="hljs-comment"># 解释下这个命令的意思</span><br><span class="hljs-comment"># /create表示创建</span><br><span class="hljs-comment"># /tn表示创建的任务叫什么名字</span><br><span class="hljs-comment"># /tr引号表示具体要执行什么命令，因为schtasks本身也可以带/s参数，</span><br><span class="hljs-comment"># 所以用引号把“shutdown -s -f”放在一起表示这是一条子命令，</span><br><span class="hljs-comment"># 而带的参数并不是schtasks的参数，一定要加参数</span><br><span class="hljs-comment"># /sc表示执行的频率，once就是执行一次</span><br><span class="hljs-comment"># /st表示开始执行的时间</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Command/" class="print-no-link">#Command</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>常用命令</div>
+      <div>https://windzwindy.github.io/2025/02/20/常用命令/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>windzwindy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年2月20日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年2月24日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/02/20/Windows%20DiskPart%20%E7%94%A8%E6%B3%95/" title="Windows DiskPart 用法">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Windows DiskPart 用法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/02/14/%E7%BC%96%E8%BE%91mo%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95/" title="编辑mo文件的方法">
+                        <span class="hidden-mobile">编辑mo文件的方法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

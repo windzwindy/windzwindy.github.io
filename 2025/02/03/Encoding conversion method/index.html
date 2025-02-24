@@ -1,0 +1,855 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="windzwindy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="编码转换方法  【参考文章】 【1】：AI  方法一：使用 iconv 工具  iconv 是一个用于转换文本文件编码的命令行工具。它可以将文件从一种字符编码转换为另一种字符编码，常用于处理不同编码格式的文本文件，以确保它们能够正确显示和处理。  主要作用  转换文件的字符编码，例如从 UTF-8 转换为 ISO-8859-1。 处理不同语言和地区的文本文件，以确保兼容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Encoding conversion method">
+<meta property="og:url" content="https://windzwindy.github.io/2025/02/03/Encoding%20conversion%20method/index.html">
+<meta property="og:site_name" content="WindZwindy Blog">
+<meta property="og:description" content="编码转换方法  【参考文章】 【1】：AI  方法一：使用 iconv 工具  iconv 是一个用于转换文本文件编码的命令行工具。它可以将文件从一种字符编码转换为另一种字符编码，常用于处理不同编码格式的文本文件，以确保它们能够正确显示和处理。  主要作用  转换文件的字符编码，例如从 UTF-8 转换为 ISO-8859-1。 处理不同语言和地区的文本文件，以确保兼容">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-02-03T12:04:24.000Z">
+<meta property="article:modified_time" content="2025-02-23T08:53:26.469Z">
+<meta property="article:author" content="windzwindy">
+<meta property="article:tag" content="Encode">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Encoding conversion method - WindZwindy Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"windzwindy.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>WindZwindy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Encoding conversion method"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-02-03 20:04" pubdate>
+          2025年2月3日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          13 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Encoding conversion method</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年2月23日 下午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="编码转换方法">编码转换方法</h1>
+<blockquote>
+<p>【参考文章】</p>
+<p>【1】：AI</p>
+</blockquote>
+<h2 id="方法一使用-iconv-工具">方法一：使用 <code>iconv</code> 工具</h2>
+<ul>
+<li><code>iconv</code>
+是一个用于转换文本文件编码的命令行工具。它可以将文件从一种字符编码转换为另一种字符编码，常用于处理不同编码格式的文本文件，以确保它们能够正确显示和处理。</li>
+</ul>
+<h3 id="主要作用">主要作用</h3>
+<ul>
+<li>转换文件的字符编码，例如从 <code>UTF-8</code> 转换为
+<code>ISO-8859-1</code>。</li>
+<li>处理不同语言和地区的文本文件，以确保兼容性。</li>
+</ul>
+<h3 id="基本用法">基本用法</h3>
+<ul>
+<li><p><code>iconv</code> 的基本语法如下：</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">iconv -f &lt;原编码&gt; -t &lt;目标编码&gt; &lt;输入文件&gt; -o &lt;输出文件&gt;<br></code></pre></td></tr></table></figure></p></li>
+<li><p><code>-f &lt;原编码&gt;</code>：指定输入文件的原字符编码。</p></li>
+<li><p><code>-t &lt;目标编码&gt;</code>：指定输出文件的目标字符编码。</p></li>
+<li><p><code>&lt;输入文件&gt;</code>：要转换的源文件。</p></li>
+<li><p><code>-o &lt;输出文件&gt;</code>：指定转换后输出的文件名。</p></li>
+</ul>
+<h3 id="示例">示例</h3>
+<ul>
+<li><p>将一个 UTF-8 编码的文件转换为 ISO-8859-1 编码：</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">iconv -f UTF-8 -t ISO-8859-1 input.txt -o output.txt<br></code></pre></td></tr></table></figure></p></li>
+<li><p>如果你想直接在终端输出转换后的内容，可以省略 <code>-o</code>
+选项：</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">iconv -f UTF-8 -t ISO-8859-1 input.txt<br></code></pre></td></tr></table></figure></p></li>
+</ul>
+<h3 id="常用编码">常用编码</h3>
+<ul>
+<li>UTF-8</li>
+<li>ISO-8859-1</li>
+<li>GBK</li>
+<li>UTF-16</li>
+</ul>
+<h3 id="注意事项">注意事项</h3>
+<ul>
+<li><p>在转换时，确保目标编码能够表示原编码中的所有字符，否则可能会导致数据丢失或乱码。</p></li>
+<li><p>可以使用 <code>iconv -l</code> 命令列出所有支持的编码。</p></li>
+<li><p>通过使用
+<code>iconv</code>，你可以方便地处理和转换不同编码格式的文本文件。</p></li>
+</ul>
+<h2 id="方法二使用-enca-工具">方法二：使用 <a
+target="_blank" rel="noopener" href="https://github.com/nijel/enca"><code>enca</code></a> 工具</h2>
+<ul>
+<li>这个工具一般用在 Linux 系统下</li>
+<li><code>enca</code>（Extremely Naive Charset
+Analyser）是一个用于检测和转换文本文件字符编码的命令行工具。它特别适用于处理多种字符编码的文本文件，尤其是在处理东欧语言时非常有用。</li>
+</ul>
+<h3 id="主要作用-1">主要作用</h3>
+<ul>
+<li>自动检测文本文件的字符编码。</li>
+<li>将文件从一种字符编码转换为另一种字符编码。</li>
+</ul>
+<h3 id="基本用法-1">基本用法</h3>
+<ul>
+<li><p><code>enca</code> 的基本语法如下：</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">enca [选项] &lt;文件&gt;<br></code></pre></td></tr></table></figure></p></li>
+</ul>
+<h3 id="常用选项">常用选项</h3>
+<ul>
+<li><code>-L &lt;语言&gt;</code>：指定语言，以帮助更准确地检测编码。例如，<code>-L zh</code>
+用于中文，<code>-L pl</code> 用于波兰语等。</li>
+<li><code>-x &lt;目标编码&gt;</code>：将文件转换为指定的目标编码。</li>
+<li><code>-o &lt;输出文件&gt;</code>：指定转换后输出的文件名。</li>
+</ul>
+<h3 id="示例-1">示例</h3>
+<ul>
+<li><p>检测文件编码：</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">enca filename.txt<br></code></pre></td></tr></table></figure></p></li>
+<li><p>将文件从一种编码转换为另一种编码（例如，从 ISO-8859-2 转换为
+UTF-8）：</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">enca -x UTF-8 filename.txt -o output.txt<br></code></pre></td></tr></table></figure></p></li>
+<li><p>指定语言进行编码检测：</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">enca -L zh filename.txt<br></code></pre></td></tr></table></figure></p></li>
+</ul>
+<h3 id="注意事项-1">注意事项</h3>
+<ul>
+<li><p><code>enca</code>
+主要用于文本文件，处理二进制文件可能会导致错误。</p></li>
+<li><p>在某些情况下，<code>enca</code>
+可能无法准确检测编码，特别是当文件内容较少或包含多种编码时。</p></li>
+<li><p>通过使用
+<code>enca</code>，你可以方便地检测和转换文本文件的字符编码，确保文件在不同环境中的兼容性。</p></li>
+</ul>
+<h2 id="方法三使用-uconv-工具">方法三：使用 <code>uconv</code> 工具</h2>
+<ul>
+<li>这个工具一般用在 Linux 系统下</li>
+<li><code>uconv</code> 是一个用于字符编码转换的命令行工具，通常与
+ICU（International Components for
+Unicode）库一起使用。它可以处理多种字符编码和文本转换任务，支持 Unicode
+和其他字符集之间的转换。</li>
+</ul>
+<h3 id="主要作用-2">主要作用</h3>
+<ul>
+<li>转换文本文件的字符编码。</li>
+<li>处理 Unicode 字符串的格式化和转换。</li>
+<li>支持多种字符集和编码标准。</li>
+</ul>
+<h3 id="基本用法-2">基本用法</h3>
+<ul>
+<li><p><code>uconv</code> 的基本语法如下：</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">uconv [选项] &lt;输入文件&gt; -o &lt;输出文件&gt;<br></code></pre></td></tr></table></figure></p></li>
+</ul>
+<h3 id="常用选项-1">常用选项</h3>
+<ul>
+<li><code>-f &lt;原编码&gt;</code>：指定输入文件的原字符编码。</li>
+<li><code>-t &lt;目标编码&gt;</code>：指定输出文件的目标字符编码。</li>
+<li><code>-o &lt;输出文件&gt;</code>：指定转换后输出的文件名。</li>
+<li><code>-h</code>：显示帮助信息。</li>
+</ul>
+<h3 id="示例-2">示例</h3>
+<ul>
+<li><p>将一个 UTF-8 编码的文件转换为 ISO-8859-1 编码：</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">uconv -f UTF-8 -t ISO-8859-1 -o output.txt input.txt<br></code></pre></td></tr></table></figure></p></li>
+<li><p>如果你想直接在终端输出转换后的内容，可以省略 <code>-o</code>
+选项：</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">uconv -f UTF-8 -t ISO-8859-1 input.txt<br></code></pre></td></tr></table></figure></p></li>
+<li><p>查看帮助信息：</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">uconv -h<br></code></pre></td></tr></table></figure></p></li>
+</ul>
+<h3 id="注意事项-2">注意事项</h3>
+<ul>
+<li><p><code>uconv</code> 是一个功能强大的工具，适用于需要处理 Unicode
+和其他字符集的场景。</p></li>
+<li><p>确保目标编码能够表示原编码中的所有字符，以避免数据丢失或乱码。</p></li>
+<li><p>通过使用
+<code>uconv</code>，你可以方便地进行字符编码转换，确保文本文件在不同环境中的兼容性。</p></li>
+</ul>
+<h2 id="方法四使用-nkf-工具">方法四：使用 <a
+target="_blank" rel="noopener" href="https://github.com/nurse/nkf"><code>nkf</code></a> 工具</h2>
+<ul>
+<li><code>nkf</code>（Network Kanji
+Filter）是一个用于处理和转换文本文件字符编码的命令行工具，特别适用于日文字符编码的转换。它可以处理多种字符编码，包括
+Shift_JIS、EUC-JP、UTF-8 等。</li>
+</ul>
+<h3 id="主要作用-3">主要作用</h3>
+<ul>
+<li>转换文本文件的字符编码。</li>
+<li>处理和转换日文字符集。</li>
+<li>自动检测文件的字符编码。</li>
+</ul>
+<h3 id="基本用法-3">基本用法</h3>
+<ul>
+<li><p><code>nkf</code> 的基本语法如下：</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nkf [选项] &lt;输入文件&gt;<br></code></pre></td></tr></table></figure></p></li>
+</ul>
+<h3 id="常用选项-2">常用选项</h3>
+<ul>
+<li><code>-s</code>：将输入文件转换为 Shift_JIS 编码。</li>
+<li><code>-e</code>：将输入文件转换为 EUC-JP 编码。</li>
+<li><code>-w</code>：将输入文件转换为 UTF-8 编码。</li>
+<li><code>-g</code>：检测输入文件的编码并输出。</li>
+<li><code>-o &lt;输出文件&gt;</code>：指定转换后输出的文件名。</li>
+<li><code>-L</code>：将换行符转换为 Unix 风格（LF）。</li>
+<li><code>-m</code>：将文件转换为 MIME 编码格式。</li>
+</ul>
+<h3 id="示例-3">示例</h3>
+<ul>
+<li><p>将一个 UTF-8 编码的文件转换为 Shift_JIS 编码：</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nkf -s input.txt &gt; output.txt<br></code></pre></td></tr></table></figure></p></li>
+<li><p>将一个 Shift_JIS 编码的文件转换为 UTF-8 编码：</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nkf -w input.txt &gt; output.txt<br></code></pre></td></tr></table></figure></p></li>
+<li><p>检测文件的编码：</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nkf -g input.txt<br></code></pre></td></tr></table></figure></p></li>
+<li><p>直接在终端输出转换后的内容：</p>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nkf -w input.txt<br></code></pre></td></tr></table></figure></p></li>
+</ul>
+<h3 id="注意事项-3">注意事项</h3>
+<ul>
+<li><p><code>nkf</code>
+特别适合处理日文文本，但也可以用于其他语言的字符编码转换。</p></li>
+<li><p>在转换时，确保目标编码能够表示原编码中的所有字符，以避免数据丢失或乱码。</p></li>
+<li><p>通过使用
+<code>nkf</code>，你可以方便地处理和转换文本文件的字符编码，确保文件在不同环境中的兼容性。</p></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Encode/" class="print-no-link">#Encode</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Encoding conversion method</div>
+      <div>https://windzwindy.github.io/2025/02/03/Encoding conversion method/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>windzwindy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年2月3日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年2月23日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/02/14/%E7%BC%96%E8%BE%91mo%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95/" title="编辑mo文件的方法">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">编辑mo文件的方法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/09/22/GraalVM%20Java%20Generate%20Executable/" title="GraalVM Generate Executable Program">
+                        <span class="hidden-mobile">GraalVM Generate Executable Program</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
