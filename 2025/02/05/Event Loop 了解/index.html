@@ -18,22 +18,22 @@
   <meta name="author" content="windzwindy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Windows 删除多余的以太网  【参考文章】 【1】：Win10怎么删除多余的以太网？   打开注册表：按住 Win+r 键打开运行，在里面输入 regedit 确定即打开注册表 按照路径 计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Profiles\ 在注册表">
+    <meta name="description" content="Event Loop 了解  事件循环（Event Loop）是 JavaScript 中处理异步操作的机制。 它允许 JavaScript 在单线程环境中执行非阻塞的代码，从而实现异步编程。事件循环的工作原理涉及多个组件，包括调用栈、任务队列（宏任务队列和微任务队列）以及事件循环本身。  主要组件  调用栈（Call Stack）：  JavaScript 是单线程的，所">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Windows 删除多余的以太网">
-<meta property="og:url" content="https://windzwindy.github.io/2025/02/24/Windows%20%E5%88%A0%E9%99%A4%E5%A4%9A%E4%BD%99%E7%9A%84%E4%BB%A5%E5%A4%AA%E7%BD%91/index.html">
+<meta property="og:title" content="Event Loop 了解">
+<meta property="og:url" content="https://windzwindy.github.io/2025/02/05/Event%20Loop%20%E4%BA%86%E8%A7%A3/index.html">
 <meta property="og:site_name" content="WindZwindy Blog">
-<meta property="og:description" content="Windows 删除多余的以太网  【参考文章】 【1】：Win10怎么删除多余的以太网？   打开注册表：按住 Win+r 键打开运行，在里面输入 regedit 确定即打开注册表 按照路径 计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Profiles\ 在注册表">
+<meta property="og:description" content="Event Loop 了解  事件循环（Event Loop）是 JavaScript 中处理异步操作的机制。 它允许 JavaScript 在单线程环境中执行非阻塞的代码，从而实现异步编程。事件循环的工作原理涉及多个组件，包括调用栈、任务队列（宏任务队列和微任务队列）以及事件循环本身。  主要组件  调用栈（Call Stack）：  JavaScript 是单线程的，所">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-02-24T13:04:35.000Z">
-<meta property="article:modified_time" content="2025-02-24T13:24:00.102Z">
+<meta property="article:published_time" content="2025-02-05T12:30:38.000Z">
+<meta property="article:modified_time" content="2025-02-24T14:07:19.359Z">
 <meta property="article:author" content="windzwindy">
-<meta property="article:tag" content="Windows">
+<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Windows 删除多余的以太网 - WindZwindy Blog</title>
+  <title>Event Loop 了解 - WindZwindy Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -187,7 +187,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Windows 删除多余的以太网"></span>
+            <span id="subtitle" data-typed-text="Event Loop 了解"></span>
           
         </div>
 
@@ -198,8 +198,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-02-24 21:04" pubdate>
-          2025年2月24日 晚上
+        <time datetime="2025-02-05 20:30" pubdate>
+          2025年2月5日 晚上
         </time>
       </span>
     
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          130 字
+          646 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          2 分钟
+          6 分钟
         
       </span>
     
@@ -258,7 +258,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Windows 删除多余的以太网</h1>
+            <h1 id="seo-header">Event Loop 了解</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
@@ -271,22 +271,66 @@
             
               <div class="markdown-body">
                 
-                <h1 id="windows-删除多余的以太网">Windows 删除多余的以太网</h1>
-<blockquote>
-<p>【参考文章】 【1】：<a
-target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/532129694691067525.html#:~:text=Win10%E5%88%A0%E9%99%A4%E5%A4%9A%E4%BD%99%E7%9A%84%E4%BB%A5%E5%A4%AA%E7%BD%91%E6%95%99%E7%A8%8B%201%20%E6%89%93%E5%BC%80%E6%B3%A8%E5%86%8C%E8%A1%A8%E7%BC%96%E8%BE%91%E5%99%A8%EF%BC%9A%20%E6%8C%89%E4%B8%8B%20WIN%2BR%20%E9%94%AE%E6%89%93%E5%BC%80%E8%BF%90%E8%A1%8C%E7%AA%97%E5%8F%A3%EF%BC%8C%E8%BE%93%E5%85%A5%20regedit%20%E5%B9%B6%E6%8C%89%E7%A1%AE%E5%AE%9A%EF%BC%8C%E4%BB%A5%E6%89%93%E5%BC%80%E6%B3%A8%E5%86%8C%E8%A1%A8%E7%BC%96%E8%BE%91%E5%99%A8%E3%80%82,4%20%E5%88%A0%E9%99%A4%E6%9C%AA%E7%AE%A1%E7%90%86%E7%9A%84%E7%BD%91%E7%BB%9C%E7%AD%BE%E5%90%8D%EF%BC%9A%20%E6%8E%A5%E7%9D%80%EF%BC%8C%E5%B1%95%E5%BC%80%20HKEY_LOCAL_MACHINESOFTWAREMicrosoftWindowsNTCurrentVersionNetworkListSignaturesUnmanaged%E3%80%82%20...%205%20%E9%87%8D%E5%90%AF%E7%94%B5%E8%84%91%EF%BC%9A%20%E5%AE%8C%E6%88%90%E4%B8%8A%E8%BF%B0%E6%93%8D%E4%BD%9C%E5%90%8E%EF%BC%8C%E9%87%8D%E5%90%AF%E7%94%B5%E8%84%91%E4%BB%A5%E4%BD%BF%E6%9B%B4%E6%94%B9%E7%94%9F%E6%95%88%E3%80%82">Win10怎么删除多余的以太网？</a></p>
-</blockquote>
+                <h1 id="event-loop-了解">Event Loop 了解</h1>
 <ul>
-<li>打开注册表：按住 <code>Win+r</code> 键打开运行，在里面输入
-<code>regedit</code> 确定即打开注册表</li>
-<li>按照路径
-<code>计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Profiles\</code>
-在注册表中进行定位</li>
-<li>可以看到在 <code>Profiles</code>
-下有很多网络配置，看情况进行多余的以太网删除</li>
-<li>然后在
-<code>计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Signatures\Unmanaged</code>
-路径下删除未管理的网络配置</li>
+<li><p>事件循环（Event Loop）是 JavaScript
+中处理异步操作的机制。</p></li>
+<li><p>它允许 JavaScript
+在单线程环境中执行非阻塞的代码，从而实现异步编程。事件循环的工作原理涉及多个组件，包括调用栈、任务队列（宏任务队列和微任务队列）以及事件循环本身。</p></li>
+</ul>
+<h2 id="主要组件">主要组件</h2>
+<ul>
+<li>调用栈（Call Stack）：
+<ul>
+<li>JavaScript
+是单线程的，所有的代码执行都在调用栈中进行。调用栈是一个后进先出（LIFO）的数据结构，用于管理函数调用。当一个函数被调用时，它会被推入栈中；当函数执行完毕时，它会从栈中弹出。</li>
+</ul></li>
+<li>任务队列（Task Queue）：
+<ul>
+<li>任务队列用于存放宏任务（macrotasks），例如
+<code>setTimeout</code>、<code>setInterval</code>、I/O
+操作等。宏任务队列中的任务会在调用栈为空时依次执行。</li>
+</ul></li>
+<li>微任务队列（Microtask Queue）：
+<ul>
+<li>微任务队列用于存放微任务（microtasks），先进先出，例如 Promise
+的回调和
+<code>queueMicrotask</code>。微任务的优先级高于宏任务，微任务会在当前执行栈清空后、下一个宏任务开始之前执行。</li>
+</ul></li>
+</ul>
+<h2 id="工作流程">工作流程</h2>
+<pre><code class="hljs">1. 执行全局代码，函数调用被推入调用栈。
+2. 当遇到异步操作（如 `setTimeout` 或 Promise）时，相关的回调会被放入相应的任务队列。
+3. 当调用栈为空时，事件循环会首先检查微任务队列，执行所有微任务，先进先出。
+4. 微任务执行完后，事件循环会从宏任务队列中取出下一个任务并执行。
+5. 重复以上步骤，直到所有任务都被处理完。</code></pre>
+<h2 id="例子">例子</h2>
+<ul>
+<li><p>有下面代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;1&quot;</span>);<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">log2</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;2&quot;</span>);<br>&#125;<br><br><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;3&quot;</span>);<br>&#125;, <span class="hljs-number">0</span>);<br><br><span class="hljs-title function_">log2</span>();<br><br><span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;4&quot;</span>);<br>&#125;);<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;5&quot;</span>);<br><br><span class="hljs-title function_">queueMicrotask</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;6&quot;</span>);<br>&#125;);<br></code></pre></td></tr></table></figure></li>
+<li><p>打印结果为：<code>1 2 5 4 6 3</code></p></li>
+<li><p>原因：</p>
+<ul>
+<li><code>console.log("1");</code> 进入调用栈，输出 <code>1</code>
+后出栈</li>
+<li><code>log2</code> 定义但不调用不进栈，<code>setTimeout</code>
+进栈，因为是 <code>setTimeout</code> 所以就为 <code>Macrotask</code>
+宏任务</li>
+<li><code>log2</code> 调用了进入调用栈，输出 <code>2</code> 后出栈</li>
+<li><code>Promise</code> 进栈后进入 <code>Microtask</code>
+作为微任务</li>
+<li><code>console.log("5");</code> 进入调用栈，输出 <code>5</code>
+后出栈</li>
+<li><code>queueMicrotask</code> 进入栈后进入 <code>Microtask</code>
+作为微任务</li>
+<li>微任务先出再到宏任务出</li>
+<li>微任务是先进先出，所以 <code>Promise</code> 先出队到调用栈，输出
+<code>4</code> 后出栈</li>
+<li>微任务还没有出完，所以再到 <code>queueMicrotask</code>
+出队到调用栈，输出 <code>6</code> 后出栈</li>
+<li>到宏任务了，所以 <code>setTimeout</code> 到调用栈，输出
+<code>3</code> 后出栈</li>
+</ul></li>
 </ul>
 
                 
@@ -300,7 +344,7 @@ target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/532129694
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Windows/" class="print-no-link">#Windows</a>
+        <a href="/tags/JavaScript/" class="print-no-link">#JavaScript</a>
       
     </div>
   
@@ -312,8 +356,8 @@ target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/532129694
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Windows 删除多余的以太网</div>
-      <div>https://windzwindy.github.io/2025/02/24/Windows 删除多余的以太网/</div>
+      <div>Event Loop 了解</div>
+      <div>https://windzwindy.github.io/2025/02/05/Event Loop 了解/</div>
     </div>
     <div class="license-meta">
       
@@ -325,7 +369,7 @@ target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/532129694
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年2月24日</div>
+          <div>2025年2月5日</div>
         </div>
       
       
@@ -362,9 +406,9 @@ target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/532129694
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/24/Windows%20%E7%BD%91%E7%BB%9C%E6%9C%89%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" title="Windows 网络有各种问题解决方法">
+                      <a href="/2025/02/14/%E7%BC%96%E8%BE%91mo%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95/" title="编辑mo文件的方法">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Windows 网络有各种问题解决方法</span>
+                        <span class="hidden-mobile">编辑mo文件的方法</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -372,8 +416,8 @@ target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/532129694
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/02/24/%E5%85%B3%E9%97%AD%20LTS%20%E7%89%88%E7%9A%84%E6%AF%8F%E5%A4%A9%E4%BF%A1%E6%81%AF/" title="Ubuntu 关闭 LTS 版的每天信息">
-                        <span class="hidden-mobile">Ubuntu 关闭 LTS 版的每天信息</span>
+                      <a href="/2025/02/03/Encoding%20conversion%20method/" title="Encoding conversion method">
+                        <span class="hidden-mobile">Encoding conversion method</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
