@@ -18,22 +18,23 @@
   <meta name="author" content="windzwindy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="DiskGenius 清除分区空闲空间后硬盘满了解决方法  用命令 chkdsk 解决：比如 D 盘出现了问题 1chkdsk D: &#x2F;f">
+    <meta name="description" content="APT 的常见用法  【参考文章】 【1】：AI   APT（Advanced Package Tool）是 Debian 及其衍生版（例如 Ubuntu）中常用的包管理工具。它用来简化软件包的安装、升级和删除过程。  更新软件包索引和软件  更新软件包索引（同步软件仓库的更新信息）。 1sudo apt update 升级所有已安装软件包到最新版本，但不会安装或删除软件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DiskGenius 清除分区空闲空间后硬盘满了解决方法">
-<meta property="og:url" content="https://windzwindy.github.io/2025/02/20/DiskGenius%20%E6%B8%85%E9%99%A4%E5%88%86%E5%8C%BA%E7%A9%BA%E9%97%B2%E7%A9%BA%E9%97%B4%E5%90%8E%E7%A1%AC%E7%9B%98%E6%BB%A1%E4%BA%86%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:title" content="APT 的常见用法">
+<meta property="og:url" content="https://windzwindy.github.io/2025/03/02/APT%20%E7%9A%84%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95/index.html">
 <meta property="og:site_name" content="WindZwindy Blog">
-<meta property="og:description" content="DiskGenius 清除分区空闲空间后硬盘满了解决方法  用命令 chkdsk 解决：比如 D 盘出现了问题 1chkdsk D: &#x2F;f">
+<meta property="og:description" content="APT 的常见用法  【参考文章】 【1】：AI   APT（Advanced Package Tool）是 Debian 及其衍生版（例如 Ubuntu）中常用的包管理工具。它用来简化软件包的安装、升级和删除过程。  更新软件包索引和软件  更新软件包索引（同步软件仓库的更新信息）。 1sudo apt update 升级所有已安装软件包到最新版本，但不会安装或删除软件">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-02-20T03:34:14.000Z">
-<meta property="article:modified_time" content="2025-02-20T03:37:57.258Z">
+<meta property="article:published_time" content="2025-03-02T01:56:20.000Z">
+<meta property="article:modified_time" content="2025-03-02T02:34:35.071Z">
 <meta property="article:author" content="windzwindy">
-<meta property="article:tag" content="DiskGenius">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Ubuntu">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>DiskGenius 清除分区空闲空间后硬盘满了解决方法 - WindZwindy Blog</title>
+  <title>APT 的常见用法 - WindZwindy Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -187,7 +188,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="DiskGenius 清除分区空闲空间后硬盘满了解决方法"></span>
+            <span id="subtitle" data-typed-text="APT 的常见用法"></span>
           
         </div>
 
@@ -198,8 +199,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-02-20 11:34" pubdate>
-          2025年2月20日 中午
+        <time datetime="2025-03-02 09:56" pubdate>
+          2025年3月2日 上午
         </time>
       </span>
     
@@ -210,7 +211,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          33 字
+          693 字
         
       </span>
     
@@ -221,7 +222,7 @@
         
         
         
-          1 分钟
+          6 分钟
         
       </span>
     
@@ -258,12 +259,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">DiskGenius 清除分区空闲空间后硬盘满了解决方法</h1>
+            <h1 id="seo-header">APT 的常见用法</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年2月20日 中午
+                    本文最后更新于 2025年3月2日 上午
                   
                 
               </p>
@@ -271,12 +272,64 @@
             
               <div class="markdown-body">
                 
-                <h1
-id="diskgenius-清除分区空闲空间后硬盘满了解决方法"><code>DiskGenius</code>
-清除分区空闲空间后硬盘满了解决方法</h1>
+                <h1 id="apt-的常见用法">APT 的常见用法</h1>
+<blockquote>
+<p>【参考文章】</p>
+<p>【1】：AI</p>
+</blockquote>
 <ul>
-<li>用命令 <code>chkdsk</code> 解决：比如 <code>D</code> 盘出现了问题
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">chkdsk D: /f<br></code></pre></td></tr></table></figure></li>
+<li>APT（Advanced Package Tool）是 Debian 及其衍生版（例如
+Ubuntu）中常用的包管理工具。它用来简化软件包的安装、升级和删除过程。</li>
+</ul>
+<h2 id="更新软件包索引和软件">更新软件包索引和软件</h2>
+<ul>
+<li><p>更新软件包索引（同步软件仓库的更新信息）。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt update<br></code></pre></td></tr></table></figure></li>
+<li><p>升级所有已安装软件包到最新版本，但不会安装或删除软件包。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt upgrade<br></code></pre></td></tr></table></figure></li>
+<li><p>升级系统中所有软件包，同时解决依赖关系，可能会安装或删除某些软件包。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt full-upgrade<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="软件安装">软件安装</h2>
+<ul>
+<li><p>显示软件包的优先级信息以及可用的版本信息，这对理解软件包从哪些源安装特别有帮助。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt policy &lt;package-name&gt;<br><span class="hljs-comment"># 查看 firefox 的可用版本</span><br>apt policy firefox<br></code></pre></td></tr></table></figure></li>
+<li><p>安装指定软件包，可以写多个软件包，以空格作为分割，并自动处理依赖关系。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install &lt;package-name1&gt; &lt;package-name2&gt; &lt;package-xxx&gt;<br><span class="hljs-comment"># 安装 vim</span><br>sudo apt install vim<br><span class="hljs-comment"># 安装 nano</span><br>sudo apt insatll nano<br></code></pre></td></tr></table></figure></li>
+<li><p>安装软件包的某个特定版本，可以通过在软件包名称后加上等号和版本号来实现。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install package-name=version-number<br><span class="hljs-comment"># 安装 firefox 指定版本</span><br>sudo apt install firefox=85.0+build2-0ubuntu0.20.04.1<br></code></pre></td></tr></table></figure></li>
+<li><p>安装软件包时指定安装 Architektur（架构）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install package-name:<span class="hljs-built_in">arch</span><br><span class="hljs-comment"># 添加 i386 架构</span><br>sudo dpkg --add-architecture i386<br><span class="hljs-comment"># 安装 i386 架构的 firefox</span><br>sudo apt install firefox:i386<br></code></pre></td></tr></table></figure></li>
+<li><p>只安装必需依赖，而不安装推荐（Recommends）相关的软件包。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install --no-install-recommends package-name<br><span class="hljs-comment"># 安装 libreoffice 而不安装推荐相关的软件包</span><br>sudo apt install --no-install-recommends libreoffice<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="软件卸载">软件卸载</h2>
+<ul>
+<li><p>卸载已安装的软件包，但通常会保留配置文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt remove &lt;package-name1&gt; &lt;package-name2&gt; &lt;package-xxx&gt;<br><span class="hljs-comment"># 卸载 nano</span><br>sudo apt remove nano<br></code></pre></td></tr></table></figure></li>
+<li><p>彻底卸载软件包，包括其所有配置文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt purge &lt;package-name1&gt; &lt;package-name2&gt; &lt;package-xxx&gt;<br><span class="hljs-comment"># 卸载 nano 并删除其配置文件</span><br>sudo apt purge nano<br></code></pre></td></tr></table></figure></li>
+<li><p>自动删除安装软件包时自动安装的、不再需要的依赖软件包。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt autoremove<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="软件搜索">软件搜索</h2>
+<ul>
+<li><p>在软件仓库中搜索指定软件包名称或描述中匹配的内容。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt search &lt;keyword&gt;<br><span class="hljs-comment"># 搜索 nginx</span><br>apt search nginx<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="查看软件信息">查看软件信息</h2>
+<ul>
+<li><p>显示指定软件包的详细信息（如版本、依赖、描述、维护者等）。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt show &lt;package-name&gt;<br><span class="hljs-comment"># 查看 curl 软件包的信息</span><br>apt show curl<br></code></pre></td></tr></table></figure></li>
+<li><p>列出软件包信息。可用于显示已安装包、可升级包或匹配特定关键字的软件包列表。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt list [--installed] [--upgradable] [&lt;pattern&gt;]<br><span class="hljs-comment"># 列出所有已安装的软件包：</span><br>apt list --installed<br><span class="hljs-comment"># 列出可升级的软件包：</span><br>apt list --upgradable<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="软件清理">软件清理</h2>
+<ul>
+<li><p>删除本地存储的所有已下载软件包文件，释放磁盘空间。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt clean<br></code></pre></td></tr></table></figure></li>
+<li><p>删除本地存储的旧版本软件包文件，仅清除那些在仓库中不再下载的包，既能节省空间又不会影响未来的软件包安装。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt autoclean<br></code></pre></td></tr></table></figure></li>
 </ul>
 
                 
@@ -290,7 +343,9 @@ id="diskgenius-清除分区空闲空间后硬盘满了解决方法"><code>DiskGe
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/DiskGenius/" class="print-no-link">#DiskGenius</a>
+        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
+      
+        <a href="/tags/Ubuntu/" class="print-no-link">#Ubuntu</a>
       
     </div>
   
@@ -302,8 +357,8 @@ id="diskgenius-清除分区空闲空间后硬盘满了解决方法"><code>DiskGe
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>DiskGenius 清除分区空闲空间后硬盘满了解决方法</div>
-      <div>https://windzwindy.github.io/2025/02/20/DiskGenius 清除分区空闲空间后硬盘满了解决方法/</div>
+      <div>APT 的常见用法</div>
+      <div>https://windzwindy.github.io/2025/03/02/APT 的常见用法/</div>
     </div>
     <div class="license-meta">
       
@@ -315,13 +370,13 @@ id="diskgenius-清除分区空闲空间后硬盘满了解决方法"><code>DiskGe
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年2月20日</div>
+          <div>2025年3月2日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年2月20日</div>
+          <div>2025年3月2日</div>
         </div>
       
       
@@ -352,18 +407,12 @@ id="diskgenius-清除分区空闲空间后硬盘满了解决方法"><code>DiskGe
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/23/Spring_Record/" title="Spring 记录（基于 SpringBoot）">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Spring 记录（基于 SpringBoot）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/02/20/Windows%20DiskPart%20%E7%94%A8%E6%B3%95/" title="Windows DiskPart 用法">
-                        <span class="hidden-mobile">Windows DiskPart 用法</span>
+                      <a href="/2025/03/01/Linux%20%E6%A1%8C%E9%9D%A2%E8%AE%B0%E5%BD%95/" title="Linux 桌面记录">
+                        <span class="hidden-mobile">Linux 桌面记录</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

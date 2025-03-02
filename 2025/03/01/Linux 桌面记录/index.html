@@ -1,0 +1,1176 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.png">
+  <link rel="icon" href="/img/icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="windzwindy">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Linux 桌面记录  【参考文章】 【1】：AI 【2】：Desktop environment - ArchWiki 【3】：Window manager - ArchWiki 【4】：Display manager - ArchWiki 【5】：Wayland - ArchWiki   在 Linux 中有五个东西，分别是 Xorg、Wayland、DE、WM和D">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 桌面记录">
+<meta property="og:url" content="https://windzwindy.github.io/2025/03/01/Linux%20%E6%A1%8C%E9%9D%A2%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="WindZwindy Blog">
+<meta property="og:description" content="Linux 桌面记录  【参考文章】 【1】：AI 【2】：Desktop environment - ArchWiki 【3】：Window manager - ArchWiki 【4】：Display manager - ArchWiki 【5】：Wayland - ArchWiki   在 Linux 中有五个东西，分别是 Xorg、Wayland、DE、WM和D">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-03-01T02:32:54.000Z">
+<meta property="article:modified_time" content="2025-03-02T02:59:54.772Z">
+<meta property="article:author" content="windzwindy">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Linux 桌面记录 - WindZwindy Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"windzwindy.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>WindZwindy</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Linux 桌面记录"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-03-01 10:32" pubdate>
+          2025年3月1日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          58 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Linux 桌面记录</h1>
+            
+              <p id="updated-time" class="note note-info" style="">
+                
+                  
+                    本文最后更新于 2025年3月2日 上午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="linux-桌面记录">Linux 桌面记录</h1>
+<blockquote>
+<p>【参考文章】</p>
+<p>【1】：AI</p>
+<p>【2】：<a
+target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Desktop_environment">Desktop
+environment - ArchWiki</a></p>
+<p>【3】：<a
+target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Window_manager">Window manager -
+ArchWiki</a></p>
+<p>【4】：<a
+target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Display_manager">Display manager
+- ArchWiki</a></p>
+<p>【5】：<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Wayland">Wayland -
+ArchWiki</a></p>
+</blockquote>
+<ul>
+<li>在 Linux 中有五个东西，分别是 Xorg、Wayland、DE、WM和DM</li>
+<li>图形显示服务器、现代的显示服务器、桌面环境、窗口环境和显示环境管理</li>
+</ul>
+<h2 id="xorg图形显示服务器">Xorg（图形显示服务器）</h2>
+<ul>
+<li>Xorg 是一个开源的图形显示服务器，用于类 Unix 操作系统（如
+Linux）上，它是 X Window System 的实现之一。Xorg
+提供了一个图形化界面，使得用户能够通过鼠标和键盘与计算机进行交互，通常它用于管理显示、输入设备（如鼠标、键盘）和图形渲染。</li>
+<li>在 Xorg 中，<strong>X 服务器</strong>（X
+Server）是核心组件，它负责显示和管理窗口，同时与硬件（显示器、输入设备等）进行交互。而
+<strong>X 客户端</strong>（X Client）是运行在 X 服务器上的程序，它们请求
+X 服务器进行图形操作。常见的 X 客户端包括桌面环境（如
+GNOME、KDE）和应用程序。</li>
+<li>简而言之，Xorg 是让图形化桌面环境和程序能够在 Linux 或其他类 Unix
+系统中运行的重要基础设施。</li>
+</ul>
+<h2 id="wayland现代的显示服务器">Wayland（现代的显示服务器）</h2>
+<ul>
+<li><p><a
+target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Wayland">文档</a></p></li>
+<li><p>Wayland 是一种现代的显示服务器协议和相应的实现，用于替代传统的 X
+Window
+System（Xorg）。它设计的目标是更加简洁、高效、安全，并且能够提供更好的性能和更低的延迟。</p></li>
+<li><p>在传统的 Xorg 系统中，X
+服务器负责处理所有显示和输入设备的管理，所有窗口和图形渲染工作都由它来完成。Xorg
+的架构较为复杂，涉及多个不同的组件，因此可能存在性能瓶颈和安全隐患。</p></li>
+<li><p>Wayland
+的设计旨在简化这个过程，它直接将图形渲染和输入事件处理的责任分配给应用程序和合成器具体来说：</p>
+<ul>
+<li>合成器（Compositor）：在 Wayland
+中，合成器不仅仅负责将应用程序的窗口合成到屏幕上，还负责管理显示和输入设备。Wayland
+的合成器通常是直接操作图形硬件来绘制和显示内容。</li>
+<li>客户端与服务器分离：与 Xorg 不同，Wayland
+中的每个应用程序（客户端）通过协议与合成器通信，直接渲染其内容，合成器负责将所有应用的图形内容合成并显示出来。这种方式减少了中间层，减少了潜在的性能瓶颈。</li>
+<li>更高效的渲染和更低的延迟：由于不需要额外的处理步骤，Wayland
+在性能上通常优于
+Xorg，尤其在处理高刷新率显示和更流畅的动画时，能够提供更低的延迟。</li>
+<li>更好的安全性：Wayland 也更加注重安全性，因为它避免了 Xorg
+中的许多潜在的安全漏洞，例如 Xorg
+允许任意应用程序查看和控制其他应用程序的内容，而在 Wayland
+中，每个应用程序都只能访问自己的内容，不能随意干扰其他应用。</li>
+</ul></li>
+</ul>
+<h3 id="合成器compositors">合成器（Compositors）</h3>
+<h4 id="堆叠型stacking">堆叠型（Stacking）</h4>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.enlightenment.org">Enlightenment</a>。</li>
+<li><a target="_blank" rel="noopener" href="http://hikari.acmelabs.space/">hikari</a>：基于 wlroots
+的合成器，灵感来自 cwm，积极在 FreeBSD 上开发，但也支持 Linux。</li>
+<li><a target="_blank" rel="noopener" href="https://userbase.kde.org/KWin">KDE KWin</a>。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lirios/shell">Liri Shell</a>：Liri
+的一部分，使用 QtQuick 和 QtCompositor 构建的 Wayland 合成器。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/labwc/labwc">labwc</a>：基于 wlroots
+的合成器，灵感来自 Openbox。</li>
+<li><a target="_blank" rel="noopener" href="https://gitlab.gnome.org/GNOME/mutter">Mutter</a>。</li>
+<li><a target="_blank" rel="noopener" href="https://wayfire.org">wayfire</a>：灵感来自 Compiz 的 3D
+合成器，基于 wlroots。</li>
+<li><a
+target="_blank" rel="noopener" href="https://gitlab.freedesktop.org/wayland/weston">Weston</a>：旨在正确性、可靠性、可预测性和性能上的
+Wayland 合成器。</li>
+<li><a target="_blank" rel="noopener" href="https://gitlab.com/Rubo/wio">wio</a>：基于 wlroots
+的合成器，旨在复制 Plan 9 的 Rio 桌面外观和感觉。</li>
+</ul>
+<h4 id="平铺型tiling">平铺型（Tiling）</h4>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/project-repo/cagebreak">Cagebreak</a>：基于
+cage，灵感来自 ratpoison。</li>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/miracle-wm-org/miracle-wm">miracle-wm</a>：一个基于
+Mir 的 Wayland 合成器，风格像 i3 和
+sway，目标是比这两者更炫酷且更丰富，类似于 swayfx。</li>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/YaLTeR/niri/">niri</a>：一个支持滚动平铺的
+Wayland 合成器。</li>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/qtile/qtile">Qtile</a>：一款全功能的、可编程的平铺窗口管理器和
+Wayland 合成器，使用 Python 编写和配置。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/swaywm/sway">Sway</a>：基于 wlroots 的与
+i3 兼容的 Wayland 合成器。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/WillPower3309/swayfx">SwayFx</a>：基于
+Sway 的合成器，但带有视觉效果！</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/michaelforney/velox">Velox</a>：基于 swc
+的简洁窗口管理器，灵感来自 dwm 和 xmonad。</li>
+</ul>
+<h4 id="动态型dynamic">动态型（Dynamic）</h4>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://codeberg.org/dwl/dwl">dwl</a>：基于 wlroots 的类似
+dwm 的 Wayland 合成器。</li>
+<li><a target="_blank" rel="noopener" href="https://hyprland.org">Hyprland</a>：一款动态平铺的 Wayland
+合成器，注重外观与功能的平衡。</li>
+<li><a target="_blank" rel="noopener" href="https://hyprland.org">japokwm</a>：一款基于 wlroots 的动态
+Wayland 平铺合成器，围绕创建布局展开。</li>
+<li><a target="_blank" rel="noopener" href="https://codeberg.org/river/river">river</a>：灵感来自 dwm
+和 bspwm 的动态平铺 Wayland 合成器。</li>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/inclement/vivarium">Vivarium</a>：一款动态平铺
+Wayland 合成器，基于 wlroots，桌面语义灵感来自 xmonad。</li>
+</ul>
+<h4 id="其他">其他</h4>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://www.hjdskes.nl/projects/cage">Cage</a>：显示单个全屏应用，如同自助终端。</li>
+<li><a
+target="_blank" rel="noopener" href="https://gitlab.gnome.org/World/Phosh/phoc">phoc</a>：一个为移动设备设计的轻量
+wlroots 合成器。</li>
+</ul>
+<h2 id="desktop-environment桌面环境">Desktop
+Environment（桌面环境）</h2>
+<ul>
+<li><p><a
+target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Desktop_environment">文档</a></p></li>
+<li><p>桌面环境是一个完整的用户界面，它包括了图形界面、应用程序、工具和基本的交互元素，目的是让用户能够更容易地与系统进行交互。</p></li>
+<li><p>桌面环境通常会包括以下组件：</p>
+<ul>
+<li>图形用户界面（GUI）：图标、菜单、按钮、工具栏等。</li>
+<li>桌面应用程序：文件管理器、文本编辑器、终端、浏览器等。</li>
+<li>默认设置：背景、主题、窗口装饰、面板、菜单等。</li>
+<li>集成的工具：例如网络管理工具、电源管理工具等。</li>
+</ul></li>
+</ul>
+<h3 id="常用的桌面环境">常用的桌面环境</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.gnome.org">GNOME</a>：GNOME
+桌面环境是一个吸引人且直观的桌面，具有现代 (GNOME) 和经典 (GNOME
+Classic) 会话。</li>
+<li><a target="_blank" rel="noopener" href="https://www.kde.org/plasma-desktop">KDE Plasma</a>：KDE
+Plasma 桌面环境是一个熟悉的工作环境。Plasma
+提供了一个现代桌面计算体验所需的所有工具，让你可以从一开始就提高生产力。</li>
+<li><a target="_blank" rel="noopener" href="https://xfce.org">Xfce</a>：Xfce 体现了传统的 UNIX
+模块化和重用哲学。它由许多组件组成，提供现代桌面环境所需的所有功能，同时保持相对轻量。它们被单独打包，可以从可用的包中选择，创建最适合个人的工作环境。</li>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/linuxmint/Cinnamon">Cinnamon</a>：Cinnamon
+致力于提供传统的用户体验。Cinnamon 是 GNOME 3 的一个分支。</li>
+</ul>
+<h3 id="其它的桌面环境">其它的桌面环境</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.buddiesofbudgie.org">Budgie</a>：Budgie
+是一个为现代用户设计的桌面环境，专注于简洁与优雅。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/pop-os/cosmic-epoch">COSMIC</a>：COSMIC
+是由 System76 为 Pop! OS 创建的基于 Rust
+的桌面环境，灵感来自于高度自定义的 GNOME。仍处于 alpha 阶段。</li>
+<li><a target="_blank" rel="noopener" href="https://cutefish-ubuntu.github.io">Cutefish</a>：Cutefish
+是一个新的现代桌面环境。</li>
+<li><a target="_blank" rel="noopener" href="https://www.deepin.org">Deepin Desktop
+Environment</a>：Deepin
+桌面界面和应用程序具有直观和优雅的设计。移动、共享和搜索等变得异常愉快。</li>
+<li><a
+target="_blank" rel="noopener" href="https://www.enlightenment.org">Enlightenment</a>：Enlightenment
+桌面外壳提供一个高效的窗口管理器，基于 Enlightenment Foundation
+Libraries，同时还有其他基本桌面组件，如文件管理器、桌面图标和小部件。支持主题，并且能够在老旧硬件或嵌入式设备上运行。</li>
+<li><a target="_blank" rel="noopener" href="https://wiki.gnome.org/Projects/GnomeFlashback">GNOME
+Flashback</a>：GNOME Flashback 是 GNOME 3 的一个外壳，最初被称为 GNOME
+后备模式。桌面布局和底层技术与 GNOME 2 相似。</li>
+<li><a target="_blank" rel="noopener" href="https://lxde.org">LXDE</a>：Lightweight X11 Desktop
+Environment
+是一个快速且节能的桌面环境。它具有现代化界面、多语言支持、标准键盘快捷键和其他功能，如标签文件浏览。根本上设计为轻量化，LXDE
+力求比其他桌面环境更少占用 CPU 和内存。</li>
+<li><a target="_blank" rel="noopener" href="https://lxqt.github.io">LXQt</a>：LXQt 是 LXDE 的 Qt
+移植版本，也是 LXDE 即将推出的版本。它是 LXDE-Qt 和 Razor-qt
+项目的合并结果：一个轻量、模块化、极速且用户友好的桌面环境。</li>
+<li><a target="_blank" rel="noopener" href="https://mate-desktop.org">MATE</a>：MATE
+提供一个直观且吸引人的桌面，采用传统的比喻。MATE 起源于 GNOME 2
+的一个分支，但现在使用 GTK 3。</li>
+<li><a target="_blank" rel="noopener" href="https://elementary.io">Pantheon</a>：Pantheon 是最初为
+elementary OS 发行版创建的默认桌面环境。它完全用 Vala 和 GTK3
+工具包编写。就可用性和外观而言，桌面在某些方面与 GNOME Shell 和 macOS
+有相似之处。</li>
+<li><a
+target="_blank" rel="noopener" href="https://gitlab.gnome.org/World/Phosh/phosh">Phosh</a>：Phosh
+是一个基于 GNOME 的 Wayland shell 用户界面，适用于移动设备。</li>
+<li><a target="_blank" rel="noopener" href="https://sugarlabs.org">Sugar</a>：Sugar Learning Platform
+是一个由活动组成的计算机环境，旨在帮助 5 至 12
+岁的儿童通过丰富的媒体表达共同学习。Sugar
+是全球性努力的一部分，旨在为每个孩子提供优质教育的机会。Sugar 当前在 40
+多个国家中有近一百万儿童使用，支持 25 种语言。</li>
+<li><a target="_blank" rel="noopener" href="https://www.ukui.org">UKUI</a>：UKUI 是一个轻量级的 Linux
+桌面环境，基于 GTK 和 Qt 开发。UKUI 是 Ubuntu Kylin
+的默认桌面环境。</li>
+<li><a
+target="_blank" rel="noopener" href="https://sourceforge.net/projects/cdesktopenv">CDE</a>：Common
+Desktop Environment 是一个为 Unix 和 OpenVMS 提供的桌面环境，基于 Motif
+小部件工具包。它曾是 UNIX98 工作站产品标准的一部分，并且长期以来是商业
+Unix 工作站的“经典”桌面。尽管它是一个遗留环境，但它仍在通过对 Linux
+系统的支持保持活跃。</li>
+<li><a target="_blank" rel="noopener" href="https://edeproject.org">EDE</a>：Equinox Desktop
+Environment 是一个旨在简单、极轻量且快速的桌面环境。</li>
+<li><a target="_blank" rel="noopener" href="https://liri.io">Liri</a>：Liri
+是一个具有现代设计和功能的桌面环境。Liri 是 Hawaii、Papyros 和 Liri
+项目的合并。高度实验性。</li>
+<li><a target="_blank" rel="noopener" href="https://lumina-desktop.org">Lumina</a>：Lumina 是一个为
+FreeBSD 编写的轻量级桌面环境，使用 Qt 5，并采用 Fluxbox
+作为窗口管理器。</li>
+<li><a target="_blank" rel="noopener" href="https://docs.maxxinteractive.com">MaXX Interactive
+Desktop</a>：MaXXdesktop
+从头开始设计，注重速度、响应快速、轻量简洁而非视觉效果。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Nitrux/maui-shell">Maui Shell</a>：Maui
+Shell 是一个适用于桌面、平板和手机的融合外壳。</li>
+<li><a
+target="_blank" rel="noopener" href="https://www.bodhilinux.com/moksha-desktop">Moksha</a>：Moksha 是
+Enlightenment 的一个分支，目前是基于 Ubuntu 的 Bodhi Linux
+的默认桌面环境，支持可选模块。</li>
+<li><a
+target="_blank" rel="noopener" href="https://codeberg.org/sasko-usinov/orbitiny-desktop">Orbitiny
+Desktop</a>：Orbitiny Desktop 是一个全新的、100%
+可移植的创新型桌面环境，兼具传统和现代化外观，专为 Linux 设计。</li>
+<li><a
+target="_blank" rel="noopener" href="https://gitlab.com/cubocore/paper/paperde">PaperDE</a>：一个基于
+Qt/Wayland 和 Wayfire 构建的桌面环境。</li>
+<li><a target="_blank" rel="noopener" href="https://plainDE.github.io">plainDE</a>：一个轻量级的
+GNU/Linux 桌面环境，使用 Qt 编写。目前包括面板和控制中心。</li>
+<li><a target="_blank" rel="noopener" href="https://invent.kde.org/plasma/plasma-mobile">Plasma
+Mobile</a>：Plasma Mobile 是一个基于 KDE Plasma 堆栈和 Wayland
+的移动桌面环境。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/vicr123/thedesk">theDesk</a>：theDesk
+是一个尽可能透明的桌面环境。它使用 Qt 5 作为其小部件工具包，KWin
+作为窗口管理器。</li>
+<li><a target="_blank" rel="noopener" href="https://www.trinitydesktop.org">Trinity</a>：Trinity
+Desktop Environment (TDE) 项目是一个为类 Unix
+操作系统设计的计算机桌面环境，主要目标是保留 KDE 3.5
+的整体计算风格。</li>
+</ul>
+<h2 id="window-manager窗口管理器">Window Manager（窗口管理器）</h2>
+<ul>
+<li>窗口管理器是负责管理和控制窗口的大小、位置和行为的程序。它并不包括图形界面应用，而是直接管理窗口的显示和交互。</li>
+<li>窗口管理器控制以下内容：
+<ul>
+<li>窗口的布局：决定窗口如何在屏幕上排列（比如层叠或平铺）。</li>
+<li>窗口的外观：包括边框、标题栏、按钮等。</li>
+<li>窗口的控制：比如最大化、最小化、关闭、调节大小等。</li>
+</ul></li>
+</ul>
+<h3 id="常用的窗口管理器">常用的窗口管理器</h3>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://i3wm.org">i3</a>：平铺窗口管理器，完全从头开始编写。i3
+是为了填补 wmii 的不足而创建的，wmii
+是当时开发者最喜爱的窗口管理器，但它没有提供所需的功能（例如多显示器支持），存在一些
+bug，长时间未更新，且不易修改（源代码注释/文档完全缺失）。i3
+在多显示器支持和树形结构方面有所不同。</li>
+<li><a
+target="_blank" rel="noopener" href="https://openbox.org/">Openbox</a>：高度可配置的窗口管理器，具有广泛的标准支持。box视觉风格以其简洁外观而闻名。Openbox使用box视觉风格，同时为主题开发者提供比以前的*box实现更多的选项。自2010年以来已"功能完整"，但仍在维护中。</li>
+</ul>
+<h3 id="其它的窗口管理器">其它的窗口管理器</h3>
+<h4 id="浮动窗口管理器">浮动窗口管理器</h4>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/venam/2bwm">2bwm</a>：快速的浮动窗口管理器，特点是有两个边框，基于XCB库编写，源自Michael
+Cardell编写的mcwm。在2bwm中，一切都可以通过键盘操作，但也可以使用指针设备来移动、调整大小以及升降窗口。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/9wm/9wm">9wm</a>：受Plan
+9的rio启发的X11窗口管理器。</li>
+<li><a
+target="_blank" rel="noopener" href="http://www.afterstep.org/">AfterStep</a>：最初基于NeXTStep界面的外观和感觉，为用户提供一致、干净、优雅的桌面。AfterStep的开发目标是提供桌面配置的灵活性，改善美学，并高效利用系统资源。</li>
+<li><a
+target="_blank" rel="noopener" href="http://www.afterstep.org">berry</a>：轻量级窗口管理器，使用C语言编写。通过命令行客户端控制，可以通过像sxhkd这样的热键守护进程来控制窗口，或通过Shell脚本扩展功能。它提供可扩展的主题选项，支持双边框、标题栏和窗口文本。berry将新窗口放置在空闲空间中，并支持虚拟桌面。</li>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/bbidulock/blackboxwm">Blackbox</a>：轻量级的X窗口管理器，没有那些令人讨厌的库依赖。Blackbox使用C++编写，并包含完全原创的代码（尽管它的图形实现与WindowMaker类似）。</li>
+<li><a
+target="_blank" rel="noopener" href="https://launchpad.net/compiz">Compiz</a>：使用GLX_EXT_texture_from_pixmap将重定向的顶级窗口绑定到纹理对象的OpenGL合成管理器。它具有灵活的插件系统，并设计成可以在大多数图形硬件上良好运行。</li>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/leahneukirchen/cwm">cwm</a>：最初源自evilwm，后来从头重写，cwm的目标是简单，并提供诸如窗口搜索等有用的功能。</li>
+<li>eggwm：轻量级的QT4/QT5窗口管理器。</li>
+<li><a
+target="_blank" rel="noopener" href="https://www.enlightenment.org">Enlightenment</a>：Enlightenment不仅是Linux/X11等的窗口管理器，还是一套帮助你创建美丽用户界面的库，使工作变得比传统方法更简单，避免了传统工具包的麻烦。</li>
+<li><a
+target="_blank" rel="noopener" href="https://www.6809.org.uk/evilwm/">evilwm</a>：极简主义的X窗口管理器。"极简主义"在这里并不意味着它过于简陋以至于无法使用——而是指它省略了很多让其他窗口管理器变得无法使用的东西。</li>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/fluxbox/fluxbox">Fluxbox</a>：基于Blackbox
+0.61.1代码的X窗口管理器。它资源占用非常轻，但却有很多功能，使其成为一个非常快速且易于使用的桌面体验。使用C++编写，并遵循MIT许可协议。</li>
+<li><a
+target="_blank" rel="noopener" href="https://flwm.sourceforge.net/">Flwm</a>：尝试结合多个窗口管理器的最佳思路。主要的影响和代码基础来自Chris
+Cannam的wm2。</li>
+<li><a
+target="_blank" rel="noopener" href="https://www.fvwm.org/">FVWM</a>：功能强大的ICCCM兼容的多虚拟桌面X窗口管理器。开发仍然活跃，支持也非常好。</li>
+<li><a
+target="_blank" rel="noopener" href="https://launchpad.net/gala">Gala</a>：来自elementaryos的美观窗口管理器，属于Pantheon的一部分。它也是一个合成管理器，基于libmutter。</li>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/seanpringle/goomwwm">Goomwwm</a>：使用C编写的X11窗口管理器，作为一个清晰的项目进行开发。它以最小的浮动布局管理窗口，并提供灵活的键盘驱动控制，用于窗口切换、调整大小、移动、标记和拼贴。它还非常快速、轻量级、无模式、支持Xinerama，并尽可能兼容EWMH。</li>
+<li><a
+target="_blank" rel="noopener" href="https://ice-wm.org">IceWM</a>：X窗口管理器。IceWM的目标是速度、简单性，并且不干扰用户。</li>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/jefbed/jbwm">jbwm</a>：基于evilwm，最小配置文件大小约为16KB，专注于小二进制大小和可用性，结合了可选的标题栏和XFT标题栏字体渲染，作为编译时选项，jbwm还具有比evilwm更易用的键绑定。</li>
+<li><a
+target="_blank" rel="noopener" href="https://joewing.net/projects/jwm">JWM</a>：X窗口管理器。JWM用C语言编写，并且仅使用最小的Xlib。</li>
+<li><a
+target="_blank" rel="noopener" href="https://karmen.sourceforge.net">Karmen</a>：X窗口管理器，由Johan
+Veenhuizen编写。它设计为"只要工作就好"。没有配置文件，除了Xlib以外没有其他库依赖。输入焦点模型是点击聚焦。Karmen的目标是符合ICCCM和EWMH。</li>
+<li><a
+target="_blank" rel="noopener" href="https://techbase.kde.org/Projects/KWin">KWin</a>：KDE的标准窗口管理器，自KDE
+4.0以来，也是一款合成管理器。这样，KWin可以提供类似Compiz的高级图形效果，同时也提供KDE早期版本的所有功能（如与KDE其余部分的良好集成、高度可配置性、防止焦点窃取、良好的错误处理等）。同时也作为Wayland的合成器。</li>
+<li><a
+target="_blank" rel="noopener" href="http://www.jfc.org.uk/software/lwm.html">lwm</a>：一款尽量不打扰用户的X窗口管理器。没有图标、按钮栏、图标停靠栏、根菜单等：如果你需要这些，其他程序可以提供。没有配置选项：如果你想要配置，你就需要换一个窗口管理器，它会帮助你的操作系统征服硬盘空间和物理内存。</li>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/mate-desktop/marco">Marco</a>：MATE窗口管理器，Metacity的一个分支。</li>
+<li><a
+target="_blank" rel="noopener" href="https://blogs.gnome.org/metacity">Metacity</a>：该窗口管理器致力于保持安静、小巧、稳定，完成工作并保持不引人注目。它用于遗留的GNOME
+2和GNOME Flashback会话，已经被Mutter取代。</li>
+<li><a
+target="_blank" rel="noopener" href="http://www2u.biglobe.ne.jp/~y-miyata/mlvwm.html">MLVWM</a>：类Macintosh虚拟窗口管理器，基于FVWM的后代，尝试在布局和窗口设计上模拟Mac
+OS X之前的Macintosh外观和感觉。</li>
+<li><a
+target="_blank" rel="noopener" href="https://gitlab.gnome.org/GNOME/mutter">Muffin</a>：用于Cinnamon的窗口和合成管理器。Mutter的一个分支，基于Clutter，使用OpenGL。不能在Cinnamon之外使用。</li>
+<li><a
+target="_blank" rel="noopener" href="https://gitlab.gnome.org/GNOME/mutter">Mutter</a>：用于GNOME的窗口和合成管理器，基于Clutter，使用OpenGL。也用作Wayland合成器。</li>
+<li><a
+target="_blank" rel="noopener" href="https://sourceforge.net/projects/motif">MWM</a>：Motif窗口管理器（MWM），是一个基于Motif工具包的X窗口管理器。</li>
+<li><a
+target="_blank" rel="noopener" href="https://www.pleyades.net/david/projects/pawm">pawm</a>：X窗口系统的窗口管理器。因此，它不是一个"桌面"，也不会为你提供一大堆没用的选项，只提供运行X应用程序所需的功能，同时拥有友好且易于使用的界面。</li>
+<li><a
+target="_blank" rel="noopener" href="https://www.pekwm.org">PekWM</a>：窗口管理器，曾经基于aewm++窗口管理器，但经过足够的演变，已经不再像aewm++。它有更多的功能，包括窗口分组（类似于Ion、PWM或Fluxbox）、自动属性、Xinerama、支持多重快捷键等。</li>
+<li><a
+target="_blank" rel="noopener" href="https://sawfish.wikia.com/wiki/Main_Page">Sawfish</a>：可扩展的窗口管理器，使用基于Lisp的脚本语言。其策略相对于大多数窗口管理器非常简单。目标只是以最灵活和最美观的方式管理窗口。所有高级窗口管理功能都通过Lisp实现，便于未来的扩展或重新定义。</li>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/dylanaraps/sowm">sowm</a>：简单的意见窗口管理器，提供全屏切换、窗口居中和混合工作流（即鼠标和键盘）。</li>
+<li><a
+target="_blank" rel="noopener" href="http://incise.org/tinywm.html">TinyWM</a>：创建的极简窗口管理器，约50行C代码。它可能对学习创建窗口管理器的基础知识有帮助。还有一个基于python-xlib的Python版本。</li>
+<li><a
+target="_blank" rel="noopener" href="https://gitlab.freedesktop.org/xorg/app/twm">twm</a>：X的简单窗口管理器，自1989年以来一直是Xorg的默认/备用管理器。提供标题栏、窗体管理、几种图标管理形式、用户定义的宏功能、点击输入和指针驱动的键盘焦点，以及用户指定的键和指针按钮绑定。</li>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/ukui/ukwm">ukwm</a>：轻量级的GTK+窗口管理器，是UKUI桌面环境的默认窗口管理器。</li>
+<li><a
+target="_blank" rel="noopener" href="https://udeproject.sourceforge.net">UWM</a>：UDE的终极窗口管理器。</li>
+<li><a
+target="_blank" rel="noopener" href="https://windwm.sourceforge.net">Wind</a>：小型浮动窗口管理器。试图遵循ICCCM、EHWM和NetWM。</li>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/nickgravgaard/windowlab">WindowLab</a>：小型简约窗口管理器，采用新颖设计。它具有点击聚焦但不提升聚焦政策、窗口大小调整机制，可以同时改变窗口的一个或多个边缘，并且有创新的菜单栏与任务栏共享相同的屏幕区域。</li>
+<li><a target="_blank" rel="noopener" href="https://windowmaker.org">Window
+Maker</a>：X11窗口管理器，最初设计用于为GNUstep桌面环境提供集成支持。在各个方面，它重现了NEXTSTEP用户界面的优雅外观和感觉。它快速、功能丰富、易于配置和使用。</li>
+<li><a
+target="_blank" rel="noopener" href="https://www.all-day-breakfast.com/wm2">WM2</a>：X窗口管理器。它提供了一种不寻常的窗口装饰风格，且其功能最小化，以适应作者的设计理念。wm2不具备配置功能，只有通过编辑源代码并重新编译才能配置，旨在为那些不希望窗口管理器过于友好的用户设计。</li>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/codic12/worm">worm</a>：是一款动态标签窗口管理器，支持浮动布局和主堆叠布局，用Nim编写。</li>
+<li><a target="_blank" rel="noopener" href="https://docs.xfce.org/xfce/xfwm4/start">Xfwm</a>：Xfwm 是
+Xfce
+桌面环境的窗口管理器，负责管理应用程序窗口在屏幕上的布局，提供美观的窗口装饰，管理工作区或虚拟桌面，并原生支持多显示器模式。它提供了自己的合成管理器（基于
+X.Org Composite 扩展），支持真实的透明度和阴影效果。Xfwm
+还包括一个键盘快捷键编辑器，用于用户特定命令和基本的窗口操作，并提供一个首选项对话框，允许进行高级设置。</li>
+</ul>
+<h4 id="平铺式窗口管理器">平铺式窗口管理器</h4>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/baskerville/bspwm">Bspwm</a>：bspwm
+是一个平铺式窗口管理器，它将窗口表示为一个完全二叉树的叶子节点。它支持
+EWMH 和多显示器，可以通过消息进行配置和控制。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ch11ng/exwm">EXWM</a>：EXWM（Emacs X
+Window Manager）是一个为 Emacs 构建的全功能平铺式 X 窗口管理器，基于
+XELB。它具有完全基于键盘的操作，混合布局模式（平铺和堆叠），动态工作区支持，ICCCM/EWMH
+兼容，RandR（多显示器）支持，并且内置了系统托盘。</li>
+<li><a
+target="_blank" rel="noopener" href="https://herbstluftwm.org">Herbstluftwm</a>：手动平铺窗口管理器，基于
+Xlib 和 Glib。其布局基于将窗口分割成子框架，再将其分割或填充窗口（类似于
+i3/musca）。可以动态添加/删除标签。每个标签都有自己的布局。每个显示器上只显示一个标签。标签是显示器独立的（类似于
+xmonad）。它通过 ipc 调用由 herbstclient
+配置。配置文件只是一个在启动时运行的脚本（类似 wmii/musca）。</li>
+<li><a target="_blank" rel="noopener" href="http://porneia.free.fr/larswm/larswm.html">Larswm</a>：基于
+9wm 的平铺窗口管理器。</li>
+<li><a target="_blank" rel="noopener" href="https://leftwm.org">LeftWM</a>：使用 Rust
+编写的平铺窗口管理器。</li>
+<li><a target="_blank" rel="noopener" href="https://notionwm.net">Notion</a>：X
+窗口系统的平铺式标签窗口管理器，采用“平铺”和“标签”窗口模式。
+<ul>
+<li>平铺：你将屏幕分成不重叠的“瓷砖”。每个窗口占用一个瓷砖，并最大化到其中。</li>
+<li>标签：一个瓷砖可以包含多个窗口，它们将以标签的形式显示。</li>
+<li>静态：大多数平铺窗口管理器是“动态”的，意味着它们会根据窗口的出现或消失自动调整瓷砖的</li>
+<li>小和位置。相比之下，Notion 不会自动改变平铺。</li>
+<li>Notion 是 Ion3 的一个分支。</li>
+</ul></li>
+<li><a
+target="_blank" rel="noopener" href="https://www.nongnu.org/ratpoison">Ratpoison</a>：简单的窗口管理器，没有大型的库依赖、花哨的图形、窗口装饰和老鼠依赖。它主要受
+GNU Screen 启发，配置通过简单的文本文件进行。Ratpoison
+有一个信息条，仅在需要时显示。它既是应用启动器也是通知条。Ratpoison
+不包括系统托盘。</li>
+<li><a
+target="_blank" rel="noopener" href="https://stumpwm.github.io">Stumpwm</a>：平铺、完全由键盘操作的 X11
+窗口管理器，完全用 Common Lisp 编写。Stumpwm
+旨在可定制且视觉上简洁。它提供了各种挂钩来附加个人定制和可调整的变量，且可以在运行时重新配置和重新加载。没有窗口装饰、图标和按钮。其信息条可以设置为常时显示或仅在需要时显示。</li>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/Yazeed1s/zwm">ZWM</a>：一个最小化的平铺窗口管理器，用
+C 编写，使用 XCB API 与 Xorg 服务器通信。它支持多显示器，支持 EWMH
+规范的子集，且提供广泛的配置选项。</li>
+</ul>
+<h4 id="动态窗口管理器">动态窗口管理器</h4>
+<ul>
+<li><p><a
+target="_blank" rel="noopener" href="https://awesomewm.org">awesome</a>：高度可配置的下一代框架窗口管理器，适用于
+X。它非常快速、可扩展，并且使用 GNU GPLv2 许可。通过 Lua
+配置，内置系统托盘、信息条和启动器。它还提供了用 Lua 编写的扩展。awesome
+使用 XCB，而不是 Xlib，这可能会提高速度。awesome
+还有其他功能，比如早期替代通知守护程序、右键菜单等。</p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://bitbucket.org/natemaia/dk/src/master">dk</a>：一个基于列表的平铺窗口管理器，灵感来自
+dwm、bspwm 和 xmonad。</p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://dwm.suckless.org">dwm</a>：动态窗口管理器，适用于
+X。它在平铺、单窗口和浮动布局中管理窗口。所有布局都可以动态应用，优化当前应用和任务的环境。它不包含系统托盘或自动启动器，但与
+dmenu 配合良好，因为它们来自同一作者。dwm
+没有文本配置文件，配置完全通过修改 C
+源代码进行，每次更改后都需要重新编译和重启。</p></li>
+<li><p><a
+target="_blank" rel="noopener" href="http://plhk.ru">echinus</a>：简单轻量的平铺和浮动窗口管理器，起初作为
+dwm 的一个分支，经过修改后成为功能完善的重父窗口管理器，支持
+EWMH。它具有与 EWMH 兼容的面板/任务栏，称为 ouricoAUR。</p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://github.com/sulami/FrankenWM">FrankenWM</a>：基本上是
+monsterwm，浮动窗口做得更好。增加了的功能包括：更多布局（斐波那契、等比例堆叠、双堆叠），可调节间隙（和边框），最小化/最大化单一窗口，隐藏/显示所有窗口，单独调整主窗口和堆栈的大小，反转堆栈。</p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://github.com/conformal/spectrwm">spectrwm</a>：小型动态平铺窗口管理器，适用于
+X11，灵感来源于 xmonad 和
+dwm。它尽量避免干扰，提供更多有用的屏幕空间。它具有合理的默认配置，并使用文本文件配置。它是为黑客而写的，力求小巧、紧凑、快速。它内置了一个状态栏，用户可以通过自定义脚本进行设置。</p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://github.com/qtile/qtile">Qtile</a>：全功能的、可扩展的平铺窗口管理器，使用
+Python 编写。Qtile
+简单、紧凑、易于扩展。用户可以轻松编写自己的布局、部件和内置命令。Qtile
+完全使用 Python
+编写和配置，这意味着用户可以利用该语言的全部功能和灵活性来定制其需求。</p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://github.com/BurntSushi/wingo">Wingo</a>：完全功能的真正混合窗口管理器，支持每显示器工作区，平铺和浮动模式可以独立切换。可以在一个工作区内使用平铺，在另一个工作区内使用浮动。Wingo
+可以通过其自有的命令语言进行脚本化，完全支持主题，并支持用户定义的钩子。Wingo
+使用 Go 编写，并没有运行时依赖。</p></li>
+<li><p><a target="_blank" rel="noopener" href="https://xmonad.org">xmonad</a>：动态平铺 X11
+窗口管理器，用 Haskell
+编写和配置。在普通的窗口管理器中，用户花费大量时间对齐和寻找窗口，而
+xmonad 通过自动化此过程使工作更轻松。XMonad 使用 Haskell
+进行配置。所有配置更改必须重新编译 xmonad，因此必须安装 Haskell
+编译器（超过 100MB）。一个名为 xmonad-contrib
+的大型库提供了许多额外功能。</p></li>
+</ul>
+<h2 id="display-manager显示管理器">Display Manager（显示管理器）</h2>
+<ul>
+<li>显示管理器是启动和管理登录会话的程序。它负责在系统启动时显示登录界面，提供用户身份验证（如用户名和密码），然后启动桌面环境或窗口管理器。</li>
+<li>显示管理器的主要功能是：
+<ul>
+<li>登录界面：提供一个图形化或文本化的登录屏幕，供用户输入凭据。</li>
+<li>会话管理：在用户成功登录后，启动并管理桌面环境或窗口管理器。</li>
+<li>用户切换：在多个用户之间切换。</li>
+</ul></li>
+</ul>
+<h3 id="常用的显示管理器">常用的显示管理器</h3>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/canonical/lightdm">LightDM</a>：跨桌面显示管理器，可以使用任何工具包编写的各种前端。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/sddm/sddm">SDDM</a>：基于 QML
+的显示管理器，是 KDM 的继任者；推荐用于 Plasma 和 LXQt。</li>
+</ul>
+<h3 id="其它的显示管理器">其它的显示管理器</h3>
+<h4 id="控制台显示管理器">控制台显示管理器</h4>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/evertiro/cdm">CDM</a>：使用 Bash
+编写的登录管理器。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/dopsi/console-tdm">Console
+TDM</a>：一个纯 Bash 编写的 xinit 扩展。</li>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/spanezz/nodm">nodm</a>：自动登录的显示管理器。自
+2017 年起已停用。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/fairyglade/ly">Ly</a>：用于 Linux 和 BSD
+的 TUI（类似 ncurses）显示管理器，支持 X 和 Wayland 会话。</li>
+<li><a target="_blank" rel="noopener" href="https://loh-tar.github.io/tbsm">tbsm</a>：一个 Bash
+会话或应用程序启动器，支持 X 和 Wayland 会话。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tvrzna/emptty">emptty</a>：简单的 CLI
+显示管理器，支持 X 和 Wayland。</li>
+<li><a
+target="_blank" rel="noopener" href="https://sourceforge.net/projects/loginx">loginx</a>：一个结合了
+getty/login/xinit 的工具，带有友好的 curses 界面。</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/coastalwhite/lemurs">Lemurs</a>：用 Rust
+编写的 TUI 显示管理器，支持 X、Wayland 和 TTY shell 会话。</li>
+</ul>
+<h4 id="图形界面显示管理器">图形界面显示管理器</h4>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://github.com/Obsidian-StudiosInc/entrance">Entrance</a>：Enlightenment
+显示管理器。高度实验性，并且没有适当的 systemd 支持，已经停止开发。</li>
+<li><a target="_blank" rel="noopener" href="https://wiki.gnome.org/Projects/GDM">GDM</a>：GNOME
+显示管理器。</li>
+<li><a target="_blank" rel="noopener" href="https://sourceforge.net/projects/lxdm">LXDM</a>：LXDE
+显示管理器。可以独立于 LXDE 桌面环境使用。</li>
+<li><a
+target="_blank" rel="noopener" href="https://sourceforge.net/projects/slim.berlios">SLiM</a>：轻量且优雅的图形登录解决方案。自
+2013 年起停止开发，不完全兼容 systemd。</li>
+<li>XDM：支持 XDMCP 和主机选择的 X 显示管理器。</li>
+</ul>
+<h4 id="登录守护进程">登录守护进程</h4>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://git.sr.ht/~kennylevinsen/greetd">greetd</a>：支持控制台和图形界面
+greeter 的登录守护进程。</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Linux 桌面记录</div>
+      <div>https://windzwindy.github.io/2025/03/01/Linux 桌面记录/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>windzwindy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年3月1日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2025年3月2日</div>
+        </div>
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/03/02/APT%20%E7%9A%84%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95/" title="APT 的常见用法">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">APT 的常见用法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/02/24/Command%20Line%20Compress/" title="Command Line Compress">
+                        <span class="hidden-mobile">Command Line Compress</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
