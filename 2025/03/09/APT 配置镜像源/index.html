@@ -18,22 +18,23 @@
   <meta name="author" content="windzwindy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="DiskGenius 清除分区空闲空间后硬盘满了解决方法  用命令 chkdsk 解决：比如 D 盘出现了问题 1chkdsk D: &#x2F;f">
+    <meta name="description" content="APT 配置镜像源  【参考文章】 【1】：ubuntu镜像_ubuntu下载地址_ubuntu安装教程-阿里巴巴开源镜像站   备份源文件： 1sudo cp &#x2F;etc&#x2F;apt&#x2F;sources.list &#x2F;etc&#x2F;apt&#x2F;sources.list.bak 编辑源文件为国内镜像源： 1sudo vim &#x2F;etc&#x2F;apt&#x2F;sources.list 根据系统的版本，在里面输入一个国">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DiskGenius 清除分区空闲空间后硬盘满了解决方法">
-<meta property="og:url" content="https://windzwindy.github.io/2025/02/20/DiskGenius%20%E6%B8%85%E9%99%A4%E5%88%86%E5%8C%BA%E7%A9%BA%E9%97%B2%E7%A9%BA%E9%97%B4%E5%90%8E%E7%A1%AC%E7%9B%98%E6%BB%A1%E4%BA%86%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:title" content="APT 配置镜像源">
+<meta property="og:url" content="https://windzwindy.github.io/2025/03/09/APT%20%E9%85%8D%E7%BD%AE%E9%95%9C%E5%83%8F%E6%BA%90/index.html">
 <meta property="og:site_name" content="WindZwindy Blog">
-<meta property="og:description" content="DiskGenius 清除分区空闲空间后硬盘满了解决方法  用命令 chkdsk 解决：比如 D 盘出现了问题 1chkdsk D: &#x2F;f">
+<meta property="og:description" content="APT 配置镜像源  【参考文章】 【1】：ubuntu镜像_ubuntu下载地址_ubuntu安装教程-阿里巴巴开源镜像站   备份源文件： 1sudo cp &#x2F;etc&#x2F;apt&#x2F;sources.list &#x2F;etc&#x2F;apt&#x2F;sources.list.bak 编辑源文件为国内镜像源： 1sudo vim &#x2F;etc&#x2F;apt&#x2F;sources.list 根据系统的版本，在里面输入一个国">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-02-20T03:34:14.000Z">
-<meta property="article:modified_time" content="2025-02-20T03:37:57.258Z">
+<meta property="article:published_time" content="2025-03-09T07:53:47.000Z">
+<meta property="article:modified_time" content="2025-03-09T08:31:00.858Z">
 <meta property="article:author" content="windzwindy">
-<meta property="article:tag" content="DiskGenius">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Ubuntu">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>DiskGenius 清除分区空闲空间后硬盘满了解决方法 - WindZwindy Blog</title>
+  <title>APT 配置镜像源 - WindZwindy Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -187,7 +188,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="DiskGenius 清除分区空闲空间后硬盘满了解决方法"></span>
+            <span id="subtitle" data-typed-text="APT 配置镜像源"></span>
           
         </div>
 
@@ -198,8 +199,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-02-20 11:34" pubdate>
-          2025年2月20日 中午
+        <time datetime="2025-03-09 15:53" pubdate>
+          2025年3月9日 下午
         </time>
       </span>
     
@@ -210,7 +211,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          33 字
+          152 字
         
       </span>
     
@@ -221,7 +222,7 @@
         
         
         
-          1 分钟
+          2 分钟
         
       </span>
     
@@ -258,12 +259,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">DiskGenius 清除分区空闲空间后硬盘满了解决方法</h1>
+            <h1 id="seo-header">APT 配置镜像源</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年2月20日 中午
+                    本文最后更新于 2025年3月9日 下午
                   
                 
               </p>
@@ -271,12 +272,21 @@
             
               <div class="markdown-body">
                 
-                <h1
-id="diskgenius-清除分区空闲空间后硬盘满了解决方法"><code>DiskGenius</code>
-清除分区空闲空间后硬盘满了解决方法</h1>
+                <h1 id="apt-配置镜像源">APT 配置镜像源</h1>
+<blockquote>
+<p>【参考文章】</p>
+<p>【1】：<a
+target="_blank" rel="noopener" href="https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.3e221b11afaKiH">ubuntu镜像_ubuntu下载地址_ubuntu安装教程-阿里巴巴开源镜像站</a></p>
+</blockquote>
 <ul>
-<li>用命令 <code>chkdsk</code> 解决：比如 <code>D</code> 盘出现了问题
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">chkdsk D: /f<br></code></pre></td></tr></table></figure></li>
+<li><p>备份源文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">cp</span> /etc/apt/sources.list /etc/apt/sources.list.bak<br></code></pre></td></tr></table></figure></li>
+<li><p>编辑源文件为国内镜像源：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo vim /etc/apt/sources.list<br></code></pre></td></tr></table></figure></li>
+<li><p>根据系统的版本，在里面输入一个国内镜像源：</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs 1c">deb https:<span class="hljs-comment">//mirrors.aliyun.com/ubuntu/ noble main restricted universe multiverse</span><br>deb-src https:<span class="hljs-comment">//mirrors.aliyun.com/ubuntu/ noble main restricted universe multiverse</span><br><br>deb https:<span class="hljs-comment">//mirrors.aliyun.com/ubuntu/ noble-security main restricted universe multiverse</span><br>deb-src https:<span class="hljs-comment">//mirrors.aliyun.com/ubuntu/ noble-security main restricted universe multiverse</span><br><br>deb https:<span class="hljs-comment">//mirrors.aliyun.com/ubuntu/ noble-updates main restricted universe multiverse</span><br>deb-src https:<span class="hljs-comment">//mirrors.aliyun.com/ubuntu/ noble-updates main restricted universe multiverse</span><br><br><span class="hljs-meta"># deb https:<span class="hljs-comment">//mirrors.aliyun.com/ubuntu/ noble-proposed main restricted universe multiverse</span></span><br><span class="hljs-meta"># deb-src https:<span class="hljs-comment">//mirrors.aliyun.com/ubuntu/ noble-proposed main restricted universe multiverse</span></span><br><br>deb https:<span class="hljs-comment">//mirrors.aliyun.com/ubuntu/ noble-backports main restricted universe multiverse</span><br>deb-src https:<span class="hljs-comment">//mirrors.aliyun.com/ubuntu/ noble-backports main restricted universe multiverse</span><br></code></pre></td></tr></table></figure></li>
+<li><p>刷新缓存：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt clean<br>apt autoclean<br>apt update<br></code></pre></td></tr></table></figure></li>
 </ul>
 
                 
@@ -290,7 +300,9 @@ id="diskgenius-清除分区空闲空间后硬盘满了解决方法"><code>DiskGe
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/DiskGenius/" class="print-no-link">#DiskGenius</a>
+        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
+      
+        <a href="/tags/Ubuntu/" class="print-no-link">#Ubuntu</a>
       
     </div>
   
@@ -302,8 +314,8 @@ id="diskgenius-清除分区空闲空间后硬盘满了解决方法"><code>DiskGe
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>DiskGenius 清除分区空闲空间后硬盘满了解决方法</div>
-      <div>https://windzwindy.github.io/2025/02/20/DiskGenius 清除分区空闲空间后硬盘满了解决方法/</div>
+      <div>APT 配置镜像源</div>
+      <div>https://windzwindy.github.io/2025/03/09/APT 配置镜像源/</div>
     </div>
     <div class="license-meta">
       
@@ -315,13 +327,13 @@ id="diskgenius-清除分区空闲空间后硬盘满了解决方法"><code>DiskGe
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年2月20日</div>
+          <div>2025年3月9日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年2月20日</div>
+          <div>2025年3月9日</div>
         </div>
       
       
@@ -352,9 +364,9 @@ id="diskgenius-清除分区空闲空间后硬盘满了解决方法"><code>DiskGe
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/23/Spring_Record/" title="Spring 记录（基于 SpringBoot）">
+                      <a href="/2025/03/09/Linux%20%E7%B3%BB%E7%BB%9F%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF/" title="Linux 系统查看系统相关信息">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Spring 记录（基于 SpringBoot）</span>
+                        <span class="hidden-mobile">Linux 系统查看系统相关信息</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -362,8 +374,8 @@ id="diskgenius-清除分区空闲空间后硬盘满了解决方法"><code>DiskGe
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/02/20/Windows%20DiskPart%20%E7%94%A8%E6%B3%95/" title="Windows DiskPart 用法">
-                        <span class="hidden-mobile">Windows DiskPart 用法</span>
+                      <a href="/2025/03/02/APT%20%E7%9A%84%E5%B8%B8%E8%A7%81%E7%94%A8%E6%B3%95/" title="APT 的常见用法">
+                        <span class="hidden-mobile">APT 的常见用法</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

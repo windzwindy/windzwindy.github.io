@@ -18,22 +18,22 @@
   <meta name="author" content="windzwindy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="DiskGenius 清除分区空闲空间后硬盘满了解决方法  用命令 chkdsk 解决：比如 D 盘出现了问题 1chkdsk D: &#x2F;f">
+    <meta name="description" content="Linux 系统查看系统相关信息  【参考文章】 【1】：AI  查看系统内核  查看系统内核版本： 1uname -a  查看系统发行版信息  查看系统发行版相关信息 123cat &#x2F;etc&#x2F;issuecat &#x2F;etc&#x2F;os-releaselsb_release -a  查看 CPU 信息  查看 CPU 信息 12lscpucat &#x2F;proc&#x2F;cpuinfo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DiskGenius 清除分区空闲空间后硬盘满了解决方法">
-<meta property="og:url" content="https://windzwindy.github.io/2025/02/20/DiskGenius%20%E6%B8%85%E9%99%A4%E5%88%86%E5%8C%BA%E7%A9%BA%E9%97%B2%E7%A9%BA%E9%97%B4%E5%90%8E%E7%A1%AC%E7%9B%98%E6%BB%A1%E4%BA%86%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:title" content="Linux 系统查看系统相关信息">
+<meta property="og:url" content="https://windzwindy.github.io/2025/03/09/Linux%20%E7%B3%BB%E7%BB%9F%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF/index.html">
 <meta property="og:site_name" content="WindZwindy Blog">
-<meta property="og:description" content="DiskGenius 清除分区空闲空间后硬盘满了解决方法  用命令 chkdsk 解决：比如 D 盘出现了问题 1chkdsk D: &#x2F;f">
+<meta property="og:description" content="Linux 系统查看系统相关信息  【参考文章】 【1】：AI  查看系统内核  查看系统内核版本： 1uname -a  查看系统发行版信息  查看系统发行版相关信息 123cat &#x2F;etc&#x2F;issuecat &#x2F;etc&#x2F;os-releaselsb_release -a  查看 CPU 信息  查看 CPU 信息 12lscpucat &#x2F;proc&#x2F;cpuinfo">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-02-20T03:34:14.000Z">
-<meta property="article:modified_time" content="2025-02-20T03:37:57.258Z">
+<meta property="article:published_time" content="2025-03-09T07:57:30.000Z">
+<meta property="article:modified_time" content="2025-03-09T08:31:40.283Z">
 <meta property="article:author" content="windzwindy">
-<meta property="article:tag" content="DiskGenius">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>DiskGenius 清除分区空闲空间后硬盘满了解决方法 - WindZwindy Blog</title>
+  <title>Linux 系统查看系统相关信息 - WindZwindy Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -187,7 +187,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="DiskGenius 清除分区空闲空间后硬盘满了解决方法"></span>
+            <span id="subtitle" data-typed-text="Linux 系统查看系统相关信息"></span>
           
         </div>
 
@@ -198,8 +198,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-02-20 11:34" pubdate>
-          2025年2月20日 中午
+        <time datetime="2025-03-09 15:57" pubdate>
+          2025年3月9日 下午
         </time>
       </span>
     
@@ -210,7 +210,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          33 字
+          190 字
         
       </span>
     
@@ -221,7 +221,7 @@
         
         
         
-          1 分钟
+          2 分钟
         
       </span>
     
@@ -258,12 +258,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">DiskGenius 清除分区空闲空间后硬盘满了解决方法</h1>
+            <h1 id="seo-header">Linux 系统查看系统相关信息</h1>
             
               <p id="updated-time" class="note note-info" style="">
                 
                   
-                    本文最后更新于 2025年2月20日 中午
+                    本文最后更新于 2025年3月9日 下午
                   
                 
               </p>
@@ -271,12 +271,53 @@
             
               <div class="markdown-body">
                 
-                <h1
-id="diskgenius-清除分区空闲空间后硬盘满了解决方法"><code>DiskGenius</code>
-清除分区空闲空间后硬盘满了解决方法</h1>
+                <h1 id="linux-系统查看系统相关信息">Linux 系统查看系统相关信息</h1>
+<blockquote>
+<p>【参考文章】</p>
+<p>【1】：AI</p>
+</blockquote>
+<h2 id="查看系统内核">查看系统内核</h2>
 <ul>
-<li>用命令 <code>chkdsk</code> 解决：比如 <code>D</code> 盘出现了问题
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">chkdsk D: /f<br></code></pre></td></tr></table></figure></li>
+<li><p>查看系统内核版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">uname</span> -a<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="查看系统发行版信息">查看系统发行版信息</h2>
+<ul>
+<li><p>查看系统发行版相关信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /etc/issue<br><span class="hljs-built_in">cat</span> /etc/os-release<br>lsb_release -a<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="查看-cpu-信息">查看 CPU 信息</h2>
+<ul>
+<li><p>查看 CPU 信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">lscpu<br><span class="hljs-built_in">cat</span> /proc/cpuinfo<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="查看内存使用信息">查看内存使用信息</h2>
+<ul>
+<li><p>查看内存使用信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">free -h<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="查看硬盘分区和挂载情况">查看硬盘分区和挂载情况</h2>
+<ul>
+<li><p>列出所有块设备（磁盘、分区等）和挂载点信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">lsblk<br></code></pre></td></tr></table></figure></li>
+<li><p>查看磁盘的使用情况</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">df</span> -h<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="查看-pci-设备信息">查看 PCI 设备信息</h2>
+<ul>
+<li><p>列出所有 PCI 总线上的硬件设备信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install pciutils<br>lspci<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="查看-usb-设备信息">查看 USB 设备信息</h2>
+<ul>
+<li><p>显示连接到系统的 USB 设备信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install usbutils<br>lsusb<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="查看内核日志信息">查看内核日志信息</h2>
+<ul>
+<li><p>查看内核日志信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">dmesg<br></code></pre></td></tr></table></figure></li>
+<li><p>还有 <code>/var/log</code> 下的日志文件</p></li>
 </ul>
 
                 
@@ -290,7 +331,7 @@ id="diskgenius-清除分区空闲空间后硬盘满了解决方法"><code>DiskGe
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/DiskGenius/" class="print-no-link">#DiskGenius</a>
+        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
       
     </div>
   
@@ -302,8 +343,8 @@ id="diskgenius-清除分区空闲空间后硬盘满了解决方法"><code>DiskGe
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>DiskGenius 清除分区空闲空间后硬盘满了解决方法</div>
-      <div>https://windzwindy.github.io/2025/02/20/DiskGenius 清除分区空闲空间后硬盘满了解决方法/</div>
+      <div>Linux 系统查看系统相关信息</div>
+      <div>https://windzwindy.github.io/2025/03/09/Linux 系统查看系统相关信息/</div>
     </div>
     <div class="license-meta">
       
@@ -315,13 +356,13 @@ id="diskgenius-清除分区空闲空间后硬盘满了解决方法"><code>DiskGe
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年2月20日</div>
+          <div>2025年3月9日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2025年2月20日</div>
+          <div>2025年3月9日</div>
         </div>
       
       
@@ -352,18 +393,12 @@ id="diskgenius-清除分区空闲空间后硬盘满了解决方法"><code>DiskGe
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/23/Spring_Record/" title="Spring 记录（基于 SpringBoot）">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Spring 记录（基于 SpringBoot）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/02/20/Windows%20DiskPart%20%E7%94%A8%E6%B3%95/" title="Windows DiskPart 用法">
-                        <span class="hidden-mobile">Windows DiskPart 用法</span>
+                      <a href="/2025/03/09/APT%20%E9%85%8D%E7%BD%AE%E9%95%9C%E5%83%8F%E6%BA%90/" title="APT 配置镜像源">
+                        <span class="hidden-mobile">APT 配置镜像源</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
